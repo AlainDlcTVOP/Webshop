@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jenny\\Dropbox\\Kurser\\Lexicon\\inlämningsuppgifter\\projekt\\development\\Webshop\\Backend\\Backend\\Backend.csproj",
+      "projectUniqueName": "C:\\Users\\jenny\\Dropbox\\Kurser\\Lexicon\\inlämningsuppgifter\\projekt\\development\\Backend\\Backend\\Backend.csproj",
       "projectName": "Backend",
-      "projectPath": "C:\\Users\\jenny\\Dropbox\\Kurser\\Lexicon\\inlämningsuppgifter\\projekt\\development\\Webshop\\Backend\\Backend\\Backend.csproj",
+      "projectPath": "C:\\Users\\jenny\\Dropbox\\Kurser\\Lexicon\\inlämningsuppgifter\\projekt\\development\\Backend\\Backend\\Backend.csproj",
       "packagesPath": "C:\\Users\\jenny\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jenny\\Dropbox\\Kurser\\Lexicon\\inlämningsuppgifter\\projekt\\development\\Webshop\\Backend\\Backend\\obj\\",
+      "outputPath": "C:\\Users\\jenny\\Dropbox\\Kurser\\Lexicon\\inlämningsuppgifter\\projekt\\development\\Backend\\Backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jenny\\AppData\\Roaming\\NuGet\\NuGet.Config",
