@@ -29,6 +29,8 @@ namespace Backend.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            // Customers
+
             modelBuilder.Entity<Customer>().HasData(new Customer {
                 Id = 1,
                 UserName = "annaa", 
@@ -73,7 +75,79 @@ namespace Backend.Data
                 IsAdmin = false
             });
 
+            //Products
 
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id=1,
+                Name = "Skidor, Dam",
+                Description = "Produktbeskrivning...",
+                Price = 4000,
+                InStock = 10
+            });
+
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 2,
+                Name = "Skidor, Herr",
+                Description = "Produktbeskrivning...",
+                Price = 5000,
+                InStock = 12
+            });
+
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 3,
+                Name = "Pjäxa, Dam",
+                Description = "Produktbeskrivning...",
+                Price = 5300,
+                InStock = 2
+            });
+
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 4,
+                Name = "Pjäxa, Herr",
+                Description = "Produktbeskrivning...",
+                Price = 6000,
+                InStock = 6
+            });
+
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 5,
+                Name = "Stavar, Dam",
+                Description = "Produktbeskrivning...",
+                Price = 900,
+                InStock = 12
+            });
+
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 6,
+                Name = "Stavar, Herr",
+                Description = "Produktbeskrivning...",
+                Price = 1100,
+                InStock = 4
+            });
+
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 7,
+                Name = "Hjälm, Dam",
+                Description = "Produktbeskrivning...",
+                Price = 2300,
+                InStock = 11
+            });
+
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 8,
+                Name = "Hjälm, Herr",
+                Description = "Produktbeskrivning...",
+                Price = 2100,
+                InStock = 9
+            });
         }
     }
 }
