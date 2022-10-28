@@ -8,6 +8,8 @@ namespace SkiShop.Models
 
         public int OrderNr { get; set; }
 
+        public int CustomerID { get; set; }
+
         public DateTime Date { get; set; }
 
         public DateTime ShippedDate { get; set; }
@@ -18,6 +20,8 @@ namespace SkiShop.Models
 
         public string Comments { get; set; }
 
+
+        // Navigation property
         public List<OrderItem> Items { get; set; }
     }
 }
