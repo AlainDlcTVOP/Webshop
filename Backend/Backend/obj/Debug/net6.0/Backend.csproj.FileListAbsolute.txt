@@ -24,3 +24,4 @@ C:\Users\jenny\Dropbox\Kurser\Lexicon\inlämningsuppgifter\projekt\development\B
 C:\Users\jenny\Dropbox\Kurser\Lexicon\inlämningsuppgifter\projekt\development\Backend\Backend\obj\Debug\net6.0\Backend.pdb
 C:\Users\jenny\Dropbox\Kurser\Lexicon\inlämningsuppgifter\projekt\development\Backend\Backend\obj\Debug\net6.0\Backend.genruntimeconfig.cache
 C:\Users\jenny\Dropbox\Kurser\Lexicon\inlämningsuppgifter\projekt\development\Backend\Backend\obj\Debug\net6.0\ref\Backend.dll
+C:\Users\jenny\Dropbox\Kurser\Lexicon\inlämningsuppgifter\projekt\development\Backend\Backend\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css

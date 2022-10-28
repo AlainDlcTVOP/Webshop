@@ -3,11 +3,23 @@
     public class OrderItem
     {
         public int Id { get; set; }
-        public int OrderNumber { get; set; }
-        public string Product { get; set; }
+
+        //public int OrderNumber { get; set; }
+
+        public int OrderID { get; set; }
+
+        public int ProductID { get; set; }
+
         public int Quantity{ get; set; }
-        public double Price { get; set; }
+
         public double RowAmount { get; set; }
+
+
+        //Navigation properties
+        public Product Product { get; set; } = new Product();
+
+        public Order Order { get; set; }
+
 
     }
 }
