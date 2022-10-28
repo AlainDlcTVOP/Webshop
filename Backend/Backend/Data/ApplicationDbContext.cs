@@ -22,5 +22,7 @@ namespace Backend.Data
         public DbSet<OrderItem> OrderItems { get; set; }
 
         public DbSet<Product> Products { get; set; }
+
+        public DbSet<Image> Images { get; set; }
     }
 }
