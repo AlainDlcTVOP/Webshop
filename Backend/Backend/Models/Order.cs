@@ -6,7 +6,7 @@ namespace SkiShop.Models
     {
         public int Id { get; set; }
 
-        public int OrderNr { get; set; }
+        //public int OrderNr { get; set; }
 
         public int CustomerID { get; set; }
 
