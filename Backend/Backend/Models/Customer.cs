@@ -23,5 +23,8 @@
         public string Password { get; set; }
 
         public bool IsAdmin { get; set; }
+
+        // Navigation property
+        public List<Order> Orders { get; set; }
     }
 }
