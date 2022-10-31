@@ -7,7 +7,7 @@ import './App.css';
 
 
 class App extends Component {
-  constructor() {
+  constructor() { 
     super();
     this.state = {
       input: '',
