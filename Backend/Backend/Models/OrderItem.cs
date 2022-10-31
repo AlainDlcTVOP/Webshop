@@ -16,10 +16,9 @@
 
 
         //Navigation properties
-        public Product Product { get; set; } = new Product();
-
         public Order Order { get; set; }
 
+        //public Product Product { get; set; } = new Product();
 
     }
 }
