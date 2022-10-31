@@ -51,7 +51,7 @@ class App extends Component {
     const { isSignedIn,  route } = this.state;
     return (
       <div className="App">
-     {/* <ParticlesBg className="particles" bg={true}  num={15}/> */}
+      <ParticlesBg className="particles" type='circle' bg={true}  num={15}/> 
         <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
         { route === 'home'
           ? <div>
