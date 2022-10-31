@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SkiShop.Models;
+using System;
 
 namespace Backend.Data
 {
@@ -75,6 +76,7 @@ namespace Backend.Data
                 IsAdmin = false
             });
 
+
             //Products
 
             modelBuilder.Entity<Product>().HasData(new Product
@@ -148,6 +150,94 @@ namespace Backend.Data
                 Price = 2100,
                 InStock = 9
             });
+
+
+            //Orders
+
+            modelBuilder.Entity<Order>().HasData(new Order
+            {
+                Id = 1,
+                CustomerID = 1,
+                Date = new DateTime(2022, 10, 26),
+                Status = "Delieverd",
+                Comments = "Deliver asap",
+            });
+
+            modelBuilder.Entity<Order>().HasData(new Order
+            {
+                Id = 2,
+                CustomerID = 2,
+                Date = new DateTime(2022, 10, 27),
+                Status = "Shipped",
+                Comments = "",
+            });
+
+            modelBuilder.Entity<Order>().HasData(new Order
+            {
+                Id = 3,
+                CustomerID = 3,
+                Date = new DateTime(2022, 10, 28),
+                Status = "Pending",
+                Comments = "Deliver after October 30 2022",
+            });
+
+
+            //Order items
+
+            modelBuilder.Entity<OrderItem>().HasData(new OrderItem
+            {
+                Id = 1,
+                OrderID = 1,
+                ProductID = 1, // Skidor, dam
+                Quantity = 1,
+                // Add row amount?
+            });
+
+            modelBuilder.Entity<OrderItem>().HasData(new OrderItem
+            {
+                Id = 2,
+                OrderID = 1,
+                ProductID = 3, // Pjäxor, dam
+                Quantity = 1,
+                // Add row amount?
+            });
+
+            modelBuilder.Entity<OrderItem>().HasData(new OrderItem
+            {
+                Id = 3,
+                OrderID = 2,
+                ProductID = 6, // Stavar, herr
+                Quantity = 1,
+                // Add row amount?
+            });
+
+            modelBuilder.Entity<OrderItem>().HasData(new OrderItem
+            {
+                Id = 4,
+                OrderID = 2,
+                ProductID = 8, // Hjälm, herr
+                Quantity = 2,
+                // Add row amount?
+            });
+
+            modelBuilder.Entity<OrderItem>().HasData(new OrderItem
+            {
+                Id = 5,
+                OrderID = 3,
+                ProductID = 4, // Pjäxa, herr
+                Quantity = 1,
+                // Add row amount?
+            });
+
+            modelBuilder.Entity<OrderItem>().HasData(new OrderItem
+            {
+                Id = 6,
+                OrderID = 3,
+                ProductID = 6, // Stavar, herr
+                Quantity = 2,
+                // Add row amount?
+            });
+
         }
     }
 }
