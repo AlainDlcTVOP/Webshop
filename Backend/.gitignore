@@ -4,9 +4,9 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # Custom ignore directives
-Backend/.vs/
-Backend/Backend/bin/
-Backend/Backend/obj/
+.vs/
+Backend/bin/
+Backend/obj/
 
 # User-specific files
 *.rsuser
