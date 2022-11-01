@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SkiShop.Models;
 using System;
 
 namespace Backend.Data
 {
-    public class ApplicationDbContext: DbContext
+    public class ApplicationDbContext: IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
         {
@@ -236,6 +238,53 @@ namespace Backend.Data
                 ProductID = 6, // Stavar, herr
                 Quantity = 2,
                 // Add row amount?
+            });
+
+
+            // Add roles
+
+            string adminRoleID = Guid.NewGuid().ToString();
+            string userRoleID = Guid.NewGuid().ToString();
+
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Id = adminRoleID,
+                Name = "Admin",
+                NormalizedName = "ADMIN",
+            });
+
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Id = userRoleID,
+                Name = "User",
+                NormalizedName = "USER",
+            });
+
+
+            // Add users
+
+            string adminID = Guid.NewGuid().ToString();
+            PasswordHasher<ApplicationUser> hasher = new PasswordHasher<ApplicationUser>();
+
+            modelBuilder.Entity<ApplicationUser>().HasData(new ApplicationUser
+            {
+                Id = adminID,
+                Email = "admin@example.com",
+                NormalizedEmail = "ADMIN@EXAMPLE.COM",
+                UserName = "admin@example.com", // For simplicity's sake, keep same as email
+                NormalizedUserName = "ADMIN@EXAMPLE.COM",
+                FirstName = "Admin",
+                LastName = "Adminsson",
+                PasswordHash = hasher.HashPassword(null, "Admin123!"),
+            });
+
+
+            // Assign roles to users
+
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole <string>
+            {
+                RoleId = adminRoleID,
+                UserId = adminID,
             });
 
         }
