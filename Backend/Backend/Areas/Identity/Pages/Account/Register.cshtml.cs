@@ -128,6 +128,9 @@ namespace Backend.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
+                    // automatically assign new users the role of "user"
+                    await _userManager.AddToRoleAsync(user, "User");
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
