@@ -30,6 +30,21 @@ builder.Services.Configure<IdentityOptions>(options => {
 
 builder.Services.AddRazorPages();
 
+// Enable CORS
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("*")
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
+                      });
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -45,9 +60,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseCors(MyAllowSpecificOrigins);
+
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
 
 app.Run();
