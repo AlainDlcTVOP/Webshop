@@ -14,10 +14,7 @@
 
         public double RowAmount { get; set; }
 
-
-        //Navigation properties
-        public Order Order { get; set; }
-
+        //Navigation property
         //public Product Product { get; set; } = new Product();
 
     }

@@ -8,7 +8,9 @@ namespace SkiShop.Models
 
         //public int OrderNr { get; set; }
 
-        public int CustomerID { get; set; }
+        //public int CustomerID { get; set; }
+
+        public string ApplicationUserId { get; set; }
 
         public DateTime Date { get; set; }
 
