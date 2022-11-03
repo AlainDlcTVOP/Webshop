@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221101102454_AddIdentity")]
-    partial class AddIdentity
+    [Migration("20221102141554_AddIdentityAndSeedExampleData")]
+    partial class AddIdentityAndSeedExampleData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,6 +49,22 @@ namespace Backend.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "61c98fcb-ddf3-42a1-bb39-8ba6cbf48e13",
+                            ConcurrencyStamp = "2d67f775-ab00-411f-99f0-0e3a685c40bf",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "7a6c0fd5-ce50-437a-bbfe-57f351a742ba",
+                            ConcurrencyStamp = "10758426-db8f-4d09-868d-559c9e296415",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -138,6 +154,28 @@ namespace Backend.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "522f785c-ef22-4e03-ae2d-8a8d11dd83b5",
+                            RoleId = "61c98fcb-ddf3-42a1-bb39-8ba6cbf48e13"
+                        },
+                        new
+                        {
+                            UserId = "d690b5b0-a962-4e56-9a29-bdf2eaa7d969",
+                            RoleId = "7a6c0fd5-ce50-437a-bbfe-57f351a742ba"
+                        },
+                        new
+                        {
+                            UserId = "08d5227c-9954-40ed-ad44-6f3c1071c94e",
+                            RoleId = "7a6c0fd5-ce50-437a-bbfe-57f351a742ba"
+                        },
+                        new
+                        {
+                            UserId = "03b2ca43-d7ac-4a49-b011-7dc58525a607",
+                            RoleId = "7a6c0fd5-ce50-437a-bbfe-57f351a742ba"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -169,12 +207,19 @@ namespace Backend.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -184,9 +229,6 @@ namespace Backend.Migrations
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsAdmin")
-                        .HasColumnType("bit");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -206,10 +248,6 @@ namespace Backend.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
@@ -219,6 +257,10 @@ namespace Backend.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -226,7 +268,6 @@ namespace Backend.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -241,101 +282,95 @@ namespace Backend.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-                });
-
-            modelBuilder.Entity("SkiShop.Models.Customer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsAdmin")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PostalCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Customers");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = "522f785c-ef22-4e03-ae2d-8a8d11dd83b5",
+                            AccessFailedCount = 0,
+                            Address = "Gatan 1",
+                            City = "Köping",
+                            ConcurrencyStamp = "a37b465b-ed45-4292-b58d-71b894bf7cbd",
+                            Email = "admin@example.com",
+                            EmailConfirmed = false,
+                            FirstName = "Admin",
+                            LastName = "Adminsson",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@EXAMPLE.COM",
+                            NormalizedUserName = "ADMIN@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHANmKNy6duecNhJotzumCThKS+whZ6EtapKF4KUB7Qrv4JJn1HE4crk/iELXcmZuw==",
+                            PhoneNumber = "9999999999",
+                            PhoneNumberConfirmed = false,
+                            PostalCode = "11122",
+                            SecurityStamp = "3a5c4efb-1f45-4fa0-aedf-d6290db17c14",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@example.com"
+                        },
+                        new
+                        {
+                            Id = "d690b5b0-a962-4e56-9a29-bdf2eaa7d969",
+                            AccessFailedCount = 0,
                             Address = "Göteborgsvägen 50",
                             City = "Alingsås",
+                            ConcurrencyStamp = "21dc3f66-a990-4a45-8009-50e98116a47e",
                             Email = "annaa@example.com",
+                            EmailConfirmed = false,
                             FirstName = "Anna",
-                            IsAdmin = false,
                             LastName = "Andersson",
-                            Password = "annaa",
-                            Phone = "1234567890",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ANNAA@EXAMPLE.COM",
+                            NormalizedUserName = "ANNAA@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOI4ilpsps59xRkyZQqFvuNUzEzWF8Fx2rMO/IhbWw9dADfvY1c8aHZkca0S/2udsQ==",
+                            PhoneNumber = "1234567890",
+                            PhoneNumberConfirmed = false,
                             PostalCode = "44143",
-                            UserName = "annaa"
+                            SecurityStamp = "dd8de465-5324-486b-a3aa-6c18a53d238d",
+                            TwoFactorEnabled = false,
+                            UserName = "annaa@example.com"
                         },
                         new
                         {
-                            Id = 2,
+                            Id = "08d5227c-9954-40ed-ad44-6f3c1071c94e",
+                            AccessFailedCount = 0,
                             Address = "Alingsåsvägen 10",
                             City = "Borås",
+                            ConcurrencyStamp = "86769ab3-c38e-4023-ac2f-1c5c3226b16e",
                             Email = "bennyb@example.com",
+                            EmailConfirmed = false,
                             FirstName = "Benny",
-                            IsAdmin = false,
                             LastName = "Bengtsson",
-                            Password = "bennyb",
-                            Phone = "2345678901",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "BENNYB@EXAMPLE.COM",
+                            NormalizedUserName = "BENNYB@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAYp998pozZc/N7dms0hhMSVx/+xbrQpqou7OGxDFYQ6CFe299n7Vk29U6Nrs9NY+A==",
+                            PhoneNumber = "2345678901",
+                            PhoneNumberConfirmed = false,
                             PostalCode = "50467",
-                            UserName = "bennyb"
+                            SecurityStamp = "d7e24414-4ed3-4d75-aa19-f2213392ece3",
+                            TwoFactorEnabled = false,
+                            UserName = "bennyb@example.com"
                         },
                         new
                         {
-                            Id = 3,
+                            Id = "03b2ca43-d7ac-4a49-b011-7dc58525a607",
+                            AccessFailedCount = 0,
                             Address = "Boråsvägen 100",
                             City = "Göteborg",
+                            ConcurrencyStamp = "7309707c-501e-4072-b3f0-0c3d934ef493",
                             Email = "gunnarg@example.com",
+                            EmailConfirmed = false,
                             FirstName = "Gunnar",
-                            IsAdmin = false,
                             LastName = "Gunnarsson",
-                            Password = "gunnarg",
-                            Phone = "3456789012",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "GUNNARG@EXAMPLE.COM",
+                            NormalizedUserName = "GUNNARG@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAECPtjx0AUb8oyShdv+jFLQI80f14H4II8TpRTZnZrePn4Z17a9KSumLMiXXZU38GmA==",
+                            PhoneNumber = "3456789012",
+                            PhoneNumberConfirmed = false,
                             PostalCode = "41276",
-                            UserName = "gunnarg"
+                            SecurityStamp = "e0d1ee50-d93e-4136-bfea-6d971e799066",
+                            TwoFactorEnabled = false,
+                            UserName = "gunnarg@example.com"
                         });
                 });
 
@@ -377,12 +412,13 @@ namespace Backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("ApplicationUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Comments")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CustomerID")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -399,7 +435,7 @@ namespace Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerID");
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Orders");
 
@@ -407,18 +443,18 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 1,
+                            ApplicationUserId = "d690b5b0-a962-4e56-9a29-bdf2eaa7d969",
                             Comments = "Deliver asap",
-                            CustomerID = 1,
                             Date = new DateTime(2022, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeliveryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ShippedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Status = "Delieverd"
+                            Status = "Delivered"
                         },
                         new
                         {
                             Id = 2,
+                            ApplicationUserId = "08d5227c-9954-40ed-ad44-6f3c1071c94e",
                             Comments = "",
-                            CustomerID = 2,
                             Date = new DateTime(2022, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeliveryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ShippedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -427,8 +463,8 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 3,
+                            ApplicationUserId = "03b2ca43-d7ac-4a49-b011-7dc58525a607",
                             Comments = "Deliver after October 30 2022",
-                            CustomerID = 3,
                             Date = new DateTime(2022, 10, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeliveryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ShippedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -668,25 +704,23 @@ namespace Backend.Migrations
 
             modelBuilder.Entity("SkiShop.Models.Order", b =>
                 {
-                    b.HasOne("SkiShop.Models.Customer", null)
+                    b.HasOne("SkiShop.Models.ApplicationUser", null)
                         .WithMany("Orders")
-                        .HasForeignKey("CustomerID")
+                        .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("SkiShop.Models.OrderItem", b =>
                 {
-                    b.HasOne("SkiShop.Models.Order", "Order")
+                    b.HasOne("SkiShop.Models.Order", null)
                         .WithMany("Items")
                         .HasForeignKey("OrderID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Order");
                 });
 
-            modelBuilder.Entity("SkiShop.Models.Customer", b =>
+            modelBuilder.Entity("SkiShop.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Orders");
                 });

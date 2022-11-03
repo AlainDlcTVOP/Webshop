@@ -18,8 +18,6 @@ namespace Backend.Data
 
         }
 
-        public DbSet<Customer> Customers { get; set; }
-
         public DbSet<Order> Orders { get; set; }
 
         public DbSet<OrderItem> OrderItems { get; set; }
@@ -32,50 +30,122 @@ namespace Backend.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Customers
+            // Add roles
 
-            modelBuilder.Entity<Customer>().HasData(new Customer {
-                Id = 1,
-                UserName = "annaa", 
-                FirstName = "Anna", 
-                LastName = "Andersson", 
+            string adminRoleID = Guid.NewGuid().ToString();
+            string userRoleID = Guid.NewGuid().ToString();
+
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Id = adminRoleID,
+                Name = "Admin",
+                NormalizedName = "ADMIN",
+            });
+
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Id = userRoleID,
+                Name = "User",
+                NormalizedName = "USER",
+            });
+
+            // Add users
+
+            string adminID = Guid.NewGuid().ToString();
+            string userID1 = Guid.NewGuid().ToString();
+            string userID2 = Guid.NewGuid().ToString();
+            string userID3 = Guid.NewGuid().ToString();
+            PasswordHasher<ApplicationUser> hasher = new();
+
+            modelBuilder.Entity<ApplicationUser>().HasData(new ApplicationUser
+            {
+                Id = adminID,
+                Email = "admin@example.com",
+                NormalizedEmail = "ADMIN@EXAMPLE.COM",
+                UserName = "admin@example.com", // For simplicity's sake, keep same as email
+                NormalizedUserName = "ADMIN@EXAMPLE.COM",
+                FirstName = "Admin",
+                LastName = "Adminsson",
+                Address = "Gatan 1",
+                PostalCode = "11122",
+                City = "Köping",
+                PhoneNumber = "9999999999",
+                PasswordHash = hasher.HashPassword(null, "admin"),
+            });
+
+            modelBuilder.Entity<ApplicationUser>().HasData(new ApplicationUser
+            {
+                Id = userID1,
+                Email = "annaa@example.com",
+                NormalizedEmail = "ANNAA@EXAMPLE.COM",
+                UserName = "annaa@example.com", // For simplicity's sake, keep username same as email
+                NormalizedUserName = "ANNAA@EXAMPLE.COM",
+                FirstName = "Anna",
+                LastName = "Andersson",
                 Address = "Göteborgsvägen 50",
                 PostalCode = "44143",
                 City = "Alingsås",
-                Phone = "1234567890",
-                Email = "annaa@example.com",
-                Password = "annaa", //replace with password hash
-                IsAdmin = false
+                PhoneNumber = "1234567890",
+                PasswordHash = hasher.HashPassword(null, "annaa"),
             });
 
-            modelBuilder.Entity<Customer>().HasData(new Customer
+            modelBuilder.Entity<ApplicationUser>().HasData(new ApplicationUser
             {
-                Id = 2,
-                UserName = "bennyb",
+                Id = userID2,
+                Email = "bennyb@example.com",
+                NormalizedEmail = "BENNYB@EXAMPLE.COM",
+                UserName = "bennyb@example.com", // For simplicity's sake, keep username same as email
+                NormalizedUserName = "BENNYB@EXAMPLE.COM",
                 FirstName = "Benny",
                 LastName = "Bengtsson",
                 Address = "Alingsåsvägen 10",
                 PostalCode = "50467",
                 City = "Borås",
-                Phone = "2345678901",
-                Email = "bennyb@example.com",
-                Password = "bennyb", //replace with password hash
-                IsAdmin = false
+                PhoneNumber = "2345678901",
+                PasswordHash = hasher.HashPassword(null, "bennyb"),
             });
 
-            modelBuilder.Entity<Customer>().HasData(new Customer
+            modelBuilder.Entity<ApplicationUser>().HasData(new ApplicationUser
             {
-                Id = 3,
-                UserName = "gunnarg",
+                Id = userID3,
+                Email = "gunnarg@example.com",
+                NormalizedEmail = "GUNNARG@EXAMPLE.COM",
+                UserName = "gunnarg@example.com", // For simplicity's sake, keep username same as email
+                NormalizedUserName = "GUNNARG@EXAMPLE.COM",
                 FirstName = "Gunnar",
                 LastName = "Gunnarsson",
                 Address = "Boråsvägen 100",
                 PostalCode = "41276",
                 City = "Göteborg",
-                Phone = "3456789012",
-                Email = "gunnarg@example.com",
-                Password = "gunnarg", //replace with password hash
-                IsAdmin = false
+                PhoneNumber = "3456789012",
+                PasswordHash = hasher.HashPassword(null, "gunnarg"),
+            });
+
+
+            // Assign roles to users
+
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            {
+                RoleId = adminRoleID,
+                UserId = adminID,
+            });
+
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            {
+                RoleId = userRoleID,
+                UserId = userID1,
+            });
+
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            {
+                RoleId = userRoleID,
+                UserId = userID2,
+            });
+
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            {
+                RoleId = userRoleID,
+                UserId = userID3,
             });
 
 
@@ -83,7 +153,7 @@ namespace Backend.Data
 
             modelBuilder.Entity<Product>().HasData(new Product
             {
-                Id=1,
+                Id = 1,
                 Name = "Skidor, Dam",
                 Description = "Produktbeskrivning...",
                 Price = 4000,
@@ -159,16 +229,16 @@ namespace Backend.Data
             modelBuilder.Entity<Order>().HasData(new Order
             {
                 Id = 1,
-                CustomerID = 1,
+                ApplicationUserId = userID1,
                 Date = new DateTime(2022, 10, 26),
-                Status = "Delieverd",
+                Status = "Delivered",
                 Comments = "Deliver asap",
             });
 
             modelBuilder.Entity<Order>().HasData(new Order
             {
                 Id = 2,
-                CustomerID = 2,
+                ApplicationUserId = userID2,
                 Date = new DateTime(2022, 10, 27),
                 Status = "Shipped",
                 Comments = "",
@@ -177,7 +247,7 @@ namespace Backend.Data
             modelBuilder.Entity<Order>().HasData(new Order
             {
                 Id = 3,
-                CustomerID = 3,
+                ApplicationUserId = userID3,
                 Date = new DateTime(2022, 10, 28),
                 Status = "Pending",
                 Comments = "Deliver after October 30 2022",
@@ -238,53 +308,6 @@ namespace Backend.Data
                 ProductID = 6, // Stavar, herr
                 Quantity = 2,
                 // Add row amount?
-            });
-
-
-            // Add roles
-
-            string adminRoleID = Guid.NewGuid().ToString();
-            string userRoleID = Guid.NewGuid().ToString();
-
-            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
-            {
-                Id = adminRoleID,
-                Name = "Admin",
-                NormalizedName = "ADMIN",
-            });
-
-            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
-            {
-                Id = userRoleID,
-                Name = "User",
-                NormalizedName = "USER",
-            });
-
-
-            // Add users
-
-            string adminID = Guid.NewGuid().ToString();
-            PasswordHasher<ApplicationUser> hasher = new PasswordHasher<ApplicationUser>();
-
-            modelBuilder.Entity<ApplicationUser>().HasData(new ApplicationUser
-            {
-                Id = adminID,
-                Email = "admin@example.com",
-                NormalizedEmail = "ADMIN@EXAMPLE.COM",
-                UserName = "admin@example.com", // For simplicity's sake, keep same as email
-                NormalizedUserName = "ADMIN@EXAMPLE.COM",
-                FirstName = "Admin",
-                LastName = "Adminsson",
-                PasswordHash = hasher.HashPassword(null, "Admin123!"),
-            });
-
-
-            // Assign roles to users
-
-            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole <string>
-            {
-                RoleId = adminRoleID,
-                UserId = adminID,
             });
 
         }
