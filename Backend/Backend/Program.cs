@@ -32,13 +32,16 @@ builder.Services.AddRazorPages();
 
 // Enable CORS
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+var provider = builder.Services.BuildServiceProvider();
+var configuration = provider.GetService<IConfiguration>();
 
 builder.Services.AddCors(options =>
 {
+    var frontendUrl = configuration.GetValue<string>("frontend_url");
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("*")
+                          policy.WithOrigins("frontendUrl")
                            .AllowAnyHeader()
                            .AllowAnyMethod();
                       });
