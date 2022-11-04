@@ -41,7 +41,7 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddReact();
 
 // Make sure a JS engine is registered, or you will get an error!
-services.AddJsEngineSwitcher(options => options.DefaultEngineName = V8JsEngine.EngineName)
+builder.Services.AddJsEngineSwitcher(options => options.DefaultEngineName = V8JsEngine.EngineName)
   .AddV8();
 
 // Enable CORS
