@@ -10,6 +10,6 @@
 
         public string Src { get; set; }
 
-        public string Alt { get; set; }
+        public string Alt { get; set; } = string.Empty;
     }
 }

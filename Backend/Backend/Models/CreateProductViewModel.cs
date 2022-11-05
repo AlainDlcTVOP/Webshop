@@ -13,7 +13,9 @@ namespace Backend.Models
         public string Description { get; set; } = string.Empty;
 
         //optional
-        public List<CreateImageViewModel> Images { get; set; } = new List<CreateImageViewModel>();
+        //public List<CreateImageViewModel> Images { get; set; } = new List<CreateImageViewModel>();
+
+        public List<IFormFile> Images { get; set; }
 
         [Required]
         public double Price { get; set; } = 0;

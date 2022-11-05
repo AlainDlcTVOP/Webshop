@@ -6,6 +6,7 @@ using Backend.Models;
 using System.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
+using Microsoft.Extensions.Hosting;
 
 namespace Backend.Controllers
 {
@@ -14,9 +15,12 @@ namespace Backend.Controllers
     public class Products : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        public Products(ApplicationDbContext context)
+
+        private IWebHostEnvironment _environment;
+        public Products(ApplicationDbContext context, IWebHostEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
 
         [HttpGet]
@@ -67,7 +71,7 @@ namespace Backend.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public IActionResult CreateProduct([FromBody] CreateProductViewModel model)
+        public async Task<IActionResult> CreateProduct([FromForm] CreateProductViewModel model)
         {
             if (model == null)
             {
@@ -83,9 +87,36 @@ namespace Backend.Controllers
             };
 
             _context.Products.Add(product);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
-            return CreatedAtRoute("GetProduct", new { id = product.Id }, product);
+            foreach (var item in model.Images)
+            {
+
+                if (item.FileName == null || item.FileName.Length == 0)
+                {
+                    return Content("File not selected");
+                }
+
+                var path = Path.Combine(_environment.WebRootPath, "img/", item.FileName);
+
+                using (FileStream stream = new FileStream(path, FileMode.Create))
+                {
+                    await item.CopyToAsync(stream);
+                    stream.Close();
+                }
+
+                Image image = new()
+                {
+                    ProductID = product.Id,
+                    Name = item.FileName,
+                    Src = path,
+                };
+
+                _context.Images.Add(image);
+                await _context.SaveChangesAsync();
+            }
+
+            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
 
 
