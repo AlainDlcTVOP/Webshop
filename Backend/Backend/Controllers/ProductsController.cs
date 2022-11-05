@@ -20,7 +20,7 @@ namespace Backend.Controllers
         }
 
         [HttpGet]
-        public IQueryable<ProductDTO> GetAllProducts() //api/products
+        public IActionResult GetAllProducts() //api/products
         {
             var products = from p in _context.Products
                          .Include(p => p.Images)
@@ -33,7 +33,8 @@ namespace Backend.Controllers
                                Images = p.Images.Select(i => new ImageDTO { Id = i.Id, ProductID = i.ProductID, Name = i.Name, Src = i.Src, Alt = i.Alt}).ToList(),
                                InStock = p.InStock,
                            };
-            return products;
+
+            return Ok(products);
         }
 
 
