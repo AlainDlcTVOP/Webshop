@@ -1,9 +1,17 @@
 import React from "react";
-import Cards from "../card/cards";
+import Navigation from "./Navigation";
+import { Outlet, Link } from "react-router-dom";
 
-const Home = () => {
+const Home = ({onRouteChange}) => {
+  
     return (
-    <Cards/>
+        <div>
+      
+    
+        
+            <Navigation />
+           
+   </div>
     )
         
     
