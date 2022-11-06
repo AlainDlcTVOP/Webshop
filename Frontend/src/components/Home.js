@@ -7,7 +7,7 @@ const Home = () => {
     return (
          <>
             <Navigation /> 
-       <Cool/>     
+      {/*<Cool/>  if we want it */}    
        </>
     )
         
