@@ -7,6 +7,7 @@ using System.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Backend.Controllers
 {
@@ -17,11 +18,14 @@ namespace Backend.Controllers
         private readonly ApplicationDbContext _context;
 
         private IWebHostEnvironment _environment;
+
+
         public Products(ApplicationDbContext context, IWebHostEnvironment environment)
         {
             _context = context;
             _environment = environment;
         }
+
 
         [HttpGet]
         public IActionResult GetAllProducts() //api/products
