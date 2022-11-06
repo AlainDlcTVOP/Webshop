@@ -1,17 +1,14 @@
 import React from "react";
 import Navigation from "./Navigation";
-import { Outlet, Link } from "react-router-dom";
+import Cool from "./Cool";
 
-const Home = ({onRouteChange}) => {
+const Home = () => {
   
     return (
-        <div>
-      
-    
-        
-            <Navigation />
-           
-   </div>
+         <>
+            <Navigation /> 
+       <Cool/>     
+       </>
     )
         
     
