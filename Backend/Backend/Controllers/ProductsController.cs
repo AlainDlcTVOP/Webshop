@@ -78,6 +78,7 @@ namespace Backend.Controllers
                 return BadRequest();
             }
 
+            // add product
             Product product = new() 
             {
                 Name = model.Name,
@@ -89,6 +90,7 @@ namespace Backend.Controllers
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
+            // add image(s)
             foreach (var item in model.Images)
             {
 
@@ -122,7 +124,7 @@ namespace Backend.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPut]
-        public IActionResult UpdateProduct([FromBody] UpdateProductViewModel model)
+        public async Task<IActionResult> UpdateProduct([FromForm] UpdateProductViewModel model)
         {
             if (model == null)
             {
@@ -137,6 +139,7 @@ namespace Backend.Controllers
             }
             else
             {
+                // update product
                 product.Name = model.Name;
                 product.Description = model.Description;
                 product.Price = model.Price;
@@ -144,6 +147,34 @@ namespace Backend.Controllers
 
                 _context.Update(product);
                 _context.SaveChanges();
+
+                // add image(s)
+                foreach (var item in model.Images)
+                {
+
+                    if (item.FileName == null || item.FileName.Length == 0)
+                    {
+                        return Content("File not selected");
+                    }
+
+                    var path = Path.Combine(_environment.WebRootPath, "img/", item.FileName);
+
+                    using (FileStream stream = new FileStream(path, FileMode.Create))
+                    {
+                        await item.CopyToAsync(stream);
+                        stream.Close();
+                    }
+
+                    Image image = new()
+                    {
+                        ProductID = product.Id,
+                        Name = item.FileName,
+                        Src = path,
+                    };
+
+                    _context.Images.Add(image);
+                    await _context.SaveChangesAsync();
+                }
 
                 return new NoContentResult();
             }
