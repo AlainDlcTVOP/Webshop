@@ -5,9 +5,6 @@ using SkiShop.Models;
 using Backend.Models;
 using System.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
-using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Hosting;
 
 namespace Backend.Controllers
 {
