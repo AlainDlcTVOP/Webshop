@@ -14,7 +14,7 @@ const   Cool = ()  => {
 
   return (
     <div className="App">
-      <h1>Hello Coders!</h1>
+      
 
        <Particles
       id="tsparticles"
@@ -37,7 +37,7 @@ const   Cool = ()  => {
                 "value": "#fff"
             },
             "shape": {
-                "type": "star",
+                "type": "line",
                 "options": {
                     "sides": 5
                 }
@@ -96,7 +96,7 @@ const   Cool = ()  => {
         "interactivity": {
             "events": {
                 "onhover": {
-                    "enable": true,
+                    "enable": false,
                     "mode": ["grab"]
                 },
                 "onclick": {
@@ -132,7 +132,7 @@ const   Cool = ()  => {
         },
         "retina_detect": true,
         "background": {
-            "color": "#111",
+            "color": "transparent",
             "image": "",
             "position": "50% 50%",
             "repeat": "no-repeat",
