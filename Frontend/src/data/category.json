@@ -1,0 +1,24 @@
+
+[
+    {
+        "categoryId":1,
+        "name":"Skidor",
+        "description":"skidor",
+        "products":null
+    },
+
+    {
+        "categoryId":7,
+        "name":"Skidor 1",
+        "description":"Skidor 1",
+        "products":null
+    },
+    {
+        "categoryId":1,
+        "name":"Skidor 2",
+        "description":"Skidor 2",
+        "products":null
+    }
+
+   
+]

@@ -87,8 +87,8 @@ class Register extends React.Component {
                 value="Register"
               />
             </div>
-            <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="http://localhost:3001/login"
-class="fw-bold text-body"><u>Login here</u></a></p>
+            <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="http://localhost:3000/login"
+             class="fw-bold text-body"><u>Login here</u></a></p>
 
           </div>
         </main>

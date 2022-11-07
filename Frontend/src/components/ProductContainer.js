@@ -1,6 +1,7 @@
 import React from "react";
 
 import products from "../data/products.json";
+import category from "../data/category.json";
 
 import {Card, Col, Row, Container} from "react-bootstrap";
 
@@ -92,9 +93,9 @@ render(){
 
                <div className="d-flex justify-content-start">
                    <ul className="list-group list-unstyled list-group-flush">
-                       {products.map((category) => (
+                       {category.map((category) => (
                            <li key={category.categoryId}>
-                               <a href="http://localhost:3001/Products" className="list-group-item list-group-item-action">
+                               <a href="http://localhost:3000/products" className="list-group-item list-group-item-action">
                                    {category.name}
                                </a>
                            </li>
