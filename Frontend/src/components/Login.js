@@ -75,7 +75,7 @@ class Login extends React.Component {
                 />
               </div>
               <div className="lh-copy mt3">
-              <p class="text-center text-muted mt-5 mb-0">Need to create an account? <a href="http://localhost:3001/register"
+              <p class="text-center text-muted mt-5 mb-0">Need to create an account? <a href="http://localhost:3000/register"
              class="fw-bold text-body"><u>Register</u></a></p>
                
               </div>
