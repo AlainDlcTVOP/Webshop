@@ -1,6 +1,7 @@
 import React from 'react';
 import ParticlesBg from 'particles-bg'
 import Navigation from './components/Navigation';
+
 import { Route, BrowserRouter ,Routes} from "react-router-dom";
 import Login from './components/Login';
 import Register from './components/Register';
@@ -20,7 +21,7 @@ const App = () => {
           
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-         
+             
         
         </Route>
       </Routes>

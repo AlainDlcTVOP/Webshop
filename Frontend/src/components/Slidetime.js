@@ -22,7 +22,7 @@ const Slidetime = () =>  {
     <div className="App">  
          <div class='container-fluid'>        
             <div className="row title" style={{marginBottom: "10px"}} >        
-            <div class="col-sm-12 btn btn-info">        
+            <div className="col-sm-12 btn btn-info">        
          
             </div>        
             </div>    
