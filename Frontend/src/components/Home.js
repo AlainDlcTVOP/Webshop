@@ -14,6 +14,7 @@ const Home = () => {
            
             {/*<Slidetime/>  Hide comenent if hit navigation  */}    
             <Navigation />
+            <Slidetime/>
             <ProductContainer/>
             
        

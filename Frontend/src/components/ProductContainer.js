@@ -2,6 +2,7 @@ import React from "react";
 
 import products from "../data/products.json";
 import category from "../data/category.json";
+import kawa from "../Image/kawa.jpg";
 
 import {Card, Col, Row, Container} from "react-bootstrap";
 
@@ -111,7 +112,7 @@ render(){
                                    {products.map((product) => (
                                        <Col>
                                        <Card key={product.productId} border="dark">
-                                         
+                                       <Card.Img variant="top" src={kawa} style={{ width: 200, height: 150 }}></Card.Img>
                                            <Card.Body>
                                                <Card.Title className="d-flex justify-content-between align-items-baseline mb-4">
                                                    <span className="fs-4">{product.name}</span>
