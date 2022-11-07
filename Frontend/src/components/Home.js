@@ -1,8 +1,9 @@
 import React,{useState} from "react";
 import Navigation from "./Navigation";
 import Cool from "./Cool";
+import { ProductContainer } from "./ProductContainer";
 import Slidetime from "./Slidetime";
-import Cards from "./Cards";
+
 
 
 const Home = () => {
@@ -12,9 +13,10 @@ const Home = () => {
         <>
            
             {/*<Slidetime/>  Hide comenent if hit navigation  */}    
-       <Navigation/>
+            <Navigation />
+            <ProductContainer/>
             
-         
+       
             <Cool/>
        </>
     )
