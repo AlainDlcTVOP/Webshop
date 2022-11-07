@@ -47,7 +47,7 @@ class Register extends React.Component {
         <main className="pa4 black-80">
           <div className="measure">
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-              <legend className="f1 fw6 ph0 mh0">Register</legend>
+              <legend className="f1 fw6 ph0 mh0">CREATE AN ACCOUNT</legend>
               <div className="mt3">
                 <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
                 <input
@@ -87,6 +87,9 @@ class Register extends React.Component {
                 value="Register"
               />
             </div>
+            <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="http://localhost:3001/login"
+class="fw-bold text-body"><u>Login here</u></a></p>
+
           </div>
         </main>
       </article>
