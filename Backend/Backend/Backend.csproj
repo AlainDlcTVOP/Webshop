@@ -24,6 +24,22 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\CartItem\" />
+    <Folder Include="Views\Cart\" />
+    <Folder Include="Views\Category\" />
+    <Folder Include="Views\CreditCard\" />
+    <Folder Include="Views\Customer\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Product\" />
+    <Folder Include="Views\Role\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_LoginPartial.cshtml" />
+    <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
   </ItemGroup>
 
 </Project>
