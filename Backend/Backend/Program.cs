@@ -3,11 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SkiShop.Models;
 
-//initialize ReactJS.NET
-using Microsoft.AspNetCore.Http;
-using JavaScriptEngineSwitcher.V8;
-using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
-using React.AspNet;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,24 +34,22 @@ builder.Services.AddRazorPages();
 
 //initialize ReactJS.NET
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-builder.Services.AddReact();
+
 
 // Make sure a JS engine is registered, or you will get an error!
-builder.Services.AddJsEngineSwitcher(options => options.DefaultEngineName = V8JsEngine.EngineName)
-  .AddV8();
+
 
 // Enable CORS
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-var provider = builder.Services.BuildServiceProvider();
-var configuration = provider.GetService<IConfiguration>();
+
 
 builder.Services.AddCors(options =>
 {
-    var frontendUrl = configuration.GetValue<string>("frontend_url");
+    
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("frontend_url")
+                          policy.WithOrigins("*")
                            .AllowAnyHeader()
                            .AllowAnyMethod();
                       });
@@ -76,25 +70,6 @@ app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Inde
 
 app.UseHttpsRedirection();
 
-// Initialise ReactJS.NET. Must be before static files.
-app.UseReact(config =>
-{
-    // If you want to use server-side rendering of React components,
-    // add all the necessary JavaScript files here. This includes
-    // your components as well as all of their dependencies.
-    // See http://reactjs.net/ for more information. Example:
-    //config
-    //  .AddScript("~/js/First.jsx")
-    //  .AddScript("~/js/Second.jsx");
-
-    // If you use an external build too (for example, Babel, Webpack,
-    // Browserify or Gulp), you can improve performance by disabling
-    // ReactJS.NET's version of Babel and loading the pre-transpiled
-    // scripts. Example:
-    //config
-    //  .SetLoadBabel(false)
-    //  .AddScriptWithoutTransform("~/js/bundle.server.js");
-});
 
 app.UseStaticFiles();
 
