@@ -224,6 +224,81 @@ namespace Backend.Data
             });
 
 
+            // Images
+
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 1,
+                ProductID = 1,
+                Name = "Black Crows",
+                Src = "~/image/BLACK Crows Nocta 22-23 page 3.png",
+                Alt = ""
+            });
+
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 2,
+                ProductID = 2,
+                Name = "VÖLKL Deacon V Werks",
+                Src = "~/image/VÖLKL Deacon V Werks.png",
+                Alt = ""
+            });
+
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 3,
+                ProductID = 3,
+                Name = "SCARPA Alien",
+                Src = "~/image/SCARPA Alien.png",
+                Alt = ""
+            });
+
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 4,
+                ProductID = 4,
+                Name = "SCARPA Alien",
+                Src = "~/image/SCARPA Alien.png",
+                Alt = ""
+            });
+
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 5,
+                ProductID = 5,
+                Name = "BLACK Diamond Quickdraw Probe",
+                Src = "~/image/BLACK Diamond Quickdraw Probe.png",
+                Alt = ""
+            });
+
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 6,
+                ProductID = 6,
+                Name = "BLACK Diamond Quickdraw Probe",
+                Src = "~/image/BLACK Diamond Quickdraw Probe.png",
+                Alt = ""
+            });
+
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 7,
+                ProductID = 7,
+                Name = "PEAK Performance Hat Black",
+                Src = "~/image/PEAK Performance Hat Black.png",
+                Alt = ""
+            });
+
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 8,
+                ProductID = 8,
+                Name = "PEAK Performance Hat Black",
+                Src = "~/image/PEAK Performance Hat Black.png",
+                Alt = ""
+            });
+
+
             //Orders
 
             modelBuilder.Entity<Order>().HasData(new Order
@@ -261,8 +336,10 @@ namespace Backend.Data
                 Id = 1,
                 OrderID = 1,
                 ProductID = 1, // Skidor, dam
+                Name = "Skidor, Dam",
+                Price = 4000,
                 Quantity = 1,
-                // Add row amount?
+                RowAmount = 4000
             });
 
             modelBuilder.Entity<OrderItem>().HasData(new OrderItem
@@ -270,8 +347,10 @@ namespace Backend.Data
                 Id = 2,
                 OrderID = 1,
                 ProductID = 3, // Pjäxor, dam
+                Name = "Pjäxa, Dam",
+                Price = 5300,
                 Quantity = 1,
-                // Add row amount?
+                RowAmount = 5300
             });
 
             modelBuilder.Entity<OrderItem>().HasData(new OrderItem
@@ -279,8 +358,10 @@ namespace Backend.Data
                 Id = 3,
                 OrderID = 2,
                 ProductID = 6, // Stavar, herr
+                Name = "Stavar, Herr",
+                Price = 1100,
                 Quantity = 1,
-                // Add row amount?
+                RowAmount = 1100,
             });
 
             modelBuilder.Entity<OrderItem>().HasData(new OrderItem
@@ -288,8 +369,10 @@ namespace Backend.Data
                 Id = 4,
                 OrderID = 2,
                 ProductID = 8, // Hjälm, herr
+                Name = "Hjälm, Herr",
+                Price = 2100,
                 Quantity = 2,
-                // Add row amount?
+                RowAmount = 4200
             });
 
             modelBuilder.Entity<OrderItem>().HasData(new OrderItem
@@ -297,8 +380,10 @@ namespace Backend.Data
                 Id = 5,
                 OrderID = 3,
                 ProductID = 4, // Pjäxa, herr
+                Name = "Pjäxa, Herr",
+                Price = 6000,
                 Quantity = 1,
-                // Add row amount?
+                RowAmount = 6000
             });
 
             modelBuilder.Entity<OrderItem>().HasData(new OrderItem
@@ -306,8 +391,10 @@ namespace Backend.Data
                 Id = 6,
                 OrderID = 3,
                 ProductID = 6, // Stavar, herr
+                Name = "Stavar, Herr",
+                Price = 1100,
                 Quantity = 2,
-                // Add row amount?
+                RowAmount = 2200
             });
 
         }

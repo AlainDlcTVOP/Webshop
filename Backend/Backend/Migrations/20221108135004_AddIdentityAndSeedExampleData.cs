@@ -229,6 +229,8 @@ namespace Backend.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OrderID = table.Column<int>(type: "int", nullable: false),
                     ProductID = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<double>(type: "float", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     RowAmount = table.Column<double>(type: "float", nullable: false)
                 },
@@ -248,8 +250,8 @@ namespace Backend.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "61c98fcb-ddf3-42a1-bb39-8ba6cbf48e13", "2d67f775-ab00-411f-99f0-0e3a685c40bf", "Admin", "ADMIN" },
-                    { "7a6c0fd5-ce50-437a-bbfe-57f351a742ba", "10758426-db8f-4d09-868d-559c9e296415", "User", "USER" }
+                    { "a524d545-77a6-4eff-b4e4-2d3071dfb7c5", "fb29f277-7dea-47d7-823e-b61f792af399", "Admin", "ADMIN" },
+                    { "dccfa0cb-944b-4db3-822e-1ffbe5b73130", "54d2da64-2ba6-4225-b836-a376cf30dc72", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -257,10 +259,10 @@ namespace Backend.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Address", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "PostalCode", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "03b2ca43-d7ac-4a49-b011-7dc58525a607", 0, "Boråsvägen 100", "Göteborg", "7309707c-501e-4072-b3f0-0c3d934ef493", "gunnarg@example.com", false, "Gunnar", "Gunnarsson", false, null, "GUNNARG@EXAMPLE.COM", "GUNNARG@EXAMPLE.COM", "AQAAAAEAACcQAAAAECPtjx0AUb8oyShdv+jFLQI80f14H4II8TpRTZnZrePn4Z17a9KSumLMiXXZU38GmA==", "3456789012", false, "41276", "e0d1ee50-d93e-4136-bfea-6d971e799066", false, "gunnarg@example.com" },
-                    { "08d5227c-9954-40ed-ad44-6f3c1071c94e", 0, "Alingsåsvägen 10", "Borås", "86769ab3-c38e-4023-ac2f-1c5c3226b16e", "bennyb@example.com", false, "Benny", "Bengtsson", false, null, "BENNYB@EXAMPLE.COM", "BENNYB@EXAMPLE.COM", "AQAAAAEAACcQAAAAEAYp998pozZc/N7dms0hhMSVx/+xbrQpqou7OGxDFYQ6CFe299n7Vk29U6Nrs9NY+A==", "2345678901", false, "50467", "d7e24414-4ed3-4d75-aa19-f2213392ece3", false, "bennyb@example.com" },
-                    { "522f785c-ef22-4e03-ae2d-8a8d11dd83b5", 0, "Gatan 1", "Köping", "a37b465b-ed45-4292-b58d-71b894bf7cbd", "admin@example.com", false, "Admin", "Adminsson", false, null, "ADMIN@EXAMPLE.COM", "ADMIN@EXAMPLE.COM", "AQAAAAEAACcQAAAAEHANmKNy6duecNhJotzumCThKS+whZ6EtapKF4KUB7Qrv4JJn1HE4crk/iELXcmZuw==", "9999999999", false, "11122", "3a5c4efb-1f45-4fa0-aedf-d6290db17c14", false, "admin@example.com" },
-                    { "d690b5b0-a962-4e56-9a29-bdf2eaa7d969", 0, "Göteborgsvägen 50", "Alingsås", "21dc3f66-a990-4a45-8009-50e98116a47e", "annaa@example.com", false, "Anna", "Andersson", false, null, "ANNAA@EXAMPLE.COM", "ANNAA@EXAMPLE.COM", "AQAAAAEAACcQAAAAEOI4ilpsps59xRkyZQqFvuNUzEzWF8Fx2rMO/IhbWw9dADfvY1c8aHZkca0S/2udsQ==", "1234567890", false, "44143", "dd8de465-5324-486b-a3aa-6c18a53d238d", false, "annaa@example.com" }
+                    { "73faa657-ed35-47fc-8faa-d6e658c09ad4", 0, "Gatan 1", "Köping", "5941d974-65b0-4f32-ad4e-9187f0d367cc", "admin@example.com", false, "Admin", "Adminsson", false, null, "ADMIN@EXAMPLE.COM", "ADMIN@EXAMPLE.COM", "AQAAAAEAACcQAAAAEBbLfQkfzfvSB+UWTK9KOrrVWMPrSwF9moDQEXMmNQhZD9+19Ld4hAgr7R7Vvmlnsw==", "9999999999", false, "11122", "87aa58a2-91c5-4551-9ee6-6d3869aa2761", false, "admin@example.com" },
+                    { "8dd6b8a2-8ca7-45ba-aace-14d1fa35ad9f", 0, "Boråsvägen 100", "Göteborg", "faa413ea-10ab-427d-b718-fc01b56a1a62", "gunnarg@example.com", false, "Gunnar", "Gunnarsson", false, null, "GUNNARG@EXAMPLE.COM", "GUNNARG@EXAMPLE.COM", "AQAAAAEAACcQAAAAEP9hwUmjqCophdIPAfd7Q8pY5MTaHOvseY6iyC640uKh5Y25kkcMO9k1QI3c0mP50g==", "3456789012", false, "41276", "dfc0248d-c345-4c8d-a5cf-a15c1a05bac5", false, "gunnarg@example.com" },
+                    { "9312000d-ca58-473f-bc1b-ff268437992a", 0, "Alingsåsvägen 10", "Borås", "8fc592a5-8bad-49cf-bd08-d7ac4c5652a7", "bennyb@example.com", false, "Benny", "Bengtsson", false, null, "BENNYB@EXAMPLE.COM", "BENNYB@EXAMPLE.COM", "AQAAAAEAACcQAAAAEIBQSU0cTm+LUMNIcT+shoUAicOxIIlQkI20MYtV8n5GtyRj7neLYNgKZ3rEKPvFeQ==", "2345678901", false, "50467", "44e0eb6f-c998-4c1e-98c4-4cb7bdb292d5", false, "bennyb@example.com" },
+                    { "aeecdecd-4783-463b-acc7-062776ba7f8a", 0, "Göteborgsvägen 50", "Alingsås", "abecbbe9-aafd-4278-ab4d-5ca11ffed5ea", "annaa@example.com", false, "Anna", "Andersson", false, null, "ANNAA@EXAMPLE.COM", "ANNAA@EXAMPLE.COM", "AQAAAAEAACcQAAAAEBe4CF/E7pUXrtmUD1GpyPL+SmMQSzhyea/bk14pSbC2j81GxikYuqgTQex73IS3Bw==", "1234567890", false, "44143", "fa93377e-c514-4b0e-905d-ae2299e64e74", false, "annaa@example.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -283,10 +285,25 @@ namespace Backend.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "7a6c0fd5-ce50-437a-bbfe-57f351a742ba", "03b2ca43-d7ac-4a49-b011-7dc58525a607" },
-                    { "7a6c0fd5-ce50-437a-bbfe-57f351a742ba", "08d5227c-9954-40ed-ad44-6f3c1071c94e" },
-                    { "61c98fcb-ddf3-42a1-bb39-8ba6cbf48e13", "522f785c-ef22-4e03-ae2d-8a8d11dd83b5" },
-                    { "7a6c0fd5-ce50-437a-bbfe-57f351a742ba", "d690b5b0-a962-4e56-9a29-bdf2eaa7d969" }
+                    { "a524d545-77a6-4eff-b4e4-2d3071dfb7c5", "73faa657-ed35-47fc-8faa-d6e658c09ad4" },
+                    { "dccfa0cb-944b-4db3-822e-1ffbe5b73130", "8dd6b8a2-8ca7-45ba-aace-14d1fa35ad9f" },
+                    { "dccfa0cb-944b-4db3-822e-1ffbe5b73130", "9312000d-ca58-473f-bc1b-ff268437992a" },
+                    { "dccfa0cb-944b-4db3-822e-1ffbe5b73130", "aeecdecd-4783-463b-acc7-062776ba7f8a" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Images",
+                columns: new[] { "Id", "Alt", "Name", "ProductID", "Src" },
+                values: new object[,]
+                {
+                    { 1, "", "Black Crows", 1, "~/image/BLACK Crows Nocta 22-23 page 3.png" },
+                    { 2, "", "VÖLKL Deacon V Werks", 2, "~/image/VÖLKL Deacon V Werks.png" },
+                    { 3, "", "SCARPA Alien", 3, "~/image/SCARPA Alien.png" },
+                    { 4, "", "SCARPA Alien", 4, "~/image/SCARPA Alien.png" },
+                    { 5, "", "BLACK Diamond Quickdraw Probe", 5, "~/image/BLACK Diamond Quickdraw Probe.png" },
+                    { 6, "", "BLACK Diamond Quickdraw Probe", 6, "~/image/BLACK Diamond Quickdraw Probe.png" },
+                    { 7, "", "PEAK Performance Hat Black", 7, "~/image/PEAK Performance Hat Black.png" },
+                    { 8, "", "PEAK Performance Hat Black", 8, "~/image/PEAK Performance Hat Black.png" }
                 });
 
             migrationBuilder.InsertData(
@@ -294,22 +311,22 @@ namespace Backend.Migrations
                 columns: new[] { "Id", "ApplicationUserId", "Comments", "Date", "DeliveryDate", "ShippedDate", "Status" },
                 values: new object[,]
                 {
-                    { 1, "d690b5b0-a962-4e56-9a29-bdf2eaa7d969", "Deliver asap", new DateTime(2022, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delivered" },
-                    { 2, "08d5227c-9954-40ed-ad44-6f3c1071c94e", "", new DateTime(2022, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Shipped" },
-                    { 3, "03b2ca43-d7ac-4a49-b011-7dc58525a607", "Deliver after October 30 2022", new DateTime(2022, 10, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pending" }
+                    { 1, "aeecdecd-4783-463b-acc7-062776ba7f8a", "Deliver asap", new DateTime(2022, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delivered" },
+                    { 2, "9312000d-ca58-473f-bc1b-ff268437992a", "", new DateTime(2022, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Shipped" },
+                    { 3, "8dd6b8a2-8ca7-45ba-aace-14d1fa35ad9f", "Deliver after October 30 2022", new DateTime(2022, 10, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pending" }
                 });
 
             migrationBuilder.InsertData(
                 table: "OrderItems",
-                columns: new[] { "Id", "OrderID", "ProductID", "Quantity", "RowAmount" },
+                columns: new[] { "Id", "Name", "OrderID", "Price", "ProductID", "Quantity", "RowAmount" },
                 values: new object[,]
                 {
-                    { 1, 1, 1, 1, 0.0 },
-                    { 2, 1, 3, 1, 0.0 },
-                    { 3, 2, 6, 1, 0.0 },
-                    { 4, 2, 8, 2, 0.0 },
-                    { 5, 3, 4, 1, 0.0 },
-                    { 6, 3, 6, 2, 0.0 }
+                    { 1, "Skidor, Dam", 1, 4000.0, 1, 1, 4000.0 },
+                    { 2, "Pjäxa, Dam", 1, 5300.0, 3, 1, 5300.0 },
+                    { 3, "Stavar, Herr", 2, 1100.0, 6, 1, 1100.0 },
+                    { 4, "Hjälm, Herr", 2, 2100.0, 8, 2, 4200.0 },
+                    { 5, "Pjäxa, Herr", 3, 6000.0, 4, 1, 6000.0 },
+                    { 6, "Stavar, Herr", 3, 1100.0, 6, 2, 2200.0 }
                 });
 
             migrationBuilder.CreateIndex(
