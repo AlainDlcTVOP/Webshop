@@ -1,19 +1,37 @@
 using Backend.Data;
+using Backend.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SkiShop.Models;
-
-
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using SkiShop.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddRazorPages();
+ void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+
+
+
+}
+
+
+    // Add services to the container.
+    builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+
+builder.Services.AddScoped<IProductRepo, ProductRepo>();
+builder.Services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+
+builder.Services.AddSession();
 
 // Enable use of Identity services in the project
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
@@ -69,7 +87,7 @@ if (!app.Environment.IsDevelopment())
 app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.UseHttpsRedirection();
-
+app.UseSession();
 
 app.UseStaticFiles();
 
