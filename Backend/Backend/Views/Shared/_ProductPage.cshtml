@@ -1,0 +1,24 @@
+﻿@model ProductViewModel
+
+@{
+    Layout = null; // Prevent layout from being rendered twice
+}
+
+<h2>Product Page - @Model.Product.Name</h2>
+
+<div class="page product">
+    @if (Model.Product.Images.Any())
+    {
+        Image img = Model.Product.Images.First();
+        <figure>
+            <img src="@img.Src"/>
+            <figcaption>@Model.Product.Name</figcaption>
+        </figure>
+    }
+    <div>@Model.Product.Name</div>
+    <p>@Model.Product.Description</p>
+    <div>
+        <span>Pris: @Model.Product.Price SEK</span>
+        <span>I lager: @Model.Product.InStock</span>
+    </div>
+</div>

@@ -231,7 +231,7 @@ namespace Backend.Data
                 Id = 1,
                 ProductID = 1,
                 Name = "Black Crows",
-                Src = "~/image/BLACK Crows Nocta 22-23 page 3.png",
+                Src = "image/BLACKCrowsNocta22-23page3.png",
                 Alt = ""
             });
 
@@ -240,7 +240,7 @@ namespace Backend.Data
                 Id = 2,
                 ProductID = 2,
                 Name = "VÖLKL Deacon V Werks",
-                Src = "~/image/VÖLKL Deacon V Werks.png",
+                Src = "image/VÖLKLDeaconVWerks.png",
                 Alt = ""
             });
 
@@ -249,7 +249,7 @@ namespace Backend.Data
                 Id = 3,
                 ProductID = 3,
                 Name = "SCARPA Alien",
-                Src = "~/image/SCARPA Alien.png",
+                Src = "image/SCARPAAlien.png",
                 Alt = ""
             });
 
@@ -258,7 +258,7 @@ namespace Backend.Data
                 Id = 4,
                 ProductID = 4,
                 Name = "SCARPA Alien",
-                Src = "~/image/SCARPA Alien.png",
+                Src = "image/SCARPAAlien.png",
                 Alt = ""
             });
 
@@ -267,7 +267,7 @@ namespace Backend.Data
                 Id = 5,
                 ProductID = 5,
                 Name = "BLACK Diamond Quickdraw Probe",
-                Src = "~/image/BLACK Diamond Quickdraw Probe.png",
+                Src = "image/BLACKDiamondQuickdrawProbe.png",
                 Alt = ""
             });
 
@@ -276,7 +276,7 @@ namespace Backend.Data
                 Id = 6,
                 ProductID = 6,
                 Name = "BLACK Diamond Quickdraw Probe",
-                Src = "~/image/BLACK Diamond Quickdraw Probe.png",
+                Src = "image/BLACKDiamondQuickdrawProbe.png",
                 Alt = ""
             });
 
@@ -285,7 +285,7 @@ namespace Backend.Data
                 Id = 7,
                 ProductID = 7,
                 Name = "PEAK Performance Hat Black",
-                Src = "~/image/PEAK Performance Hat Black.png",
+                Src = "image/PEAKPerformanceHatBlack.png",
                 Alt = ""
             });
 
@@ -294,7 +294,7 @@ namespace Backend.Data
                 Id = 8,
                 ProductID = 8,
                 Name = "PEAK Performance Hat Black",
-                Src = "~/image/PEAK Performance Hat Black.png",
+                Src = "image/PEAKPerformanceHatBlack.png",
                 Alt = ""
             });
 
