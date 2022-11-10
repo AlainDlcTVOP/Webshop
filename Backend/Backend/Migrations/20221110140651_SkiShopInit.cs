@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Backend.Migrations
 {
-    public partial class AddIdentityDbEntitiesAndExampleData : Migration
+    public partial class SkiShopInit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -183,6 +183,7 @@ namespace Backend.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    OrderAmount = table.Column<double>(type: "float", nullable: false),
                     ShippedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeliveryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -250,8 +251,8 @@ namespace Backend.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "93d8cb7e-65eb-45a1-91b1-dd607435ee66", "0dd3f6e6-f5d4-4786-95b9-9418b72dd149", "User", "USER" },
-                    { "b4478087-867a-4452-8c5a-fd7851ea4b13", "f96a4d55-712a-4e25-ab4e-fb7ce9646d1f", "Admin", "ADMIN" }
+                    { "85c65d27-bd42-475c-9126-d6ae2571f40d", "2cae8e51-5a26-4e06-a629-e3e5750d33b5", "Admin", "ADMIN" },
+                    { "9a994aba-d20b-42ef-add6-083ab0a9478e", "54c62b51-ad60-492e-ae80-0fc4a1fbb892", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -259,10 +260,10 @@ namespace Backend.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Address", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "PostalCode", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "45a4f92d-ba51-4e97-8ea3-5c3a179e0dbb", 0, "Göteborgsvägen 50", "Alingsås", "cc1b4270-d8d7-4ba9-850f-7fdc0a279401", "annaa@example.com", false, "Anna", "Andersson", false, null, "ANNAA@EXAMPLE.COM", "ANNAA@EXAMPLE.COM", "AQAAAAEAACcQAAAAEHhy0gQuoTGDY18iYokPz/HKHv9s8VykUW948E9Ie2dDi9tXcK5WtGXo5U6pMv73mQ==", "1234567890", false, "44143", "1bd61587-0281-4337-90c8-9c9d4d6da488", false, "annaa@example.com" },
-                    { "656162e3-7c38-440f-8161-33aa934d6698", 0, "Gatan 1", "Köping", "c841d350-15db-4330-9458-172c6d1cc7bd", "admin@example.com", false, "Admin", "Adminsson", false, null, "ADMIN@EXAMPLE.COM", "ADMIN@EXAMPLE.COM", "AQAAAAEAACcQAAAAEJcKy9jk8J3QkMdASvesezKzWz9WGRPUeE1SkSuC15IICvPm/wAMicQHs6+GXeTzWA==", "9999999999", false, "11122", "b5292cd4-597e-4174-85a6-73a8e51511f1", false, "admin@example.com" },
-                    { "c94ff3d5-1de6-4520-ba1f-3b0d17027afd", 0, "Boråsvägen 100", "Göteborg", "770264b1-b4c1-4c7d-aec3-2c4c8f4b59de", "gunnarg@example.com", false, "Gunnar", "Gunnarsson", false, null, "GUNNARG@EXAMPLE.COM", "GUNNARG@EXAMPLE.COM", "AQAAAAEAACcQAAAAELrQwRH+viClZBHLpr/F85n8kMfZxt5u7bVYTNrUSmpKKAEB0bF1HJU0Cf/5EUQ+dQ==", "3456789012", false, "41276", "fa098f29-11ba-46d1-ab27-c06c8dbaa140", false, "gunnarg@example.com" },
-                    { "e7eafa14-6c9e-455b-8dbf-4a33e87e5d9a", 0, "Alingsåsvägen 10", "Borås", "d16a1aca-ffb2-4735-9a1b-f78e30aba920", "bennyb@example.com", false, "Benny", "Bengtsson", false, null, "BENNYB@EXAMPLE.COM", "BENNYB@EXAMPLE.COM", "AQAAAAEAACcQAAAAEMDksPOFORLLOR/YiennKMV7a2yksx8GfDznlJ/y7a2rawFQLtj4PGaEEN8+H7x4lg==", "2345678901", false, "50467", "0a341420-9c0f-4361-9585-d9da8657f1b9", false, "bennyb@example.com" }
+                    { "3d4ac58e-8f7f-4bfa-b65b-ae25e6857f52", 0, "Göteborgsvägen 50", "Alingsås", "1a5d4382-3b43-4c9b-929b-5dc51dd237af", "annaa@example.com", false, "Anna", "Andersson", false, null, "ANNAA@EXAMPLE.COM", "ANNAA@EXAMPLE.COM", "AQAAAAEAACcQAAAAENYqM9EagkHWJ/DoasX4ny7lOhieRPno+NW1lBkYVCoeHn062tNMTFUMsaqEjyQBCA==", "1234567890", false, "44143", "22250025-0611-4d59-811f-c5eb77ea1862", false, "annaa@example.com" },
+                    { "8d57d3c2-4fda-4d4c-b289-d68b5b06cf0d", 0, "Boråsvägen 100", "Göteborg", "b081a529-29d2-4161-bda4-c60b68176859", "gunnarg@example.com", false, "Gunnar", "Gunnarsson", false, null, "GUNNARG@EXAMPLE.COM", "GUNNARG@EXAMPLE.COM", "AQAAAAEAACcQAAAAEBqMeIM4cMGZv8Bnk01s1OEyumSNu282XKN6AUZXzH8TK7SIhpmyGBp6UBI1Cyd51Q==", "3456789012", false, "41276", "b5098dd7-49ec-4cfc-8146-994eff9a5601", false, "gunnarg@example.com" },
+                    { "d58fca6a-ecc6-4871-9aad-df1984bc88e0", 0, "Alingsåsvägen 10", "Borås", "e96dec00-2511-4fa5-96b1-5e41d9fcc444", "bennyb@example.com", false, "Benny", "Bengtsson", false, null, "BENNYB@EXAMPLE.COM", "BENNYB@EXAMPLE.COM", "AQAAAAEAACcQAAAAEHDbHUceLQ8msBxCEsHtIPcGJVudv5PaPB070zrUw4VEGxkAPtDzDeqOSK3G8idEZw==", "2345678901", false, "50467", "bc3cacdb-8b64-4c2c-81a3-81449a0100b5", false, "bennyb@example.com" },
+                    { "e16dd46d-b29e-4e79-8604-9caed80e9329", 0, "Gatan 1", "Köping", "53725918-f90b-44f5-a6a2-b85fb11f5ac8", "admin@example.com", false, "Admin", "Adminsson", false, null, "ADMIN@EXAMPLE.COM", "ADMIN@EXAMPLE.COM", "AQAAAAEAACcQAAAAELyBsOV4GTPfSbZk+3VGLcuOgdO+PsajUJsGYdL5SCBes/A04n7EB0RxyfTbnZKpxw==", "9999999999", false, "11122", "1f39b815-1b2f-4b8b-be64-388e14c22252", false, "admin@example.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -270,14 +271,21 @@ namespace Backend.Migrations
                 columns: new[] { "Id", "Description", "InStock", "Name", "Price" },
                 values: new object[,]
                 {
-                    { 1, "Produktbeskrivning...", 10, "Skidor, Dam", 4000.0 },
-                    { 2, "Produktbeskrivning...", 12, "Skidor, Herr", 5000.0 },
-                    { 3, "Produktbeskrivning...", 2, "Pjäxa, Dam", 5300.0 },
-                    { 4, "Produktbeskrivning...", 6, "Pjäxa, Herr", 6000.0 },
-                    { 5, "Produktbeskrivning...", 12, "Stavar, Dam", 900.0 },
-                    { 6, "Produktbeskrivning...", 4, "Stavar, Herr", 1100.0 },
-                    { 7, "Produktbeskrivning...", 11, "Hjälm, Dam", 2300.0 },
-                    { 8, "Produktbeskrivning...", 9, "Hjälm, Herr", 2100.0 }
+                    { 1, "VÖLKL Katana V-Werks 22-23", 6, "Skidor, Herr", 10990.0 },
+                    { 2, "VÖLKL Deacon V Werks", 12, "Skidor, Herr", 13499.0 },
+                    { 3, "VÖLKL Racetiger SL 22-23", 10, "Skidor, Herr", 9999.0 },
+                    { 4, "Black Crows Nocta 22-23", 10, "Skidor, Herr", 8000.0 },
+                    { 5, "SCARPA Alien 1.1 mens boot", 2, "Pjäxa", 10495.0 },
+                    { 6, "Dalbello Lupo Pro HD", 4, "Pjäxa", 7499.0 },
+                    { 7, "Peak Performance M Alpine RED", 6, "Jacka, Herr", 6500.0 },
+                    { 8, "Peak Performance W Ski Down Jacket Black", 6, "Jacka, Dam", 7000.0 },
+                    { 9, "Black Crows W Ora Body Map Jacket Dark Blue", 3, "Jacka, Dam", 5749.0 },
+                    { 10, "Norröna M Lofoten Gore-Tex Pants Indigo Night", 6, "Byxor, Herr", 6999.0 },
+                    { 11, "Houdini M Purpose Pants Bucket Blue", 8, "Byxor, Herr", 5000.0 },
+                    { 12, "BLACK Diamond Quick Draw Probe", 12, "Probe", 699.0 },
+                    { 13, "PEAK Performance Mason Hat Black", 25, "Mössa, Unisex", 550.0 },
+                    { 14, "Black Crows Duo Firebird poles", 15, "Stavar, Unisex", 1400.0 },
+                    { 15, "Black Diamond Deploy", 15, "Spade", 799.0 }
                 });
 
             migrationBuilder.InsertData(
@@ -285,10 +293,10 @@ namespace Backend.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "93d8cb7e-65eb-45a1-91b1-dd607435ee66", "45a4f92d-ba51-4e97-8ea3-5c3a179e0dbb" },
-                    { "b4478087-867a-4452-8c5a-fd7851ea4b13", "656162e3-7c38-440f-8161-33aa934d6698" },
-                    { "93d8cb7e-65eb-45a1-91b1-dd607435ee66", "c94ff3d5-1de6-4520-ba1f-3b0d17027afd" },
-                    { "93d8cb7e-65eb-45a1-91b1-dd607435ee66", "e7eafa14-6c9e-455b-8dbf-4a33e87e5d9a" }
+                    { "9a994aba-d20b-42ef-add6-083ab0a9478e", "3d4ac58e-8f7f-4bfa-b65b-ae25e6857f52" },
+                    { "9a994aba-d20b-42ef-add6-083ab0a9478e", "8d57d3c2-4fda-4d4c-b289-d68b5b06cf0d" },
+                    { "9a994aba-d20b-42ef-add6-083ab0a9478e", "d58fca6a-ecc6-4871-9aad-df1984bc88e0" },
+                    { "85c65d27-bd42-475c-9126-d6ae2571f40d", "e16dd46d-b29e-4e79-8604-9caed80e9329" }
                 });
 
             migrationBuilder.InsertData(
@@ -296,24 +304,31 @@ namespace Backend.Migrations
                 columns: new[] { "Id", "Alt", "Name", "ProductID", "Src" },
                 values: new object[,]
                 {
-                    { 1, "", "Black Crows", 1, "image/BLACKCrowsNocta22-23page3.png" },
-                    { 2, "", "VÖLKL Deacon V Werks", 2, "image/VÖLKLDeaconVWerks.png" },
-                    { 3, "", "SCARPA Alien", 3, "image/SCARPAAlien.png" },
-                    { 4, "", "SCARPA Alien", 4, "image/SCARPAAlien.png" },
-                    { 5, "", "BLACK Diamond Quickdraw Probe", 5, "image/BLACKDiamondQuickdrawProbe.png" },
-                    { 6, "", "BLACK Diamond Quickdraw Probe", 6, "image/BLACKDiamondQuickdrawProbe.png" },
-                    { 7, "", "PEAK Performance Hat Black", 7, "image/PEAKPerformanceHatBlack.png" },
-                    { 8, "", "PEAK Performance Hat Black", 8, "image/PEAKPerformanceHatBlack.png" }
+                    { 1, "", "VÖLKL Katana VWerks Offpist", 1, "images/VÖLKLKatanaVWerks.png" },
+                    { 2, "", "VÖLKL Deacon V Werks", 2, "images/VÖLKLDeaconVWerks.png" },
+                    { 3, "", "VÖLKL Racetiger", 3, "images/VÖLKLRacetiger.png" },
+                    { 4, "", "Black Crows", 4, "images/BLACKCrowsNocta22-23page3.png" },
+                    { 5, "", "SCARPA Alien 1.1 mens boot", 5, "images/SCARPAAlien.png" },
+                    { 6, "", "Dalbello Lupo Pro HD", 6, "images/DALBELLOLupoProHD.png" },
+                    { 7, "", "Peak Performance M Alpine Red", 7, "images/PeakPerformanceAlpineJacket.png" },
+                    { 8, "", "PeakPerformance W Ski Down Jacket Black", 8, "images/PeakPerformanceWAlpineJacket.png" },
+                    { 9, "", "Black Crows W Ora Body Map Jacket Dark Blue", 9, "images/BlackCrowsWJacketDBlue.png" },
+                    { 10, "", "Norröna M Lofoten Pants Indigo Night ", 10, "images/NorrönaLofotenProPants.png" },
+                    { 11, "", "Houdini M Purpose Pants Bucket Blue", 11, "images/HoudiniPurposePantsBlue.png" },
+                    { 12, "", "Black Diamond Probe", 12, "images/BlackDiamondQuickDrawProbe.png" },
+                    { 13, "", "Peak Performance Mason Hat Black", 13, "images/PeakPerformanceHatBlack.png" },
+                    { 14, "", "Black Crows Duo Firebird poles", 14, "images/BlackCrowsPoles.png" },
+                    { 15, "", "Black Diamond Deploy", 15, "images/BlackDiamondDeploy.png" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Orders",
-                columns: new[] { "Id", "ApplicationUserId", "Comments", "Date", "DeliveryDate", "ShippedDate", "Status" },
+                columns: new[] { "Id", "ApplicationUserId", "Comments", "Date", "DeliveryDate", "OrderAmount", "ShippedDate", "Status" },
                 values: new object[,]
                 {
-                    { 1, "45a4f92d-ba51-4e97-8ea3-5c3a179e0dbb", "Deliver asap", new DateTime(2022, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delivered" },
-                    { 2, "e7eafa14-6c9e-455b-8dbf-4a33e87e5d9a", "", new DateTime(2022, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Shipped" },
-                    { 3, "c94ff3d5-1de6-4520-ba1f-3b0d17027afd", "Deliver after October 30 2022", new DateTime(2022, 10, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pending" }
+                    { 1, "3d4ac58e-8f7f-4bfa-b65b-ae25e6857f52", "Deliver asap", new DateTime(2022, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 23435.0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delivered" },
+                    { 2, "d58fca6a-ecc6-4871-9aad-df1984bc88e0", "", new DateTime(2022, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 11500.0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Shipped" },
+                    { 3, "8d57d3c2-4fda-4d4c-b289-d68b5b06cf0d", "Deliver after October 30 2022", new DateTime(2022, 10, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 11498.0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pending" }
                 });
 
             migrationBuilder.InsertData(
@@ -321,12 +336,13 @@ namespace Backend.Migrations
                 columns: new[] { "Id", "Name", "OrderID", "Price", "ProductID", "Quantity", "RowAmount" },
                 values: new object[,]
                 {
-                    { 1, "Skidor, Dam", 1, 4000.0, 1, 1, 4000.0 },
-                    { 2, "Pjäxa, Dam", 1, 5300.0, 3, 1, 5300.0 },
-                    { 3, "Stavar, Herr", 2, 1100.0, 6, 1, 1100.0 },
-                    { 4, "Hjälm, Herr", 2, 2100.0, 8, 2, 4200.0 },
-                    { 5, "Pjäxa, Herr", 3, 6000.0, 4, 1, 6000.0 },
-                    { 6, "Stavar, Herr", 3, 1100.0, 6, 2, 2200.0 }
+                    { 1, "VÖLKL Katana VWerks Offpist", 1, 10990.0, 1, 1, 10990.0 },
+                    { 2, "SCARPA Alien 1.1 mens boot", 1, 10495.0, 5, 1, 10495.0 },
+                    { 3, "Black Crows Duo Firebird poles", 1, 1400.0, 6, 1, 1400.0 },
+                    { 4, "Peak Performance Mason Hat Black", 1, 550.0, 13, 2, 550.0 },
+                    { 5, "Peak Performance M Alpine Red", 2, 6500.0, 7, 1, 6500.0 },
+                    { 6, "Houdini M Purpose Pants Bucket Blue", 2, 5000.0, 11, 1, 5000.0 },
+                    { 7, "Black Crows W Ora Body Map Jacket Dark Blue", 3, 5749.0, 11, 1, 5749.0 }
                 });
 
             migrationBuilder.CreateIndex(

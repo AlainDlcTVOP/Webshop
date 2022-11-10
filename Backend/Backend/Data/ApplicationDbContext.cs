@@ -6,7 +6,7 @@ using System;
 
 namespace Backend.Data
 {
-    public class ApplicationDbContext: IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
         {
@@ -154,73 +154,137 @@ namespace Backend.Data
             modelBuilder.Entity<Product>().HasData(new Product
             {
                 Id = 1,
-                Name = "Skidor, Dam",
-                Description = "Produktbeskrivning...",
-                Price = 4000,
-                InStock = 10
+                Name = "Skidor, Herr",
+                Description = "VÖLKL Katana V-Werks 22-23",
+                Price = 10990,
+                InStock = 6
             });
 
             modelBuilder.Entity<Product>().HasData(new Product
             {
                 Id = 2,
                 Name = "Skidor, Herr",
-                Description = "Produktbeskrivning...",
-                Price = 5000,
+                Description = "VÖLKL Deacon V Werks",
+                Price = 13499,
                 InStock = 12
             });
 
             modelBuilder.Entity<Product>().HasData(new Product
             {
                 Id = 3,
-                Name = "Pjäxa, Dam",
-                Description = "Produktbeskrivning...",
-                Price = 5300,
-                InStock = 2
+                Name = "Skidor, Herr",
+                Description = "VÖLKL Racetiger SL 22-23",
+                Price = 9999,
+                InStock = 10
             });
 
             modelBuilder.Entity<Product>().HasData(new Product
             {
                 Id = 4,
-                Name = "Pjäxa, Herr",
-                Description = "Produktbeskrivning...",
-                Price = 6000,
-                InStock = 6
+                Name = "Skidor, Herr",
+                Description = "Black Crows Nocta 22-23",
+                Price = 8000,
+                InStock = 10
             });
 
             modelBuilder.Entity<Product>().HasData(new Product
             {
                 Id = 5,
-                Name = "Stavar, Dam",
-                Description = "Produktbeskrivning...",
-                Price = 900,
-                InStock = 12
+                Name = "Pjäxa",
+                Description = "SCARPA Alien 1.1 mens boot",
+                Price = 10495,
+                InStock = 2
             });
 
             modelBuilder.Entity<Product>().HasData(new Product
             {
                 Id = 6,
-                Name = "Stavar, Herr",
-                Description = "Produktbeskrivning...",
-                Price = 1100,
+                Name = "Pjäxa",
+                Description = "Dalbello Lupo Pro HD",
+                Price = 7499,
                 InStock = 4
             });
+
 
             modelBuilder.Entity<Product>().HasData(new Product
             {
                 Id = 7,
-                Name = "Hjälm, Dam",
-                Description = "Produktbeskrivning...",
-                Price = 2300,
-                InStock = 11
+                Name = "Jacka, Herr",
+                Description = "Peak Performance M Alpine RED",
+                Price = 6500,
+                InStock = 6
             });
 
             modelBuilder.Entity<Product>().HasData(new Product
             {
                 Id = 8,
-                Name = "Hjälm, Herr",
-                Description = "Produktbeskrivning...",
-                Price = 2100,
-                InStock = 9
+                Name = "Jacka, Dam",
+                Description = "Peak Performance W Ski Down Jacket Black",
+                Price = 7000,
+                InStock = 6
+            });
+
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 9,
+                Name = "Jacka, Dam",
+                Description = "Black Crows W Ora Body Map Jacket Dark Blue",
+                Price = 5749,
+                InStock = 3
+            });
+
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 10,
+                Name = "Byxor, Herr",
+                Description = "Norröna M Lofoten Gore-Tex Pants Indigo Night",
+                Price = 6999,
+                InStock = 6
+            });
+
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 11,
+                Name = "Byxor, Herr",
+                Description = "Houdini M Purpose Pants Bucket Blue",
+                Price = 5000,
+                InStock = 8
+            });
+
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 12,
+                Name = "Probe",
+                Description = "BLACK Diamond Quick Draw Probe",
+                Price = 699,
+                InStock = 12
+            });
+
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 13,
+                Name = "Mössa, Unisex",
+                Description = "PEAK Performance Mason Hat Black",
+                Price = 550,
+                InStock = 25
+            });
+
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 14,
+                Name = "Stavar, Unisex",
+                Description = "Black Crows Duo Firebird poles",
+                Price = 1400,
+                InStock = 15
+            });
+
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 15,
+                Name = "Spade",
+                Description = "Black Diamond Deploy",
+                Price = 799,
+                InStock = 15
             });
 
 
@@ -230,8 +294,8 @@ namespace Backend.Data
             {
                 Id = 1,
                 ProductID = 1,
-                Name = "Black Crows",
-                Src = "image/BLACKCrowsNocta22-23page3.png",
+                Name = "VÖLKL Katana VWerks Offpist",
+                Src = "images/VÖLKLKatanaVWerks.png",
                 Alt = ""
             });
 
@@ -240,7 +304,7 @@ namespace Backend.Data
                 Id = 2,
                 ProductID = 2,
                 Name = "VÖLKL Deacon V Werks",
-                Src = "image/VÖLKLDeaconVWerks.png",
+                Src = "images/VÖLKLDeaconVWerks.png",
                 Alt = ""
             });
 
@@ -248,8 +312,8 @@ namespace Backend.Data
             {
                 Id = 3,
                 ProductID = 3,
-                Name = "SCARPA Alien",
-                Src = "image/SCARPAAlien.png",
+                Name = "VÖLKL Racetiger",
+                Src = "images/VÖLKLRacetiger.png",
                 Alt = ""
             });
 
@@ -257,8 +321,8 @@ namespace Backend.Data
             {
                 Id = 4,
                 ProductID = 4,
-                Name = "SCARPA Alien",
-                Src = "image/SCARPAAlien.png",
+                Name = "Black Crows",
+                Src = "images/BLACKCrowsNocta22-23page3.png",
                 Alt = ""
             });
 
@@ -266,8 +330,8 @@ namespace Backend.Data
             {
                 Id = 5,
                 ProductID = 5,
-                Name = "BLACK Diamond Quickdraw Probe",
-                Src = "image/BLACKDiamondQuickdrawProbe.png",
+                Name = "SCARPA Alien 1.1 mens boot",
+                Src = "images/SCARPAAlien.png",
                 Alt = ""
             });
 
@@ -275,8 +339,8 @@ namespace Backend.Data
             {
                 Id = 6,
                 ProductID = 6,
-                Name = "BLACK Diamond Quickdraw Probe",
-                Src = "image/BLACKDiamondQuickdrawProbe.png",
+                Name = "Dalbello Lupo Pro HD",
+                Src = "images/DALBELLOLupoProHD.png",
                 Alt = ""
             });
 
@@ -284,8 +348,8 @@ namespace Backend.Data
             {
                 Id = 7,
                 ProductID = 7,
-                Name = "PEAK Performance Hat Black",
-                Src = "image/PEAKPerformanceHatBlack.png",
+                Name = "Peak Performance M Alpine Red",
+                Src = "images/PeakPerformanceAlpineJacket.png",
                 Alt = ""
             });
 
@@ -293,10 +357,76 @@ namespace Backend.Data
             {
                 Id = 8,
                 ProductID = 8,
-                Name = "PEAK Performance Hat Black",
-                Src = "image/PEAKPerformanceHatBlack.png",
+                Name = "PeakPerformance W Ski Down Jacket Black",
+                Src = "images/PeakPerformanceWAlpineJacket.png",
                 Alt = ""
             });
+
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 9,
+                ProductID = 9,
+                Name = "Black Crows W Ora Body Map Jacket Dark Blue",
+                Src = "images/BlackCrowsWJacketDBlue.png",
+                Alt = ""
+            });
+
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 10,
+                ProductID = 10,
+                Name = "Norröna M Lofoten Pants Indigo Night ",
+                Src = "images/NorrönaLofotenProPants.png",
+                Alt = ""
+            });
+
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 11,
+                ProductID = 11,
+                Name = "Houdini M Purpose Pants Bucket Blue",
+                Src = "images/HoudiniPurposePantsBlue.png",
+                Alt = ""
+            });
+
+
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 12,
+                ProductID = 12,
+                Name = "Black Diamond Probe",
+                Src = "images/BlackDiamondQuickDrawProbe.png",
+                Alt = ""
+            });
+
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 13,
+                ProductID = 13,
+                Name = "Peak Performance Mason Hat Black",
+                Src = "images/PeakPerformanceHatBlack.png",
+                Alt = ""
+            });
+
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 14,
+                ProductID = 14,
+                Name = "Black Crows Duo Firebird poles",
+                Src = "images/BlackCrowsPoles.png",
+                Alt = ""
+            });
+
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 15,
+                ProductID = 15,
+                Name = "Black Diamond Deploy",
+                Src = "images/BlackDiamondDeploy.png",
+                Alt = ""
+            });
+
+
 
 
             //Orders
@@ -306,6 +436,7 @@ namespace Backend.Data
                 Id = 1,
                 ApplicationUserId = userID1,
                 Date = new DateTime(2022, 10, 26),
+                OrderAmount = 23435,
                 Status = "Delivered",
                 Comments = "Deliver asap",
             });
@@ -315,6 +446,7 @@ namespace Backend.Data
                 Id = 2,
                 ApplicationUserId = userID2,
                 Date = new DateTime(2022, 10, 27),
+                OrderAmount = 11500,
                 Status = "Shipped",
                 Comments = "",
             });
@@ -324,6 +456,7 @@ namespace Backend.Data
                 Id = 3,
                 ApplicationUserId = userID3,
                 Date = new DateTime(2022, 10, 28),
+                OrderAmount = 11498,
                 Status = "Pending",
                 Comments = "Deliver after October 30 2022",
             });
@@ -335,66 +468,78 @@ namespace Backend.Data
             {
                 Id = 1,
                 OrderID = 1,
-                ProductID = 1, // Skidor, dam
-                Name = "Skidor, Dam",
-                Price = 4000,
+                ProductID = 1, // Skidor, Herr
+                Name = "VÖLKL Katana VWerks Offpist",
+                Price = 10990,
                 Quantity = 1,
-                RowAmount = 4000
+                RowAmount = 10990
             });
 
             modelBuilder.Entity<OrderItem>().HasData(new OrderItem
             {
                 Id = 2,
                 OrderID = 1,
-                ProductID = 3, // Pjäxor, dam
-                Name = "Pjäxa, Dam",
-                Price = 5300,
+                ProductID = 5,
+                Name = "SCARPA Alien 1.1 mens boot",
+                Price = 10495,
                 Quantity = 1,
-                RowAmount = 5300
+                RowAmount = 10495
             });
 
             modelBuilder.Entity<OrderItem>().HasData(new OrderItem
             {
                 Id = 3,
-                OrderID = 2,
-                ProductID = 6, // Stavar, herr
-                Name = "Stavar, Herr",
-                Price = 1100,
+                OrderID = 1,
+                ProductID = 6,
+                Name = "Black Crows Duo Firebird poles",
+                Price = 1400,
                 Quantity = 1,
-                RowAmount = 1100,
+                RowAmount = 1400,
             });
 
             modelBuilder.Entity<OrderItem>().HasData(new OrderItem
             {
                 Id = 4,
-                OrderID = 2,
-                ProductID = 8, // Hjälm, herr
-                Name = "Hjälm, Herr",
-                Price = 2100,
+                OrderID = 1,
+                ProductID = 13, // Mössa
+                Name = "Peak Performance Mason Hat Black",
+                Price = 550,
                 Quantity = 2,
-                RowAmount = 4200
+                RowAmount = 550
             });
+
 
             modelBuilder.Entity<OrderItem>().HasData(new OrderItem
             {
                 Id = 5,
-                OrderID = 3,
-                ProductID = 4, // Pjäxa, herr
-                Name = "Pjäxa, Herr",
-                Price = 6000,
+                OrderID = 2,
+                ProductID = 7, // Jacka, herr
+                Name = "Peak Performance M Alpine Red",
+                Price = 6500,
                 Quantity = 1,
-                RowAmount = 6000
+                RowAmount = 6500
             });
 
             modelBuilder.Entity<OrderItem>().HasData(new OrderItem
             {
                 Id = 6,
+                OrderID = 2,
+                ProductID = 11, // Byxor, herr
+                Name = "Houdini M Purpose Pants Bucket Blue",
+                Price = 5000,
+                Quantity = 1,
+                RowAmount = 5000
+            });
+
+            modelBuilder.Entity<OrderItem>().HasData(new OrderItem
+            {
+                Id = 7,
                 OrderID = 3,
-                ProductID = 6, // Stavar, herr
-                Name = "Stavar, Herr",
-                Price = 1100,
-                Quantity = 2,
-                RowAmount = 2200
+                ProductID = 11, // Jacka, Dam
+                Name = "Black Crows W Ora Body Map Jacket Dark Blue",
+                Price = 5749,
+                Quantity = 1,
+                RowAmount = 5749
             });
 
         }
