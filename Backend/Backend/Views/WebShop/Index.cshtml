@@ -4,13 +4,25 @@
 
 <h1>WebShop</h1>
 
-<div>
-    <nav>
-        <a>List of products</a>
-        <a>List of orders</a>
-        <a>Mina sidor</a>
-        <a>Kundvagn</a>
+<header>
+    <div class="banner">
+        <img src="image/BannerVerbier.jpg">
+    </div>
+    <nav class="menu user-menu">
+        <span onclick="ViewAllProducts()">Produkter</span>
+        <span>Kundvagn</span>
+        @if (User.Identity.IsAuthenticated && User.IsInRole("User") ) // Show only for logged-in users
+        {
+            <span>Mina sidor</span>
+        }
     </nav>
-</div>
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin")) // Show only for admins
+    {
+        <nav class="menu admin-menu">
+            <span>Ordrar</span>
+            <span>Användare</span>
+        </nav>
+    }
+</header>
 
 <div id="result"></div>
