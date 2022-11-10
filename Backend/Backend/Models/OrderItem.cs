@@ -10,12 +10,18 @@
 
         public int ProductID { get; set; }
 
+        public string Name { get; set; }
+
+        public double Price { get; set; }
+        
         public int Quantity{ get; set; }
 
         public double RowAmount { get; set; }
 
-        //Navigation property
-        //public Product Product { get; set; } = new Product();
+        //Navigation properties
+        //public Product Product { get; set; }
+
+        //public Order Order { get; set; }
 
     }
 }

@@ -1,9 +1,24 @@
-import React from "react";
-import Cards from "../card/cards";
+import React,{useState} from "react";
+import Navigation from "./Navigation";
+import Cool from "./Cool";
+import { ProductContainer } from "./ProductContainer";
+import Slidetime from "./Slidetime";
+
+
 
 const Home = () => {
+  
     return (
-    <Cards/>
+        
+        <>
+           
+            {/*<Slidetime/>  Hide comenent if hit navigation  */}    
+            <Navigation />
+            <ProductContainer/>
+            
+       
+            <Cool/>
+       </>
     )
         
     

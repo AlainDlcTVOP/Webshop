@@ -1,0 +1,24 @@
+[
+    { 
+        "productId":1,
+        "name":"Pjäxor 120",
+        "price":1000,
+        "description": "Skid set",
+        "productSaldo":320,
+        "img":"...",
+        "brand":"Max",
+        "categoryID":1,
+        "category":null
+    },
+    { 
+        "productId":2,
+        "name":"Skidor 1",
+        "price":201,
+        "description": "Super set av skidor",
+        "productSaldo":100,
+        "img":"...",
+        "brand":"",
+        "categoryID":1,
+        "category":null
+    }
+]

@@ -19,7 +19,7 @@ class Login extends React.Component {
     
   
     onSubmitSignIn = () => {
-      fetch('http://localhost:3000/login', {
+      fetch('http://localhost:3001/login', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -75,7 +75,9 @@ class Login extends React.Component {
                 />
               </div>
               <div className="lh-copy mt3">
-                <p  onClick={() => onRouteChange('register')} className="f6 link dim black db pointer">Register</p>
+              <p class="text-center text-muted mt-5 mb-0">Need to create an account? <a href="http://localhost:3000/register"
+             class="fw-bold text-body"><u>Register</u></a></p>
+               
               </div>
             </div>
           </main>
