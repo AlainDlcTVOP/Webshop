@@ -2,109 +2,129 @@
 
 function ViewAllProducts() {
 
-    console.log("GetAllProducts");
-
-    let url = "/Products/GetAllProducts";
-
     $.ajax({
         type: 'GET',
-        url: url,
+        url: "/Products/GetAllProducts",
         contentType: 'application/json; charset=utf-8',
         success: function (response) {
             let result = document.getElementById("result");
             result.innerHTML = response;
         },
         error: function (error) {
-            // This part will not trigger unless response status code is set to anything other than 2**
+            //console.log(error);
         }
     });
 }
 
 function ViewProduct(productID) {
 
-    console.log("ViewProductPage");
-    console.log(productID);
-
-    let url = `/Products/GetProduct?id=${productID}`;
-
     $.ajax({
         type: 'GET',
-        url: url,
+        url: `/Products/GetProduct?id=${productID}`,
         contentType: 'application/json; charset=utf-8',
         success: function (response) {
             let result = document.getElementById("result");
             result.innerHTML = response;
         },
         error: function (error) {
-            // This part will not trigger unless response status code is set to anything other than 2**
+            //console.log(error);
         }
     });
 }
 
 function CreateProduct() {
 
-    console.log("CreateProduct");
-
-    let url = "/Products/CreateProduct";
-
     $.ajax({
         type: 'GET',
-        url: url,
+        url: "/Products/CreateProduct",
         contentType: 'application/json; charset=utf-8',
         success: function (response) {
             let result = document.getElementById("result");
             result.innerHTML = response;
         },
         error: function (error) {
-            // This part will not trigger unless response status code is set to anything other than 2**
+            //console.log(error);
         }
     });
 }
 
 function CreateProductPost() {
 
-    console.log("CreateProductPost");
-
-    var data = new FormData();
-
-    var fileupload = $("#images").get(0);
-    var files = fileupload.files;
-    for (let i = 0; i < files.length; i++) {
-        data.append(files[i].name, files[i]);
-    }
-
-    let model = {
-        Name: $("#name").name,
-        NameVal: $("#name").val(),
-        Description: $("#description").name,
-        DescriptionVal: $("#description").val(),
-        Price: $("#price").name,
-        PriceVal: $("#price").val(),
-        InStock: $("#instock").name,
-        InStockVal: $("#instock").val()
-    }
-
-    data.append(model.Name, model.NameVal);
-    data.append(model.Description, model.DescriptionVal);
-    data.append(model.Price, model.PriceVal);
-    data.append(model.Price, model.PriceVal);
-
-    //console.table(data);
-
-    let url = "/Products/CreateProduct";
+    let data = $("#createProductForm").serializeArray();
 
     $.ajax({
         type: 'POST',
-        url: url,
-        contentType: false,
-        processData: false,
+        url: "/Products/CreateProduct",
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
         data: data,
         success: function (response) {
-            console.log(response);
+            //console.log(response);
+            let productID = response.id;
+            ViewProduct(productID);
         },
         error: function (error) {
-            // This part will not trigger unless response status code is set to anything other than 2**
-            console.log(error);
+            //console.log(error);
+        }
+    });
+}
+
+function UpdateProduct(productID) {
+
+    $.ajax({
+        type: 'GET',
+        url: `/Products/UpdateProduct?id=${productID}`,
+        contentType: 'application/json; charset=utf-8',
+        success: function (response) {
+            let result = document.getElementById("result");
+            result.innerHTML = response;
+        },
+        error: function (error) {
+            //console.log(error);
+        }
+    });
+}
+
+function UpdateProductPut() {
+
+    let data = $("#updateProductForm").serializeArray();
+
+    let productID = "";
+
+    for (let i = 0; i < data.length; i++)
+    {
+        if (data[i].name === "Id")
+        {
+            productID = data[i].value;
+        }
+    }
+
+    $.ajax({
+        type: 'PUT',
+        url: `/Products/UpdateProduct`,
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        data: data,
+        success: function (response) {
+            //console.log(response);
+            ViewProduct(productID);
+        },
+        error: function (error) {
+            //console.log(error);
+        }
+    });
+}
+
+function DeleteProduct(productID) {
+
+    $.ajax({
+        type: 'DELETE',
+        url: `/Products/DeleteProduct?id=${productID}`,
+        contentType: 'application/json; charset=utf-8',
+        success: function (response) {
+            //console.log(response);
+            ViewAllProducts();
+        },
+        error: function (error) {
+            //console.log(error);
         }
     });
 }

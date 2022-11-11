@@ -81,6 +81,7 @@ namespace Backend.Controllers
             //}
         }
 
+
         [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult CreateProduct()
@@ -92,7 +93,7 @@ namespace Backend.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> CreateProduct([FromForm] CreateProductViewModel model)
+        public async Task<IActionResult> CreateProduct(CreateProductViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -110,114 +111,139 @@ namespace Backend.Controllers
 
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
+            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
 
             // add image(s)
-            foreach (var item in model.Images)
-            {
+            //foreach (var item in model.Images)
+            //{
 
-                if (item.FileName == null || item.FileName.Length == 0)
-                {
-                    return Content("File not selected");
-                }
+            //    if (item.FileName == null || item.FileName.Length == 0)
+            //    {
+            //        return Content("File not selected");
+            //    }
 
-                var path = Path.Combine(_environment.WebRootPath, "image/", item.FileName);
+            //    var path = Path.Combine(_environment.WebRootPath, "image/", item.FileName);
 
-                using (FileStream stream = new FileStream(path, FileMode.Create))
-                {
-                    await item.CopyToAsync(stream);
-                    stream.Close();
-                }
+            //    using (FileStream stream = new FileStream(path, FileMode.Create))
+            //    {
+            //        await item.CopyToAsync(stream);
+            //        stream.Close();
+            //    }
 
-                Image image = new()
-                {
-                    ProductID = product.Id,
-                    Name = item.FileName,
-                    Src = path,
-                };
+            //    Image image = new()
+            //    {
+            //        ProductID = product.Id,
+            //        Name = item.FileName,
+            //        Src = path,
+            //    };
 
-                _context.Images.Add(image);
-                await _context.SaveChangesAsync();
-            }
+            //    _context.Images.Add(image);
+            //    await _context.SaveChangesAsync();
+            //}
 
-            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
 
 
-        //[Authorize(Roles = "Admin")]
-        //[HttpPut]
-        //public async Task<IActionResult> UpdateProduct([FromForm] UpdateProductViewModel model)
-        //{
-        //    if (model == null)
-        //    {
-        //        return BadRequest();
-        //    }
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public IActionResult UpdateProduct(int id)
+        {
+            var product = _context.Products.Include(p => p.Images).First(product => product.Id == id);
 
-        //    var product = _context.Products.Include(p => p.Images).Where(p => p.Id == model.Id).ToList().First();
+            if (product == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                UpdateProductViewModel viewModel = new()
+                {
+                    Id = product.Id,
+                    Name = product.Name,
+                    Description = product.Description,
+                    Price = product.Price,
+                    InStock = product.InStock
+                };
 
-        //    if (product == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    else
-        //    {
-        //        // update product
-        //        product.Name = model.Name;
-        //        product.Description = model.Description;
-        //        product.Price = model.Price;
-        //        product.InStock = model.InStock;
-
-        //        _context.Update(product);
-        //        _context.SaveChanges();
-
-        //        // add image(s)
-        //        foreach (var item in model.Images)
-        //        {
-
-        //            if (item.FileName == null || item.FileName.Length == 0)
-        //            {
-        //                return Content("File not selected");
-        //            }
-
-        //            var path = Path.Combine(_environment.WebRootPath, "img/", item.FileName);
-
-        //            using (FileStream stream = new FileStream(path, FileMode.Create))
-        //            {
-        //                await item.CopyToAsync(stream);
-        //                stream.Close();
-        //            }
-
-        //            Image image = new()
-        //            {
-        //                ProductID = product.Id,
-        //                Name = item.FileName,
-        //                Src = path,
-        //            };
-
-        //            _context.Images.Add(image);
-        //            await _context.SaveChangesAsync();
-        //        }
-
-        //        return new NoContentResult();
-        //    }
-        //}
+                return PartialView("_UpdateProduct", viewModel);
+            }
+        }
 
 
-        //[Authorize(Roles = "Admin")]
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeleteProduct(int id)
-        //{
-        //    var product = await _context.Products.FindAsync(id);
+        [Authorize(Roles = "Admin")]
+        [HttpPut]
+        public async Task<IActionResult> UpdateProduct(UpdateProductViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
 
-        //    if (product == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    else
-        //    {
-        //        _context.Products.Remove(product);
-        //        await _context.SaveChangesAsync();
-        //        return NoContent();
-        //    }
-        //}
+            var product = _context.Products.Include(p => p.Images).First(product => product.Id == model.Id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                // update product
+                product.Name = model.Name;
+                product.Description = model.Description;
+                product.Price = model.Price;
+                product.InStock = model.InStock;
+
+                _context.Update(product);
+                await _context.SaveChangesAsync();
+                return new NoContentResult();
+
+                ////add image(s)
+                //foreach (var item in model.Images)
+                //{
+
+                //    if (item.FileName == null || item.FileName.Length == 0)
+                //    {
+                //        return Content("File not selected");
+                //    }
+
+                //    var path = Path.Combine(_environment.WebRootPath, "images/", item.FileName);
+
+                //    using (FileStream stream = new FileStream(path, FileMode.Create))
+                //    {
+                //        await item.CopyToAsync(stream);
+                //        stream.Close();
+                //    }
+
+                //    Image image = new()
+                //    {
+                //        ProductID = product.Id,
+                //        Name = item.FileName,
+                //        Src = path,
+                //    };
+
+                //    _context.Images.Add(image);
+                //    await _context.SaveChangesAsync();
+                //}
+            }
+        }
+
+
+        [Authorize(Roles = "Admin")]
+        [HttpDelete]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _context.Products.Remove(product);
+                await _context.SaveChangesAsync();
+                return new NoContentResult();
+            }
+        }
     }
 }

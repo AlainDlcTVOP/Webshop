@@ -1,0 +1,15 @@
+﻿
+@{
+    Layout = null; // Prevent layout from being rendered twice
+}
+
+<nav class="menu user-menu">
+    <ul>
+        <li onclick="ViewAllProducts()">Produkter</li>
+        <li>Kundvagn</li>
+        @if (User.Identity.IsAuthenticated && User.IsInRole("User")) // Show only for logged-in users
+        {
+            <li>Mina sidor</li>
+        }
+    </ul>
+</nav>
