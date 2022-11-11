@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Backend.Migrations
 {
-    public partial class SkiShopInit : Migration
+    public partial class ski : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -201,6 +201,27 @@ namespace Backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CartContents",
+                columns: table => new
+                {
+                    CartContentId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TotalCost = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: true),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    ShoppingCartId = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CartContents", x => x.CartContentId);
+                    table.ForeignKey(
+                        name: "FK_CartContents_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Images",
                 columns: table => new
                 {
@@ -251,8 +272,8 @@ namespace Backend.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "85c65d27-bd42-475c-9126-d6ae2571f40d", "2cae8e51-5a26-4e06-a629-e3e5750d33b5", "Admin", "ADMIN" },
-                    { "9a994aba-d20b-42ef-add6-083ab0a9478e", "54c62b51-ad60-492e-ae80-0fc4a1fbb892", "User", "USER" }
+                    { "649225db-9022-4734-aece-9b2b0431fdf2", "6d6cee13-8546-4fa0-a663-86e1c9986831", "Admin", "ADMIN" },
+                    { "af53c463-b5c8-4357-bdd2-7685705c0bb3", "cfe9fb1e-f644-4418-9113-f240c428584e", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -260,10 +281,10 @@ namespace Backend.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Address", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "PostalCode", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "3d4ac58e-8f7f-4bfa-b65b-ae25e6857f52", 0, "Göteborgsvägen 50", "Alingsås", "1a5d4382-3b43-4c9b-929b-5dc51dd237af", "annaa@example.com", false, "Anna", "Andersson", false, null, "ANNAA@EXAMPLE.COM", "ANNAA@EXAMPLE.COM", "AQAAAAEAACcQAAAAENYqM9EagkHWJ/DoasX4ny7lOhieRPno+NW1lBkYVCoeHn062tNMTFUMsaqEjyQBCA==", "1234567890", false, "44143", "22250025-0611-4d59-811f-c5eb77ea1862", false, "annaa@example.com" },
-                    { "8d57d3c2-4fda-4d4c-b289-d68b5b06cf0d", 0, "Boråsvägen 100", "Göteborg", "b081a529-29d2-4161-bda4-c60b68176859", "gunnarg@example.com", false, "Gunnar", "Gunnarsson", false, null, "GUNNARG@EXAMPLE.COM", "GUNNARG@EXAMPLE.COM", "AQAAAAEAACcQAAAAEBqMeIM4cMGZv8Bnk01s1OEyumSNu282XKN6AUZXzH8TK7SIhpmyGBp6UBI1Cyd51Q==", "3456789012", false, "41276", "b5098dd7-49ec-4cfc-8146-994eff9a5601", false, "gunnarg@example.com" },
-                    { "d58fca6a-ecc6-4871-9aad-df1984bc88e0", 0, "Alingsåsvägen 10", "Borås", "e96dec00-2511-4fa5-96b1-5e41d9fcc444", "bennyb@example.com", false, "Benny", "Bengtsson", false, null, "BENNYB@EXAMPLE.COM", "BENNYB@EXAMPLE.COM", "AQAAAAEAACcQAAAAEHDbHUceLQ8msBxCEsHtIPcGJVudv5PaPB070zrUw4VEGxkAPtDzDeqOSK3G8idEZw==", "2345678901", false, "50467", "bc3cacdb-8b64-4c2c-81a3-81449a0100b5", false, "bennyb@example.com" },
-                    { "e16dd46d-b29e-4e79-8604-9caed80e9329", 0, "Gatan 1", "Köping", "53725918-f90b-44f5-a6a2-b85fb11f5ac8", "admin@example.com", false, "Admin", "Adminsson", false, null, "ADMIN@EXAMPLE.COM", "ADMIN@EXAMPLE.COM", "AQAAAAEAACcQAAAAELyBsOV4GTPfSbZk+3VGLcuOgdO+PsajUJsGYdL5SCBes/A04n7EB0RxyfTbnZKpxw==", "9999999999", false, "11122", "1f39b815-1b2f-4b8b-be64-388e14c22252", false, "admin@example.com" }
+                    { "335187b8-8860-4083-b2fa-4680f8e55be0", 0, "Göteborgsvägen 50", "Alingsås", "35e51f54-df55-474d-af93-dbd87afa35d4", "annaa@example.com", false, "Anna", "Andersson", false, null, "ANNAA@EXAMPLE.COM", "ANNAA@EXAMPLE.COM", "AQAAAAEAACcQAAAAEAynml8Y9UEVI98d3KSob4BxZKDFInV+CMniK02rC8eH7oPrbGY+JdPCMu8S9yuC5g==", "1234567890", false, "44143", "9ebc7f91-d7a0-4b6c-97c3-7a09b85bc2b1", false, "annaa@example.com" },
+                    { "49f10d61-846d-4529-ba03-f70973ea5909", 0, "Boråsvägen 100", "Göteborg", "cffdcdf2-9d93-4284-b783-408289bc6cfd", "gunnarg@example.com", false, "Gunnar", "Gunnarsson", false, null, "GUNNARG@EXAMPLE.COM", "GUNNARG@EXAMPLE.COM", "AQAAAAEAACcQAAAAELyPzKo6SDlxAFfVoz7W0rpTs3ITLlqj7rx4yEmOhA9/BVLLdsNYEMMr2qJi8dsXlQ==", "3456789012", false, "41276", "7d40852d-36d5-4012-b5f0-7888222f8fdf", false, "gunnarg@example.com" },
+                    { "4a1fe60e-0187-4bbe-800d-fedb1c5e5453", 0, "Gatan 1", "Köping", "e2154ee4-7547-4a55-b17c-aa3ca49e9fe9", "admin@example.com", false, "Admin", "Adminsson", false, null, "ADMIN@EXAMPLE.COM", "ADMIN@EXAMPLE.COM", "AQAAAAEAACcQAAAAEDkQ1l6L4aD4h5e7/KbD2eucQbYKozwI28q+LZJYW8TYTyF39z1JC7rku7AnjwvoYw==", "9999999999", false, "11122", "be4ffd11-5af4-473f-a24a-dccfc3d617cb", false, "admin@example.com" },
+                    { "b3422e03-52ba-42ec-8720-67198b71e7c7", 0, "Alingsåsvägen 10", "Borås", "28301705-a08e-4d6f-bd79-d858b96ebf07", "bennyb@example.com", false, "Benny", "Bengtsson", false, null, "BENNYB@EXAMPLE.COM", "BENNYB@EXAMPLE.COM", "AQAAAAEAACcQAAAAEF7dPZ090zchHaxKmZJ0KCKgHt3+f2PLNAOYYF763evn9k9QnR25SfXnf8917rvtbQ==", "2345678901", false, "50467", "33553a76-87eb-40f0-9c9a-f5529c49947f", false, "bennyb@example.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -293,10 +314,10 @@ namespace Backend.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "9a994aba-d20b-42ef-add6-083ab0a9478e", "3d4ac58e-8f7f-4bfa-b65b-ae25e6857f52" },
-                    { "9a994aba-d20b-42ef-add6-083ab0a9478e", "8d57d3c2-4fda-4d4c-b289-d68b5b06cf0d" },
-                    { "9a994aba-d20b-42ef-add6-083ab0a9478e", "d58fca6a-ecc6-4871-9aad-df1984bc88e0" },
-                    { "85c65d27-bd42-475c-9126-d6ae2571f40d", "e16dd46d-b29e-4e79-8604-9caed80e9329" }
+                    { "af53c463-b5c8-4357-bdd2-7685705c0bb3", "335187b8-8860-4083-b2fa-4680f8e55be0" },
+                    { "af53c463-b5c8-4357-bdd2-7685705c0bb3", "49f10d61-846d-4529-ba03-f70973ea5909" },
+                    { "649225db-9022-4734-aece-9b2b0431fdf2", "4a1fe60e-0187-4bbe-800d-fedb1c5e5453" },
+                    { "af53c463-b5c8-4357-bdd2-7685705c0bb3", "b3422e03-52ba-42ec-8720-67198b71e7c7" }
                 });
 
             migrationBuilder.InsertData(
@@ -326,9 +347,9 @@ namespace Backend.Migrations
                 columns: new[] { "Id", "ApplicationUserId", "Comments", "Date", "DeliveryDate", "OrderAmount", "ShippedDate", "Status" },
                 values: new object[,]
                 {
-                    { 1, "3d4ac58e-8f7f-4bfa-b65b-ae25e6857f52", "Deliver asap", new DateTime(2022, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 23435.0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delivered" },
-                    { 2, "d58fca6a-ecc6-4871-9aad-df1984bc88e0", "", new DateTime(2022, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 11500.0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Shipped" },
-                    { 3, "8d57d3c2-4fda-4d4c-b289-d68b5b06cf0d", "Deliver after October 30 2022", new DateTime(2022, 10, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 11498.0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pending" }
+                    { 1, "335187b8-8860-4083-b2fa-4680f8e55be0", "Deliver asap", new DateTime(2022, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 23435.0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delivered" },
+                    { 2, "b3422e03-52ba-42ec-8720-67198b71e7c7", "", new DateTime(2022, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 11500.0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Shipped" },
+                    { 3, "49f10d61-846d-4529-ba03-f70973ea5909", "Deliver after October 30 2022", new DateTime(2022, 10, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 11498.0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pending" }
                 });
 
             migrationBuilder.InsertData(
@@ -385,6 +406,11 @@ namespace Backend.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CartContents_ProductId",
+                table: "CartContents",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Images_ProductID",
                 table: "Images",
                 column: "ProductID");
@@ -416,6 +442,9 @@ namespace Backend.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "CartContents");
 
             migrationBuilder.DropTable(
                 name: "Images");
