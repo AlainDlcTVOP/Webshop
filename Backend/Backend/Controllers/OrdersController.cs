@@ -10,9 +10,7 @@ using static NuGet.Packaging.PackagingConstants;
 
 namespace Backend.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class Orders : ControllerBase
+    public class Orders : Controller
     {
         private readonly ApplicationDbContext _context;
 
@@ -26,29 +24,36 @@ namespace Backend.Controllers
         [HttpGet] // api/orders
         public IActionResult GetAllOrders()
         {
-            var allOrders = from o in _context.Orders
-                    .Include(o => o.Items)
-                                    select new OrderDTO()
-                                    {
-                                        Id = o.Id,
-                                        UserId = o.ApplicationUserId,
-                                        Date = o.Date,
-                                        ShippedDate = o.ShippedDate,
-                                        DeliveryDate = o.DeliveryDate,
-                                        Status = o.Status,
-                                        Comments = o.Comments,
-                                        Items = o.Items.Select(i => new OrderItemDTO
-                                        {
-                                            Id = i.Id,
-                                            OrderID = i.OrderID,
-                                            ProductID = i.ProductID,
-                                            Name = i.Name,
-                                            Price = i.Price,
-                                            Quantity = i.Quantity,
-                                            RowAmount = i.RowAmount
-                                        }).ToList(),
-                                    };
-            return Ok(allOrders);
+            OrdersViewModel viewModel = new()
+            {
+                Orders = _context.Orders.Include(o => o.Items).ToList()
+            };
+
+            return PartialView("_OrdersList", viewModel);
+
+            //var allOrders = from o in _context.Orders
+            //        .Include(o => o.Items)
+            //                        select new OrderDTO()
+            //                        {
+            //                            Id = o.Id,
+            //                            UserId = o.ApplicationUserId,
+            //                            Date = o.Date,
+            //                            ShippedDate = o.ShippedDate,
+            //                            DeliveryDate = o.DeliveryDate,
+            //                            Status = o.Status,
+            //                            Comments = o.Comments,
+            //                            Items = o.Items.Select(i => new OrderItemDTO
+            //                            {
+            //                                Id = i.Id,
+            //                                OrderID = i.OrderID,
+            //                                ProductID = i.ProductID,
+            //                                Name = i.Name,
+            //                                Price = i.Price,
+            //                                Quantity = i.Quantity,
+            //                                RowAmount = i.RowAmount
+            //                            }).ToList(),
+            //                        };
+            //return Ok(allOrders);
         }
 
         [Authorize(Roles = "User,Admin")]

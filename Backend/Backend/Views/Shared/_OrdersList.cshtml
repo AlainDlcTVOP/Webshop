@@ -1,0 +1,22 @@
+﻿@model OrdersViewModel
+
+@{
+    Layout = null; // Prevent layout from being rendered twice
+}
+
+<h2>Ordrar</h2>
+
+@if (Model.Orders.Any())
+{
+<div class="list orders">
+    @foreach (Order order in Model.Orders)
+    {
+        <partial name="~/Views/Shared/_OrderItem.cshtml" model="order" />
+    }
+</div>
+}
+
+else
+{
+    <p>List has no items.</p>
+}
