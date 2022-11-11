@@ -17,7 +17,7 @@ namespace Backend.Models
         public string Description { get; set; } = string.Empty;
 
         //optional
-        public List<IFormFile> Images { get; set; }
+        //public List<IFormFile> Images { get; set; }
 
         [Required]
         public double Price { get; set; } = 0;

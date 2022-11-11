@@ -17,4 +17,6 @@
         <span>Pris: @Model.Price SEK</span>
         <span>I lager: @Model.InStock</span>
     </div>
+    <partial name="~/Views/Shared/_UpdateProductLink.cshtml" model="@Model" />
+    <partial name="~/Views/Shared/_DeleteProductLink.cshtml" model="@Model" />
 </div>

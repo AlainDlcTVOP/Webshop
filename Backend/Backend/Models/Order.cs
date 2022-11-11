@@ -14,6 +14,8 @@ namespace SkiShop.Models
 
         public DateTime Date { get; set; }
 
+        public double OrderAmount { get; set; } = 0;
+
         public DateTime ShippedDate { get; set; }
 
         public DateTime DeliveryDate { get; set; }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221110084333_AddIdentityDbEntitiesAndExampleData")]
-    partial class AddIdentityDbEntitiesAndExampleData
+    [Migration("20221110140651_SkiShopInit")]
+    partial class SkiShopInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,15 +53,15 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b4478087-867a-4452-8c5a-fd7851ea4b13",
-                            ConcurrencyStamp = "f96a4d55-712a-4e25-ab4e-fb7ce9646d1f",
+                            Id = "85c65d27-bd42-475c-9126-d6ae2571f40d",
+                            ConcurrencyStamp = "2cae8e51-5a26-4e06-a629-e3e5750d33b5",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "93d8cb7e-65eb-45a1-91b1-dd607435ee66",
-                            ConcurrencyStamp = "0dd3f6e6-f5d4-4786-95b9-9418b72dd149",
+                            Id = "9a994aba-d20b-42ef-add6-083ab0a9478e",
+                            ConcurrencyStamp = "54c62b51-ad60-492e-ae80-0fc4a1fbb892",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -158,23 +158,23 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "656162e3-7c38-440f-8161-33aa934d6698",
-                            RoleId = "b4478087-867a-4452-8c5a-fd7851ea4b13"
+                            UserId = "e16dd46d-b29e-4e79-8604-9caed80e9329",
+                            RoleId = "85c65d27-bd42-475c-9126-d6ae2571f40d"
                         },
                         new
                         {
-                            UserId = "45a4f92d-ba51-4e97-8ea3-5c3a179e0dbb",
-                            RoleId = "93d8cb7e-65eb-45a1-91b1-dd607435ee66"
+                            UserId = "3d4ac58e-8f7f-4bfa-b65b-ae25e6857f52",
+                            RoleId = "9a994aba-d20b-42ef-add6-083ab0a9478e"
                         },
                         new
                         {
-                            UserId = "e7eafa14-6c9e-455b-8dbf-4a33e87e5d9a",
-                            RoleId = "93d8cb7e-65eb-45a1-91b1-dd607435ee66"
+                            UserId = "d58fca6a-ecc6-4871-9aad-df1984bc88e0",
+                            RoleId = "9a994aba-d20b-42ef-add6-083ab0a9478e"
                         },
                         new
                         {
-                            UserId = "c94ff3d5-1de6-4520-ba1f-3b0d17027afd",
-                            RoleId = "93d8cb7e-65eb-45a1-91b1-dd607435ee66"
+                            UserId = "8d57d3c2-4fda-4d4c-b289-d68b5b06cf0d",
+                            RoleId = "9a994aba-d20b-42ef-add6-083ab0a9478e"
                         });
                 });
 
@@ -286,11 +286,11 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "656162e3-7c38-440f-8161-33aa934d6698",
+                            Id = "e16dd46d-b29e-4e79-8604-9caed80e9329",
                             AccessFailedCount = 0,
                             Address = "Gatan 1",
                             City = "Köping",
-                            ConcurrencyStamp = "c841d350-15db-4330-9458-172c6d1cc7bd",
+                            ConcurrencyStamp = "53725918-f90b-44f5-a6a2-b85fb11f5ac8",
                             Email = "admin@example.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -298,21 +298,21 @@ namespace Backend.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJcKy9jk8J3QkMdASvesezKzWz9WGRPUeE1SkSuC15IICvPm/wAMicQHs6+GXeTzWA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELyBsOV4GTPfSbZk+3VGLcuOgdO+PsajUJsGYdL5SCBes/A04n7EB0RxyfTbnZKpxw==",
                             PhoneNumber = "9999999999",
                             PhoneNumberConfirmed = false,
                             PostalCode = "11122",
-                            SecurityStamp = "b5292cd4-597e-4174-85a6-73a8e51511f1",
+                            SecurityStamp = "1f39b815-1b2f-4b8b-be64-388e14c22252",
                             TwoFactorEnabled = false,
                             UserName = "admin@example.com"
                         },
                         new
                         {
-                            Id = "45a4f92d-ba51-4e97-8ea3-5c3a179e0dbb",
+                            Id = "3d4ac58e-8f7f-4bfa-b65b-ae25e6857f52",
                             AccessFailedCount = 0,
                             Address = "Göteborgsvägen 50",
                             City = "Alingsås",
-                            ConcurrencyStamp = "cc1b4270-d8d7-4ba9-850f-7fdc0a279401",
+                            ConcurrencyStamp = "1a5d4382-3b43-4c9b-929b-5dc51dd237af",
                             Email = "annaa@example.com",
                             EmailConfirmed = false,
                             FirstName = "Anna",
@@ -320,21 +320,21 @@ namespace Backend.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ANNAA@EXAMPLE.COM",
                             NormalizedUserName = "ANNAA@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHhy0gQuoTGDY18iYokPz/HKHv9s8VykUW948E9Ie2dDi9tXcK5WtGXo5U6pMv73mQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENYqM9EagkHWJ/DoasX4ny7lOhieRPno+NW1lBkYVCoeHn062tNMTFUMsaqEjyQBCA==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
                             PostalCode = "44143",
-                            SecurityStamp = "1bd61587-0281-4337-90c8-9c9d4d6da488",
+                            SecurityStamp = "22250025-0611-4d59-811f-c5eb77ea1862",
                             TwoFactorEnabled = false,
                             UserName = "annaa@example.com"
                         },
                         new
                         {
-                            Id = "e7eafa14-6c9e-455b-8dbf-4a33e87e5d9a",
+                            Id = "d58fca6a-ecc6-4871-9aad-df1984bc88e0",
                             AccessFailedCount = 0,
                             Address = "Alingsåsvägen 10",
                             City = "Borås",
-                            ConcurrencyStamp = "d16a1aca-ffb2-4735-9a1b-f78e30aba920",
+                            ConcurrencyStamp = "e96dec00-2511-4fa5-96b1-5e41d9fcc444",
                             Email = "bennyb@example.com",
                             EmailConfirmed = false,
                             FirstName = "Benny",
@@ -342,21 +342,21 @@ namespace Backend.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BENNYB@EXAMPLE.COM",
                             NormalizedUserName = "BENNYB@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMDksPOFORLLOR/YiennKMV7a2yksx8GfDznlJ/y7a2rawFQLtj4PGaEEN8+H7x4lg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHDbHUceLQ8msBxCEsHtIPcGJVudv5PaPB070zrUw4VEGxkAPtDzDeqOSK3G8idEZw==",
                             PhoneNumber = "2345678901",
                             PhoneNumberConfirmed = false,
                             PostalCode = "50467",
-                            SecurityStamp = "0a341420-9c0f-4361-9585-d9da8657f1b9",
+                            SecurityStamp = "bc3cacdb-8b64-4c2c-81a3-81449a0100b5",
                             TwoFactorEnabled = false,
                             UserName = "bennyb@example.com"
                         },
                         new
                         {
-                            Id = "c94ff3d5-1de6-4520-ba1f-3b0d17027afd",
+                            Id = "8d57d3c2-4fda-4d4c-b289-d68b5b06cf0d",
                             AccessFailedCount = 0,
                             Address = "Boråsvägen 100",
                             City = "Göteborg",
-                            ConcurrencyStamp = "770264b1-b4c1-4c7d-aec3-2c4c8f4b59de",
+                            ConcurrencyStamp = "b081a529-29d2-4161-bda4-c60b68176859",
                             Email = "gunnarg@example.com",
                             EmailConfirmed = false,
                             FirstName = "Gunnar",
@@ -364,11 +364,11 @@ namespace Backend.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "GUNNARG@EXAMPLE.COM",
                             NormalizedUserName = "GUNNARG@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELrQwRH+viClZBHLpr/F85n8kMfZxt5u7bVYTNrUSmpKKAEB0bF1HJU0Cf/5EUQ+dQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBqMeIM4cMGZv8Bnk01s1OEyumSNu282XKN6AUZXzH8TK7SIhpmyGBp6UBI1Cyd51Q==",
                             PhoneNumber = "3456789012",
                             PhoneNumberConfirmed = false,
                             PostalCode = "41276",
-                            SecurityStamp = "fa098f29-11ba-46d1-ab27-c06c8dbaa140",
+                            SecurityStamp = "b5098dd7-49ec-4cfc-8146-994eff9a5601",
                             TwoFactorEnabled = false,
                             UserName = "gunnarg@example.com"
                         });
@@ -408,9 +408,9 @@ namespace Backend.Migrations
                         {
                             Id = 1,
                             Alt = "",
-                            Name = "Black Crows",
+                            Name = "VÖLKL Katana VWerks Offpist",
                             ProductID = 1,
-                            Src = "image/BLACKCrowsNocta22-23page3.png"
+                            Src = "images/VÖLKLKatanaVWerks.png"
                         },
                         new
                         {
@@ -418,55 +418,111 @@ namespace Backend.Migrations
                             Alt = "",
                             Name = "VÖLKL Deacon V Werks",
                             ProductID = 2,
-                            Src = "image/VÖLKLDeaconVWerks.png"
+                            Src = "images/VÖLKLDeaconVWerks.png"
                         },
                         new
                         {
                             Id = 3,
                             Alt = "",
-                            Name = "SCARPA Alien",
+                            Name = "VÖLKL Racetiger",
                             ProductID = 3,
-                            Src = "image/SCARPAAlien.png"
+                            Src = "images/VÖLKLRacetiger.png"
                         },
                         new
                         {
                             Id = 4,
                             Alt = "",
-                            Name = "SCARPA Alien",
+                            Name = "Black Crows",
                             ProductID = 4,
-                            Src = "image/SCARPAAlien.png"
+                            Src = "images/BLACKCrowsNocta22-23page3.png"
                         },
                         new
                         {
                             Id = 5,
                             Alt = "",
-                            Name = "BLACK Diamond Quickdraw Probe",
+                            Name = "SCARPA Alien 1.1 mens boot",
                             ProductID = 5,
-                            Src = "image/BLACKDiamondQuickdrawProbe.png"
+                            Src = "images/SCARPAAlien.png"
                         },
                         new
                         {
                             Id = 6,
                             Alt = "",
-                            Name = "BLACK Diamond Quickdraw Probe",
+                            Name = "Dalbello Lupo Pro HD",
                             ProductID = 6,
-                            Src = "image/BLACKDiamondQuickdrawProbe.png"
+                            Src = "images/DALBELLOLupoProHD.png"
                         },
                         new
                         {
                             Id = 7,
                             Alt = "",
-                            Name = "PEAK Performance Hat Black",
+                            Name = "Peak Performance M Alpine Red",
                             ProductID = 7,
-                            Src = "image/PEAKPerformanceHatBlack.png"
+                            Src = "images/PeakPerformanceAlpineJacket.png"
                         },
                         new
                         {
                             Id = 8,
                             Alt = "",
-                            Name = "PEAK Performance Hat Black",
+                            Name = "PeakPerformance W Ski Down Jacket Black",
                             ProductID = 8,
-                            Src = "image/PEAKPerformanceHatBlack.png"
+                            Src = "images/PeakPerformanceWAlpineJacket.png"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Alt = "",
+                            Name = "Black Crows W Ora Body Map Jacket Dark Blue",
+                            ProductID = 9,
+                            Src = "images/BlackCrowsWJacketDBlue.png"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Alt = "",
+                            Name = "Norröna M Lofoten Pants Indigo Night ",
+                            ProductID = 10,
+                            Src = "images/NorrönaLofotenProPants.png"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Alt = "",
+                            Name = "Houdini M Purpose Pants Bucket Blue",
+                            ProductID = 11,
+                            Src = "images/HoudiniPurposePantsBlue.png"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Alt = "",
+                            Name = "Black Diamond Probe",
+                            ProductID = 12,
+                            Src = "images/BlackDiamondQuickDrawProbe.png"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Alt = "",
+                            Name = "Peak Performance Mason Hat Black",
+                            ProductID = 13,
+                            Src = "images/PeakPerformanceHatBlack.png"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Alt = "",
+                            Name = "Black Crows Duo Firebird poles",
+                            ProductID = 14,
+                            Src = "images/BlackCrowsPoles.png"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Alt = "",
+                            Name = "Black Diamond Deploy",
+                            ProductID = 15,
+                            Src = "images/BlackDiamondDeploy.png"
                         });
                 });
 
@@ -492,6 +548,9 @@ namespace Backend.Migrations
                     b.Property<DateTime>("DeliveryDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<double>("OrderAmount")
+                        .HasColumnType("float");
+
                     b.Property<DateTime>("ShippedDate")
                         .HasColumnType("datetime2");
 
@@ -509,30 +568,33 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 1,
-                            ApplicationUserId = "45a4f92d-ba51-4e97-8ea3-5c3a179e0dbb",
+                            ApplicationUserId = "3d4ac58e-8f7f-4bfa-b65b-ae25e6857f52",
                             Comments = "Deliver asap",
                             Date = new DateTime(2022, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeliveryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            OrderAmount = 23435.0,
                             ShippedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Delivered"
                         },
                         new
                         {
                             Id = 2,
-                            ApplicationUserId = "e7eafa14-6c9e-455b-8dbf-4a33e87e5d9a",
+                            ApplicationUserId = "d58fca6a-ecc6-4871-9aad-df1984bc88e0",
                             Comments = "",
                             Date = new DateTime(2022, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeliveryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            OrderAmount = 11500.0,
                             ShippedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Shipped"
                         },
                         new
                         {
                             Id = 3,
-                            ApplicationUserId = "c94ff3d5-1de6-4520-ba1f-3b0d17027afd",
+                            ApplicationUserId = "8d57d3c2-4fda-4d4c-b289-d68b5b06cf0d",
                             Comments = "Deliver after October 30 2022",
                             Date = new DateTime(2022, 10, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeliveryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            OrderAmount = 11498.0,
                             ShippedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Pending"
                         });
@@ -575,62 +637,72 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Skidor, Dam",
+                            Name = "VÖLKL Katana VWerks Offpist",
                             OrderID = 1,
-                            Price = 4000.0,
+                            Price = 10990.0,
                             ProductID = 1,
                             Quantity = 1,
-                            RowAmount = 4000.0
+                            RowAmount = 10990.0
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Pjäxa, Dam",
+                            Name = "SCARPA Alien 1.1 mens boot",
                             OrderID = 1,
-                            Price = 5300.0,
-                            ProductID = 3,
+                            Price = 10495.0,
+                            ProductID = 5,
                             Quantity = 1,
-                            RowAmount = 5300.0
+                            RowAmount = 10495.0
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Stavar, Herr",
-                            OrderID = 2,
-                            Price = 1100.0,
+                            Name = "Black Crows Duo Firebird poles",
+                            OrderID = 1,
+                            Price = 1400.0,
                             ProductID = 6,
                             Quantity = 1,
-                            RowAmount = 1100.0
+                            RowAmount = 1400.0
                         },
                         new
                         {
                             Id = 4,
-                            Name = "Hjälm, Herr",
-                            OrderID = 2,
-                            Price = 2100.0,
-                            ProductID = 8,
+                            Name = "Peak Performance Mason Hat Black",
+                            OrderID = 1,
+                            Price = 550.0,
+                            ProductID = 13,
                             Quantity = 2,
-                            RowAmount = 4200.0
+                            RowAmount = 550.0
                         },
                         new
                         {
                             Id = 5,
-                            Name = "Pjäxa, Herr",
-                            OrderID = 3,
-                            Price = 6000.0,
-                            ProductID = 4,
+                            Name = "Peak Performance M Alpine Red",
+                            OrderID = 2,
+                            Price = 6500.0,
+                            ProductID = 7,
                             Quantity = 1,
-                            RowAmount = 6000.0
+                            RowAmount = 6500.0
                         },
                         new
                         {
                             Id = 6,
-                            Name = "Stavar, Herr",
+                            Name = "Houdini M Purpose Pants Bucket Blue",
+                            OrderID = 2,
+                            Price = 5000.0,
+                            ProductID = 11,
+                            Quantity = 1,
+                            RowAmount = 5000.0
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Black Crows W Ora Body Map Jacket Dark Blue",
                             OrderID = 3,
-                            Price = 1100.0,
-                            ProductID = 6,
-                            Quantity = 2,
-                            RowAmount = 2200.0
+                            Price = 5749.0,
+                            ProductID = 11,
+                            Quantity = 1,
+                            RowAmount = 5749.0
                         });
                 });
 
@@ -664,66 +736,122 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "Produktbeskrivning...",
-                            InStock = 10,
-                            Name = "Skidor, Dam",
-                            Price = 4000.0
+                            Description = "VÖLKL Katana V-Werks 22-23",
+                            InStock = 6,
+                            Name = "Skidor, Herr",
+                            Price = 10990.0
                         },
                         new
                         {
                             Id = 2,
-                            Description = "Produktbeskrivning...",
+                            Description = "VÖLKL Deacon V Werks",
                             InStock = 12,
                             Name = "Skidor, Herr",
-                            Price = 5000.0
+                            Price = 13499.0
                         },
                         new
                         {
                             Id = 3,
-                            Description = "Produktbeskrivning...",
-                            InStock = 2,
-                            Name = "Pjäxa, Dam",
-                            Price = 5300.0
+                            Description = "VÖLKL Racetiger SL 22-23",
+                            InStock = 10,
+                            Name = "Skidor, Herr",
+                            Price = 9999.0
                         },
                         new
                         {
                             Id = 4,
-                            Description = "Produktbeskrivning...",
-                            InStock = 6,
-                            Name = "Pjäxa, Herr",
-                            Price = 6000.0
+                            Description = "Black Crows Nocta 22-23",
+                            InStock = 10,
+                            Name = "Skidor, Herr",
+                            Price = 8000.0
                         },
                         new
                         {
                             Id = 5,
-                            Description = "Produktbeskrivning...",
-                            InStock = 12,
-                            Name = "Stavar, Dam",
-                            Price = 900.0
+                            Description = "SCARPA Alien 1.1 mens boot",
+                            InStock = 2,
+                            Name = "Pjäxa",
+                            Price = 10495.0
                         },
                         new
                         {
                             Id = 6,
-                            Description = "Produktbeskrivning...",
+                            Description = "Dalbello Lupo Pro HD",
                             InStock = 4,
-                            Name = "Stavar, Herr",
-                            Price = 1100.0
+                            Name = "Pjäxa",
+                            Price = 7499.0
                         },
                         new
                         {
                             Id = 7,
-                            Description = "Produktbeskrivning...",
-                            InStock = 11,
-                            Name = "Hjälm, Dam",
-                            Price = 2300.0
+                            Description = "Peak Performance M Alpine RED",
+                            InStock = 6,
+                            Name = "Jacka, Herr",
+                            Price = 6500.0
                         },
                         new
                         {
                             Id = 8,
-                            Description = "Produktbeskrivning...",
-                            InStock = 9,
-                            Name = "Hjälm, Herr",
-                            Price = 2100.0
+                            Description = "Peak Performance W Ski Down Jacket Black",
+                            InStock = 6,
+                            Name = "Jacka, Dam",
+                            Price = 7000.0
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Description = "Black Crows W Ora Body Map Jacket Dark Blue",
+                            InStock = 3,
+                            Name = "Jacka, Dam",
+                            Price = 5749.0
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Description = "Norröna M Lofoten Gore-Tex Pants Indigo Night",
+                            InStock = 6,
+                            Name = "Byxor, Herr",
+                            Price = 6999.0
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Description = "Houdini M Purpose Pants Bucket Blue",
+                            InStock = 8,
+                            Name = "Byxor, Herr",
+                            Price = 5000.0
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Description = "BLACK Diamond Quick Draw Probe",
+                            InStock = 12,
+                            Name = "Probe",
+                            Price = 699.0
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Description = "PEAK Performance Mason Hat Black",
+                            InStock = 25,
+                            Name = "Mössa, Unisex",
+                            Price = 550.0
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Description = "Black Crows Duo Firebird poles",
+                            InStock = 15,
+                            Name = "Stavar, Unisex",
+                            Price = 1400.0
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Description = "Black Diamond Deploy",
+                            InStock = 15,
+                            Name = "Spade",
+                            Price = 799.0
                         });
                 });
 
