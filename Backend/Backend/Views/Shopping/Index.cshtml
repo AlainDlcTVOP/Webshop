@@ -8,20 +8,23 @@
 
     @if (@Model.ShoppingCartTotal == 0)
     {
-
-
+       
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
             <div class="col-10 col-sm-8 col-lg-6">
-                <img src="~/image/PEAK Performance Alpine Jacket.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+               <!--Lägg bild Daniel-->
+            <!--<img src = "~/images/" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy"> -->
             </div>
             <div class="col-lg-6">
                 <h1 class="display-5 fw-bold lh-1 mb-3">Your shopping cart is empty</h1>
                 <p class="lead">Let's go </p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <form asp-action="Checkout" method="post" class="form-row form-inline" role="form">
+                    <form asp-action="GetOrder" method="post" class="form-row form-inline" role="form">
                         <div>
                             <div>
-                                <a class="btn btn-primary btn-lg px-4 me-md-2" asp-controller="Products" asp-action="Index">Shop Now</a>
+
+                                <!--Ladda upp producterna-->
+                          <a class="btn btn-primary btn-lg px-4 me-md-2" asp-controller="Products" asp-action="Index">Shop Now</a>
+                           
                             </div>
                         </div>
                     </form>
@@ -117,7 +120,7 @@
             </table>
         </div>
         <div class="container my-5">
-            <a type="button" class="m-1 btn btn-success" asp-controller="Order" asp-action="Checkout">Proceed to Checkout</a>
+            <a type="button" class="m-1 btn btn-success" asp-controller="Order" asp-action="GetOrder">Proceed to Checkout</a>
             <a type="button" class="m-1 btn btn-outline-secondary" asp-controller="Home" asp-action="Index">Keep shopping</a>
         </div>
     }
