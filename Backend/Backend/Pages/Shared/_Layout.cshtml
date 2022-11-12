@@ -21,8 +21,27 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Shopping" asp-action="Index">Cart</a>
+                            <a class="nav-link text-dark" onclick="ViewAllProducts()">Produkter</a>
                         </li>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("User")) // Show only for logged-in users
+                        {
+                            <li>
+                                <a class="nav-link text-dark" onclick="ViewCurrentUserOrders()">Mina sidor</a>
+                            </li>
+                        }
+                        <li>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Shopping" asp-action="Index">Kundvagn</a>
+                        </li>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin")) // Show only for admins
+                        {
+                            <li>
+                                <a class="nav-link text-dark" onclick="ViewAllOrders()">Ordrar</a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-dark">Användare</a>
+                            </li>
+                            <li><partial name="~/Views/Shared/_CreateProductLink.cshtml" /></li>
+                        }
                         <li class="nav-item">
                             <partial name="_LoginPartial" />
                         </li>
@@ -47,6 +66,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/productsController.js"></script>
     <script src="~/js/ordersController.js"></script>
+    <script src="~/js/shoppingController.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

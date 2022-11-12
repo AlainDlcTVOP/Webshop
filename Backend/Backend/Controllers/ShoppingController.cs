@@ -1,6 +1,8 @@
 ﻿using Backend.Models;
 using Backend.Viewmodels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Backend.Controllers
 {
@@ -30,6 +32,8 @@ namespace Backend.Controllers
             return View(shoppingCartViewModel);
         }
 
+        [Authorize(Roles = "User,Admin")]
+        [HttpGet]
         public RedirectToActionResult AddToCart(int Id, int Quantity)
         {
             var addedProducts = _productRepo.AllProducts.FirstOrDefault(item => item.Id == Id);
