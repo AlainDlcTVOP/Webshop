@@ -10,8 +10,9 @@ namespace Backend.Models
         [Required]
         public int Id { get; set; }
 
-        //[Required]
-        //public string UserId { get; set; }
+        [HiddenInput]
+        [Required]
+        public string UserId { get; set; }
 
         [Required]
         public string Date { get; set; }

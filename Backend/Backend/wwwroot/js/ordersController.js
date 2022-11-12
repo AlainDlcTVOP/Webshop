@@ -1,4 +1,49 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿// Define Javascript functions to call and fetch information from methods in Controllers > OrdersController.cs
 
-// Write your JavaScript code.
+function ViewAllOrders() {
+
+    $.ajax({
+        type: 'GET',
+        url: "/Orders/GetAllOrders",
+        contentType: 'application/json; charset=utf-8',
+        success: function (response) {
+            let result = document.getElementById("result");
+            result.innerHTML = response;
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+
+function ViewOrder(orderID) {
+
+    $.ajax({
+        type: 'GET',
+        url: `/Orders/GetOrder?id=${orderID}`,
+        contentType: 'application/json; charset=utf-8',
+        success: function (response) {
+            let result = document.getElementById("result");
+            result.innerHTML = response;
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+
+function ViewCurrentUserOrders() {
+
+    $.ajax({
+        type: 'GET',
+        url: "/Orders/GetCurrentUserOrders",
+        contentType: 'application/json; charset=utf-8',
+        success: function (response) {
+            let result = document.getElementById("result");
+            result.innerHTML = response;
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
