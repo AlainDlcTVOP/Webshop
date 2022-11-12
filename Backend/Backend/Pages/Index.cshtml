@@ -1,5 +1,5 @@
 ﻿@page
-@model IndexModel
+@*@model IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
@@ -22,4 +22,26 @@
     {
         <p>Hello, guest.</p>
     }
-</div>
+</div>*@
+
+@{
+    ViewData["Title"] = "SkiShop";
+}
+
+
+<header class="skishop-header">
+    @*<h1>SkiShop</h1>*@
+    <partial name="~/Views/Shared/_UserNavigation.cshtml" />
+    <partial name="~/Views/Shared/_AdminNavigation.cshtml" />
+    <div class="banner">
+        <img src="images/BannerVerbier.jpg">
+    </div>
+</header>
+
+<div id="result"></div>
+
+<script>
+    window.onload = function() {
+  ViewAllProducts();
+};
+</script>

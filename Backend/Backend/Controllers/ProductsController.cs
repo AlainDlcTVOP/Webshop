@@ -25,6 +25,8 @@ namespace Backend.Controllers
         [HttpGet]
         public IActionResult GetAllProducts()
         {
+            Console.WriteLine("GetAllProducts");
+
             ProductsViewModel viewModel = new()
             {
                 Products = _context.Products.Include(p => p.Images).ToList()

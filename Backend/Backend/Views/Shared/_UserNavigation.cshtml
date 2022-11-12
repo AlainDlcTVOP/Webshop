@@ -9,7 +9,7 @@
         <li>Kundvagn</li>
         @if (User.Identity.IsAuthenticated && User.IsInRole("User")) // Show only for logged-in users
         {
-            <li>Mina sidor</li>
+            <li onclick="ViewCurrentUserOrders()">Mina sidor</li>
         }
     </ul>
 </nav>

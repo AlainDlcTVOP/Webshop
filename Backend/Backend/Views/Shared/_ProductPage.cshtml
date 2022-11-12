@@ -4,23 +4,38 @@
     Layout = null; // Prevent layout from being rendered twice
 }
 
-<h2>Product Page - @Model.Product.Name</h2>
+<div class="container product-page p-3">
 
-<div class="page product">
-    @if (Model.Product.Images.Any())
-    {
-        Image img = Model.Product.Images.First();
-        <figure>
-            <img src="@img.Src"/>
-            <figcaption>@Model.Product.Name</figcaption>
-        </figure>
-    }
-    <div>@Model.Product.Name</div>
-    <p>@Model.Product.Description</p>
-    <div>
-        <span>Pris: @Model.Product.Price SEK</span>
-        <span>I lager: @Model.Product.InStock</span>
+    <div class="product-page-top">
+        <button class="btn-sm btn-close-white " onclick="ViewAllProducts()">Back to all products</button>
+        <h1 class="mb-4 mt-4">@Model.Product.Name</h1>
     </div>
-    <partial name="~/Views/Shared/_UpdateProductLink.cshtml" model="@Model.Product" />
-    <partial name="~/Views/Shared/_DeleteProductLink.cshtml" model="@Model.Product" />
+
+    <div class="product-page-row">
+        <div>
+            @if (Model.Product.Images.Any())
+            {
+                Image img = Model.Product.Images.First();
+                <figure>
+                    <img src="@img.Src" />
+                </figure>
+            }
+        </div>
+        <div class="container product-info p-4">
+            <h2 class="mb-4">@Model.Product.Description</h2>
+            <div class="product-info-text">
+                <h3>Pris: @Model.Product.Price SEK</h3>
+                <div class="add-to-cart page-button">
+                    <button type="button" id="add-to-cart" class="add-to-cart-button btn-lg">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+                <h5>I lager: @Model.Product.InStock</h5>
+
+        </div>
+    
 </div>
+
+<partial name="~/Views/Shared/_UpdateProductLink.cshtml" model="@Model.Product" />
+<partial name="~/Views/Shared/_DeleteProductLink.cshtml" model="@Model.Product" />

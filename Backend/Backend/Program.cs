@@ -70,7 +70,6 @@ app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Inde
 
 app.UseHttpsRedirection();
 
-
 app.UseStaticFiles();
 
 app.UseRouting();

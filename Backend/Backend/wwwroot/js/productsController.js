@@ -11,7 +11,7 @@ function ViewAllProducts() {
             result.innerHTML = response;
         },
         error: function (error) {
-            //console.log(error);
+            console.log(error);
         }
     });
 }

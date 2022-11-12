@@ -4,19 +4,21 @@
     Layout = null; // Prevent layout from being rendered twice
 }
 
-<h2>Products</h2>
+<div class="container products">
+    <h1>Produkter</h1>
 
-@if (Model.Products.Any())
-{
-<div class="list products">
-    @foreach (Product product in Model.Products)
+    @if (Model.Products.Any())
     {
-        <partial name="~/Views/Shared/_ProductItem.cshtml" model="product" />
+        <div class="container products-grid">
+            @foreach (Product product in Model.Products)
+            {
+                <partial name="~/Views/Shared/_ProductItem.cshtml" model="product" />
+            }
+        </div>
+    }
+
+    else
+    {
+        <p>No items here...</p>
     }
 </div>
-}
-
-else
-{
-    <p>List has no items.</p>
-}

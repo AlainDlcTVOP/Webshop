@@ -15,3 +15,35 @@ function ViewAllOrders() {
         }
     });
 }
+
+function ViewOrder(orderID) {
+
+    $.ajax({
+        type: 'GET',
+        url: `/Orders/GetOrder?id=${orderID}`,
+        contentType: 'application/json; charset=utf-8',
+        success: function (response) {
+            let result = document.getElementById("result");
+            result.innerHTML = response;
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+
+function ViewCurrentUserOrders() {
+
+    $.ajax({
+        type: 'GET',
+        url: "/Orders/GetCurrentUserOrders",
+        contentType: 'application/json; charset=utf-8',
+        success: function (response) {
+            let result = document.getElementById("result");
+            result.innerHTML = response;
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
