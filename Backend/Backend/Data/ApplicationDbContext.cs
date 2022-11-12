@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Backend.Models;
 using SkiShop.Models;
 using System;
 
@@ -25,6 +26,8 @@ namespace Backend.Data
         public DbSet<Product> Products { get; set; }
 
         public DbSet<Image> Images { get; set; }
+
+        public DbSet<CartContent> CartContents { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
