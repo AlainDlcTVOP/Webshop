@@ -346,7 +346,7 @@ namespace Backend.Data
                 Id = 4,
                 ProductID = 4,
                 Name = "Black Crows",
-                Src = "images/BLACKCrowsNocta22-23page3.png",
+                Src = "images/BLACKCrowsNocta22-23.png",
                 Alt = ""
             });
 
