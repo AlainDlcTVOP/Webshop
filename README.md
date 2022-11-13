@@ -1,3 +1,3 @@
 #  [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=29&pause=2000&color=152FF7&width=435&lines=WEBSHOP)](https://git.io/typing-svg) 
-Project For Lexicon Advanced curse
-The project is creating a web shop. The web shop´s shopping cart and the views, displaying all the products, should take place in a single page, without reloading. The user should be able to login and be authorized using Identity classes, for shopping history. There shall be an admin interface to be able to edit products, users, orders etc...
+
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=25&pause=1000&color=D229F7&width=435&lines=Project+For+Lexicon+Advanced+curse+The+project+is+creating+a+web+shop.+The+web+shop%C2%B4s+shopping+cart+and+the+views%2C+displaying+all+the+products%2C+should+take+place+in+a+single+page%2C+without+reloading.+The+user+should+be+able+to+login+and+be+authorized+using+Identity+classes%2C+for+shopping+history.+There+shall+be+an+admin+interface+to+be+able+to+edit+products%2C+users%2C+orders+etc...)](https://git.io/typing-svg)
