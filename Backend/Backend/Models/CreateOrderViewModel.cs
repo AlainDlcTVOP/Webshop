@@ -11,6 +11,9 @@ namespace Backend.Models
         [Required]
         public string Date { get; set; }
 
+        [Required]
+        public double OrderAmount { get; set; }
+
 
         //public string ShippedDate { get; set; }
 
@@ -21,7 +24,7 @@ namespace Backend.Models
         //public string Status { get; set; }
 
 
-        public string Comments { get; set; }
+        public string? Comments { get; set; }
 
         public class Item
         {

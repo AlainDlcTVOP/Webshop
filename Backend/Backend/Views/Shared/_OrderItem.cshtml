@@ -12,7 +12,7 @@
         <div><b>Status</b>: @Model.Order.Status</div>
     </div>
     <div class="order-actions">
-    @*    <partial name="~/Views/Shared/_UpdateOrderLink.cshtml" model="@Model" />
-        <partial name="~/Views/Shared/_DeleteOrderLink.cshtml" model="@Model" />*@
+        <partial name="~/Views/Shared/_UpdateOrderLink.cshtml" model="@Model.Order" />
+        <partial name="~/Views/Shared/_DeleteOrderLink.cshtml" model="@Model.Order" />
     </div>
 </div>
