@@ -1,0 +1,10 @@
+﻿@model Order
+
+@{
+    Layout = null; // Prevent layout from being rendered twice
+}
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <button type="button" class="btn btn-warning" onclick="UpdateOrder(@Model.Id)">Redigera order</button>
+}

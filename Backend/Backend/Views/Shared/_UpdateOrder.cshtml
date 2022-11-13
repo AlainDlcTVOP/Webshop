@@ -4,18 +4,13 @@
     Layout = null; // Prevent layout from being rendered twice
 }
 
-<h2>Redigera order</h2>
+<h2>Order @Model.OrderNr - Redigera</h2>
+<p>Order Date: @Model.Date</p>
 
 <form id="updateOrderForm" novalidate>
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <input asp-for="Id" type="hidden" readonly>
-
-    <div class="form-group">
-        <label asp-for="Date" class="control-label"></label>
-        <input asp-for="Date" type="text" class="form-control" name="date" id="date" required />
-        <span asp-validation-for="Date" class="text-danger"></span>
-    </div>
 
     <div class="form-group">
         <label asp-for="ShippedDate" class="control-label"></label>
