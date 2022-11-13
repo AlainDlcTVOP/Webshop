@@ -4,6 +4,7 @@ using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221112191807_index")]
+    partial class index
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,9 +23,6 @@ namespace Backend.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.HasSequence("OrderNrSequence")
-                .StartsAt(2022001L);
 
             modelBuilder.Entity("Backend.Models.CartContent", b =>
                 {
@@ -81,15 +80,15 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "db2240f4-2b0f-499a-bba4-8bb56b195a7d",
-                            ConcurrencyStamp = "81c5b7df-94ed-4d6f-8bbc-abf50fa8f390",
+                            Id = "12a460f9-828b-48fa-9104-a04d2f072c7b",
+                            ConcurrencyStamp = "3e4fe47e-87a1-4648-91c5-95d623bcc200",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "31a066ae-bda5-4882-9e85-8d48074bbda8",
-                            ConcurrencyStamp = "e91ffc5c-034d-4773-8568-b5944b420e50",
+                            Id = "d8e46e17-04d0-4aeb-9f7f-b501ca905977",
+                            ConcurrencyStamp = "ef12a4dd-ed49-4f6c-9c7d-56acd21626c0",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -186,23 +185,23 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "b030e5de-36af-437a-9d28-c618533f3c2c",
-                            RoleId = "db2240f4-2b0f-499a-bba4-8bb56b195a7d"
+                            UserId = "06b30315-a5fe-4ca3-a2dc-b42896053959",
+                            RoleId = "12a460f9-828b-48fa-9104-a04d2f072c7b"
                         },
                         new
                         {
-                            UserId = "14a18be9-1761-4036-8eda-2e716de92bba",
-                            RoleId = "31a066ae-bda5-4882-9e85-8d48074bbda8"
+                            UserId = "385cdb8c-736f-4c29-af1c-6b2016833b1f",
+                            RoleId = "d8e46e17-04d0-4aeb-9f7f-b501ca905977"
                         },
                         new
                         {
-                            UserId = "941150db-63ee-4f38-9b0a-ccc032935c6c",
-                            RoleId = "31a066ae-bda5-4882-9e85-8d48074bbda8"
+                            UserId = "bb5bb342-378b-4cb4-97b3-e6fb43a85357",
+                            RoleId = "d8e46e17-04d0-4aeb-9f7f-b501ca905977"
                         },
                         new
                         {
-                            UserId = "6996e217-3b23-4951-8f7d-d9dcb002aefc",
-                            RoleId = "31a066ae-bda5-4882-9e85-8d48074bbda8"
+                            UserId = "46197de3-d49e-4993-a8ee-43854addc870",
+                            RoleId = "d8e46e17-04d0-4aeb-9f7f-b501ca905977"
                         });
                 });
 
@@ -314,12 +313,11 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-
-                            Id = "b030e5de-36af-437a-9d28-c618533f3c2c",
+                            Id = "06b30315-a5fe-4ca3-a2dc-b42896053959",
                             AccessFailedCount = 0,
                             Address = "Gatan 1",
                             City = "Köping",
-                            ConcurrencyStamp = "603d1535-35fd-4d88-a567-39aad111fbab",
+                            ConcurrencyStamp = "e907acc4-5ff7-4236-a98a-d2a87922c7e8",
                             Email = "admin@example.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -327,21 +325,21 @@ namespace Backend.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIskK59PKNjvjlSP0VQ/3aqoogJg4cMGAZHy8Z1Cmkt4o2QlLV6B6Kj4pJXFIAUvUw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENGRvPaG2iSwT6tV911/zZPyy/Uce5X3mxgj3KA665bE/JFqoOSRB872qJnt35L8ww==",
                             PhoneNumber = "9999999999",
                             PhoneNumberConfirmed = false,
                             PostalCode = "11122",
-                            SecurityStamp = "da692aa9-e181-475d-bcd5-29d37780f7c8",
+                            SecurityStamp = "10b3be21-4dae-496b-b764-0ceefc3f8af2",
                             TwoFactorEnabled = false,
                             UserName = "admin@example.com"
                         },
                         new
                         {
-                            Id = "14a18be9-1761-4036-8eda-2e716de92bba",
+                            Id = "385cdb8c-736f-4c29-af1c-6b2016833b1f",
                             AccessFailedCount = 0,
                             Address = "Göteborgsvägen 50",
                             City = "Alingsås",
-                            ConcurrencyStamp = "c3d8a796-b98a-434a-b94c-864e2d674a99",
+                            ConcurrencyStamp = "16089f59-b40a-42d3-b10f-4c994d31d3be",
                             Email = "annaa@example.com",
                             EmailConfirmed = false,
                             FirstName = "Anna",
@@ -349,21 +347,21 @@ namespace Backend.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ANNAA@EXAMPLE.COM",
                             NormalizedUserName = "ANNAA@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIufpnxYmQru6ZNs45e4MmXMs/ZoESO7BMvTtgiUH4WKJHL5RrWjrl7ei6w54zPDbQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENvmw/LkrKL9mnG9Tycntab5q8VUWwuKUW/dHp8thDd+T720+bo6fTwHZThyqAGlpw==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
                             PostalCode = "44143",
-                            SecurityStamp = "4bfbd4c0-127f-4fd6-a32a-5f21a0aed4d6",
+                            SecurityStamp = "3b3e7053-b763-4c99-842c-8192ac3019a9",
                             TwoFactorEnabled = false,
                             UserName = "annaa@example.com"
                         },
                         new
                         {
-                            Id = "941150db-63ee-4f38-9b0a-ccc032935c6c",
+                            Id = "bb5bb342-378b-4cb4-97b3-e6fb43a85357",
                             AccessFailedCount = 0,
                             Address = "Alingsåsvägen 10",
                             City = "Borås",
-                            ConcurrencyStamp = "afe8a24c-c40e-40ed-bce5-067b3cfeb863",
+                            ConcurrencyStamp = "a0a8916c-3409-4b3c-9b41-b5cedbcba2fa",
                             Email = "bennyb@example.com",
                             EmailConfirmed = false,
                             FirstName = "Benny",
@@ -371,21 +369,21 @@ namespace Backend.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BENNYB@EXAMPLE.COM",
                             NormalizedUserName = "BENNYB@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEISvIAoYZ8bwkgUa3eNN+3t+uOV8OgLe9ILHPJnq4ZT7a2Yi0BgkWj7MsksX/otOuw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMe7+EOdUuW1FCgm+RHFHSUXZj3zwu3loHi1r0m2Cb+4ZEPoBdpbHwP9ZR+oGgZXpA==",
                             PhoneNumber = "2345678901",
                             PhoneNumberConfirmed = false,
                             PostalCode = "50467",
-                            SecurityStamp = "ae938cb7-bb31-40f1-9e31-34b1bd76da22",
+                            SecurityStamp = "861a5e1b-66eb-4085-b0ec-5825e54e5f90",
                             TwoFactorEnabled = false,
                             UserName = "bennyb@example.com"
                         },
                         new
                         {
-                            Id = "6996e217-3b23-4951-8f7d-d9dcb002aefc",
+                            Id = "46197de3-d49e-4993-a8ee-43854addc870",
                             AccessFailedCount = 0,
                             Address = "Boråsvägen 100",
                             City = "Göteborg",
-                            ConcurrencyStamp = "80d7393e-e1ac-447e-ba1a-4ad51b3a98a9",
+                            ConcurrencyStamp = "6448d50c-81b5-4c1f-8e70-582debe37505",
                             Email = "gunnarg@example.com",
                             EmailConfirmed = false,
                             FirstName = "Gunnar",
@@ -393,11 +391,11 @@ namespace Backend.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "GUNNARG@EXAMPLE.COM",
                             NormalizedUserName = "GUNNARG@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIYUjM3BKpPu8S4uEKEsCkMmHraPwOTb9XDy2Y3m3s4bP0y0YBg8RMc+xnBx20nN+Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKY+aOIU1CEXscvVsB425LTSc2zPlCU0zngj7kidMhp4fijJJh6fQg2GgaGQ8xRkZg==",
                             PhoneNumber = "3456789012",
                             PhoneNumberConfirmed = false,
                             PostalCode = "41276",
-                            SecurityStamp = "cff85004-1385-4ea0-af5f-bb4e068b8ff4",
+                            SecurityStamp = "1c3faf5e-fcd9-4186-8923-4fb5b20406be",
                             TwoFactorEnabled = false,
                             UserName = "gunnarg@example.com"
                         });
@@ -580,11 +578,6 @@ namespace Backend.Migrations
                     b.Property<double>("OrderAmount")
                         .HasColumnType("float");
 
-                    b.Property<int>("OrderNr")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValueSql("NEXT VALUE FOR OrderNrSequence");
-
                     b.Property<DateTime>("ShippedDate")
                         .HasColumnType("datetime2");
 
@@ -602,36 +595,33 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 1,
-                            ApplicationUserId = "14a18be9-1761-4036-8eda-2e716de92bba",
+                            ApplicationUserId = "385cdb8c-736f-4c29-af1c-6b2016833b1f",
                             Comments = "Deliver asap",
                             Date = new DateTime(2022, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeliveryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OrderAmount = 23435.0,
-                            OrderNr = 0,
                             ShippedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Delivered"
                         },
                         new
                         {
                             Id = 2,
-                            ApplicationUserId = "941150db-63ee-4f38-9b0a-ccc032935c6c",
+                            ApplicationUserId = "bb5bb342-378b-4cb4-97b3-e6fb43a85357",
                             Comments = "",
                             Date = new DateTime(2022, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeliveryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OrderAmount = 11500.0,
-                            OrderNr = 0,
                             ShippedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Shipped"
                         },
                         new
                         {
                             Id = 3,
-                            ApplicationUserId = "6996e217-3b23-4951-8f7d-d9dcb002aefc",
+                            ApplicationUserId = "46197de3-d49e-4993-a8ee-43854addc870",
                             Comments = "Deliver after October 30 2022",
                             Date = new DateTime(2022, 10, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeliveryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OrderAmount = 11498.0,
-                            OrderNr = 0,
                             ShippedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Pending"
                         });
