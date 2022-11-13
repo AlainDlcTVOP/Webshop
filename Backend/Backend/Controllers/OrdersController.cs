@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SkiShop.Models;
 using System.Data;
+using System.Drawing;
 using System.Net;
 using static NuGet.Packaging.PackagingConstants;
 
@@ -22,41 +23,31 @@ namespace Backend.Controllers
             _userManager = userManager;
         }
 
+
         [Authorize(Roles = "Admin")]
-        [HttpGet] // api/orders
+        [HttpGet]
         public IActionResult GetAllOrders()
         {
-            OrdersViewModel viewModel = new()
+            List<Order> allOrders = _context.Orders.Include(o => o.Items).ToList();
+
+            AllOrdersViewModel viewModel = new();
+
+            foreach (Order order in allOrders)
             {
-                Orders = _context.Orders.Include(o => o.Items).ToList()
-            };
+                ApplicationUser customer = _userManager.Users.First(u => u.Id == order.ApplicationUserId);
+
+                CustomerOrderViewModel customerOrder = new()
+                {
+                    Order = order,
+                    Customer = customer,
+                };
+
+                viewModel.CustomerOrders.Add(customerOrder);
+            }
 
             return PartialView("_OrdersList", viewModel);
-
-            //var allOrders = from o in _context.Orders
-            //        .Include(o => o.Items)
-            //                        select new OrderDTO()
-            //                        {
-            //                            Id = o.Id,
-            //                            UserId = o.ApplicationUserId,
-            //                            Date = o.Date,
-            //                            ShippedDate = o.ShippedDate,
-            //                            DeliveryDate = o.DeliveryDate,
-            //                            Status = o.Status,
-            //                            Comments = o.Comments,
-            //                            Items = o.Items.Select(i => new OrderItemDTO
-            //                            {
-            //                                Id = i.Id,
-            //                                OrderID = i.OrderID,
-            //                                ProductID = i.ProductID,
-            //                                Name = i.Name,
-            //                                Price = i.Price,
-            //                                Quantity = i.Quantity,
-            //                                RowAmount = i.RowAmount
-            //                            }).ToList(),
-            //                        };
-            //return Ok(allOrders);
         }
+
 
         [Authorize(Roles = "User,Admin")]
         [HttpGet]
@@ -70,7 +61,7 @@ namespace Backend.Controllers
             }
             else
             {
-                OrderViewModel viewModel = new()
+                CustomerOrderViewModel viewModel = new()
                 {
                     Order = order,
                     Customer = _userManager.Users.First(u => u.Id == order.ApplicationUserId)
@@ -78,38 +69,8 @@ namespace Backend.Controllers
 
                 return PartialView("_OrderPage", viewModel);
             }
-            //Order order = _context.Orders.Include(o => o.Items).First(o => o.Id == id);
-
-            //if (order == null)
-            //{
-            //    return NotFound();
-            //}
-            //else
-            //{
-            //    var orderDTO = new OrderDTO()
-            //    {
-            //        Id = order.Id,
-            //        UserId = order.ApplicationUserId,
-            //        Date = order.Date,
-            //        ShippedDate = order.ShippedDate,
-            //        DeliveryDate = order.DeliveryDate,
-            //        Status = order.Status,
-            //        Comments = order.Comments,
-            //        Items = order.Items.Select(item => new OrderItemDTO
-            //        {
-            //            Id = item.Id,
-            //            OrderID = item.OrderID,
-            //            ProductID = item.ProductID,
-            //            Name = item.Name,
-            //            Price = item.Price,
-            //            Quantity = item.Quantity,
-            //            RowAmount = item.RowAmount
-            //        }).ToList(),
-            //    };
-
-            //    return Ok(orderDTO);
-            //}
         }
+
 
         [Authorize(Roles = "User,Admin")]
         [HttpGet]
@@ -118,64 +79,43 @@ namespace Backend.Controllers
             ApplicationUser currentUser = await _userManager.GetUserAsync(User);
             List<Order> orders = _context.Orders.Include(o => o.Items).Where(o => o.ApplicationUserId == currentUser.Id).ToList();
 
-            OrdersViewModel viewModel = new()
+            CustomerOrdersViewModel viewModel = new()
             {
                 Orders = orders,
                 Customer = currentUser
             };
 
             return PartialView("_UserOrdersList", viewModel);
-            //var userOrders = from o in _context.Orders
-            // .Include(o => o.Items)
-            // .Where(o => o.ApplicationUserId == userId)
-            //                 select new OrderDTO()
-            //                 {
-            //                     Id = o.Id,
-            //                     UserId = o.ApplicationUserId,
-            //                     Date = o.Date,
-            //                     ShippedDate = o.ShippedDate,
-            //                     DeliveryDate = o.DeliveryDate,
-            //                     Status = o.Status,
-            //                     Comments = o.Comments,
-            //                     Items = o.Items.Select(i => new OrderItemDTO
-            //                     {
-            //                         Id = i.Id,
-            //                         OrderID = i.OrderID,
-            //                         ProductID = i.ProductID,
-            //                         Name = i.Name,
-            //                         Price = i.Price,
-            //                         Quantity = i.Quantity,
-            //                         RowAmount = i.RowAmount
-            //                     }).ToList(),
-            //                 };
-
-            //return Ok(userOrders);
         }
 
 
-        //[Authorize(Roles = "User,Admin")]
-        //[HttpPost]
-        //public async Task<IActionResult> CreateOrder([FromBody] CreateOrderViewModel model)  //Nota bene: do not use FromForm attribute, it prevents order items from being added to database
-        //{
-        //    if (model == null)
-        //    {
-        //        return BadRequest();
-        //    }
+        [Authorize(Roles = "User,Admin")]
+        [HttpPost]
+        public async Task<IActionResult> CreateOrder(CreateOrderViewModel model)  //Nota bene: do not use FromForm attribute, it prevents order items from being added to database
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
 
-        //    Order order = new()
-        //    {
-        //        ApplicationUserId = model.UserId,
-        //        Date = DateTime.Parse(model.Date),
-        //        Status = "Pending",
-        //        Comments = model.Comments ?? "",
-        //        Items = model.Items.Select(i => new OrderItem { ProductID = i.ProductID, Name = i.Name, Price = i.Price, Quantity = i.Quantity, RowAmount = i.RowAmount }).ToList(),
-        //    };
+            Order order = new()
+            {
+                ApplicationUserId = model.UserId,
+                Date = DateTime.Parse(model.Date),
+                OrderAmount = model.OrderAmount,
+                ShippedDate = new DateTime(),
+                DeliveryDate = new DateTime(),
+                Status = "Pending",
+                Comments = model.Comments ?? "",
+                Items = model.Items.Select(i => new OrderItem { ProductID = i.ProductID, Name = i.Name, Price = i.Price, Quantity = i.Quantity, RowAmount = i.RowAmount }).ToList(),
+            };
 
-        //    _context.Orders.Add(order);
-        //    await _context.SaveChangesAsync();
+            _context.Orders.Add(order);
+            await _context.SaveChangesAsync();
 
-        //    return CreatedAtAction("GetOrder", new { id = order.Id }, order);
-        //}
+            return CreatedAtAction("GetOrder", new { id = order.Id }, order);
+        }
+
 
         [Authorize(Roles = "Admin")]
         [HttpGet]
@@ -189,16 +129,17 @@ namespace Backend.Controllers
             }
             else
             {
+                string dateFormat = "yyyy-MM-dd";
                 UpdateOrderViewModel viewModel = new()
                 {
                     Id= order.Id,
-                    UserId = order.ApplicationUserId,
-                    Date = order.Date.ToString(),
-                    ShippedDate = order.ShippedDate.ToString(),
-                    DeliveryDate= order.DeliveryDate.ToString(),
+                    OrderNr = order.OrderNr,
+                    Date = order.Date.ToString(dateFormat),
+                    ShippedDate = order.ShippedDate.ToString(dateFormat),
+                    DeliveryDate= order.DeliveryDate.ToString(dateFormat),
                     Status = order.Status,
                     Comments = order.Comments,
-                    Items = order.Items.Select(i => new UpdateOrderViewModel.Item { ProductID = i.ProductID, Name = i.Name, Price = i.Price, Quantity = i.Quantity, RowAmount = i.RowAmount}).ToList()
+                    //Items = order.Items.Select(i => new UpdateOrderViewModel.Item { ProductID = i.ProductID, Price = i.Price, Quantity = i.Quantity, RowAmount = i.RowAmount}).ToList()
                 };
 
                 return PartialView("_UpdateOrder", viewModel);
@@ -206,54 +147,54 @@ namespace Backend.Controllers
         }
 
 
-        //[Authorize(Roles = "Admin")]
-        //[HttpPut]
-        //public async Task<IActionResult> UpdateOrder([FromBody] UpdateOrderViewModel model)
-        //{
-        //    if (model == null)
-        //    {
-        //        return BadRequest();
-        //    }
+        [Authorize(Roles = "Admin")]
+        [HttpPut]
+        public async Task<IActionResult> UpdateOrder(UpdateOrderViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
 
-        //    var order = _context.Orders.Include(o => o.Items).First(o => o.Id == model.Id);
+            var order = _context.Orders.Include(o => o.Items).First(o => o.Id == model.Id);
 
-        //    if (order == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    else
-        //    {
-        //        order.Date = DateTime.Parse(model.Date);
-        //        order.ShippedDate = model.ShippedDate == "" ? new DateTime() : DateTime.Parse(model.ShippedDate);
-        //        order.DeliveryDate = model.DeliveryDate == "" ? new DateTime() : DateTime.Parse(model.DeliveryDate);
-        //        order.Status = model.Status;
-        //        order.Comments = model.Comments;
-        //        order.Items = model.Items.Select(i => new OrderItem { ProductID = i.ProductID, Name = i.Name, Price = i.Price, Quantity = i.Quantity, RowAmount = i.RowAmount }).ToList();
+            if (order == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                order.ShippedDate = model.ShippedDate == null ? new DateTime() : DateTime.Parse(model.ShippedDate);
+                order.DeliveryDate = model.DeliveryDate == null ? new DateTime() : DateTime.Parse(model.DeliveryDate);
+                order.Status = model.Status ?? "";
+                order.Comments = model.Comments ?? "";
+                //order.Items = model.Items.Select(i => new OrderItem { ProductID = i.ProductID, Name = i.Name, Price = i.Price, Quantity = i.Quantity, RowAmount = i.RowAmount }).ToList();
 
-        //        _context.Update(order);
-        //        await _context.SaveChangesAsync();
-        //    }
+                _context.Update(order);
+                await _context.SaveChangesAsync();
+            }
 
-        //    return new NoContentResult();
-        //}
+            return new NoContentResult();
+        }
 
-        //[Authorize(Roles = "Admin")]
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeleteOrder(int id)
-        //{
-        //    var order = await _context.Orders.FindAsync(id);
 
-        //    if (order == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    else
-        //    {
-        //        _context.Orders.Remove(order);
-        //        await _context.SaveChangesAsync();
-        //        return NoContent();
-        //    }
-        //}
+        [Authorize(Roles = "Admin")]
+        [HttpDelete]
+        public async Task<IActionResult> DeleteOrder(int id)
+        {
+            var order = await _context.Orders.FindAsync(id);
+
+            if (order == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _context.Orders.Remove(order);
+                await _context.SaveChangesAsync();
+                return NoContent();
+            }
+        }
 
     }
 }

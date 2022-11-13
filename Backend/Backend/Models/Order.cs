@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics;
 
 namespace SkiShop.Models
 {
@@ -6,7 +7,8 @@ namespace SkiShop.Models
     {
         public int Id { get; set; }
 
-        //public int OrderNr { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int OrderNr { get; set; }
 
         //public int CustomerID { get; set; }
 

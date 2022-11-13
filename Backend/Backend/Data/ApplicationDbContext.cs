@@ -291,6 +291,27 @@ namespace Backend.Data
             });
 
 
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 16,
+                Name = "Patagonia Womens Jacket",
+                Description = "Patagonia W Powerslayer Smolder Blue",
+                Price = 8099,
+                InStock = 3
+            });
+
+
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 17,
+                Name = "Norröna M Lofoten Jacket",
+                Description = "Norröna M Lofoten Gore-Tex Jacket Hawaiian Blue",
+                Price = 9999,
+                InStock = 5
+            });
+
+
+
             // Images
 
             modelBuilder.Entity<Image>().HasData(new Image
@@ -325,7 +346,7 @@ namespace Backend.Data
                 Id = 4,
                 ProductID = 4,
                 Name = "Black Crows",
-                Src = "images/BLACKCrowsNocta22-23page3.png",
+                Src = "images/BLACKCrowsNocta22-23.png",
                 Alt = ""
             });
 
@@ -431,8 +452,29 @@ namespace Backend.Data
 
 
 
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 16,
+                ProductID = 16,
+                Name = "",
+                Src = "images/PatagoniaWPowSlayerJacketSmolderBlue.png",
+                Alt = ""
+            });
+
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 17,
+                ProductID = 17,
+                Name = "",
+                Src = "images/NorrönaMLofotenProJacket.png",
+                Alt = ""
+            });
+
 
             //Orders
+
+            modelBuilder.HasSequence("OrderNrSequence", x => x.StartsAt(2022001).IncrementsBy(1));
+            modelBuilder.Entity<Order>().Property(o => o.OrderNr).HasDefaultValueSql("NEXT VALUE FOR OrderNrSequence");
 
             modelBuilder.Entity<Order>().HasData(new Order
             {

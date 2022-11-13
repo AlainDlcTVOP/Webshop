@@ -1,4 +1,4 @@
-﻿@model OrdersViewModel
+﻿@model CustomerOrdersViewModel
 
 @{
     Layout = null; // Prevent layout from being rendered twice
@@ -11,7 +11,7 @@
     <div class="list orders">
         @foreach (Order order in Model.Orders)
         {
-            <partial name="~/Views/Shared/_OrderItem.cshtml" model="order" />
+            <partial name="~/Views/Shared/_UserOrderItem.cshtml" model="order" />
         }
     </div>
 }
