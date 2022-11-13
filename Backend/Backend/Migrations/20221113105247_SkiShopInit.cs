@@ -5,10 +5,14 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Backend.Migrations
 {
-    public partial class ski : Migration
+    public partial class SkiShopInit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateSequence(
+                name: "OrderNrSequence",
+                startValue: 2022001L);
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -181,6 +185,7 @@ namespace Backend.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    OrderNr = table.Column<int>(type: "int", nullable: false, defaultValueSql: "NEXT VALUE FOR OrderNrSequence"),
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     OrderAmount = table.Column<double>(type: "float", nullable: false),
@@ -272,8 +277,8 @@ namespace Backend.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "649225db-9022-4734-aece-9b2b0431fdf2", "6d6cee13-8546-4fa0-a663-86e1c9986831", "Admin", "ADMIN" },
-                    { "af53c463-b5c8-4357-bdd2-7685705c0bb3", "cfe9fb1e-f644-4418-9113-f240c428584e", "User", "USER" }
+                    { "31a066ae-bda5-4882-9e85-8d48074bbda8", "e91ffc5c-034d-4773-8568-b5944b420e50", "User", "USER" },
+                    { "db2240f4-2b0f-499a-bba4-8bb56b195a7d", "81c5b7df-94ed-4d6f-8bbc-abf50fa8f390", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -281,10 +286,10 @@ namespace Backend.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Address", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "PostalCode", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "335187b8-8860-4083-b2fa-4680f8e55be0", 0, "Göteborgsvägen 50", "Alingsås", "35e51f54-df55-474d-af93-dbd87afa35d4", "annaa@example.com", false, "Anna", "Andersson", false, null, "ANNAA@EXAMPLE.COM", "ANNAA@EXAMPLE.COM", "AQAAAAEAACcQAAAAEAynml8Y9UEVI98d3KSob4BxZKDFInV+CMniK02rC8eH7oPrbGY+JdPCMu8S9yuC5g==", "1234567890", false, "44143", "9ebc7f91-d7a0-4b6c-97c3-7a09b85bc2b1", false, "annaa@example.com" },
-                    { "49f10d61-846d-4529-ba03-f70973ea5909", 0, "Boråsvägen 100", "Göteborg", "cffdcdf2-9d93-4284-b783-408289bc6cfd", "gunnarg@example.com", false, "Gunnar", "Gunnarsson", false, null, "GUNNARG@EXAMPLE.COM", "GUNNARG@EXAMPLE.COM", "AQAAAAEAACcQAAAAELyPzKo6SDlxAFfVoz7W0rpTs3ITLlqj7rx4yEmOhA9/BVLLdsNYEMMr2qJi8dsXlQ==", "3456789012", false, "41276", "7d40852d-36d5-4012-b5f0-7888222f8fdf", false, "gunnarg@example.com" },
-                    { "4a1fe60e-0187-4bbe-800d-fedb1c5e5453", 0, "Gatan 1", "Köping", "e2154ee4-7547-4a55-b17c-aa3ca49e9fe9", "admin@example.com", false, "Admin", "Adminsson", false, null, "ADMIN@EXAMPLE.COM", "ADMIN@EXAMPLE.COM", "AQAAAAEAACcQAAAAEDkQ1l6L4aD4h5e7/KbD2eucQbYKozwI28q+LZJYW8TYTyF39z1JC7rku7AnjwvoYw==", "9999999999", false, "11122", "be4ffd11-5af4-473f-a24a-dccfc3d617cb", false, "admin@example.com" },
-                    { "b3422e03-52ba-42ec-8720-67198b71e7c7", 0, "Alingsåsvägen 10", "Borås", "28301705-a08e-4d6f-bd79-d858b96ebf07", "bennyb@example.com", false, "Benny", "Bengtsson", false, null, "BENNYB@EXAMPLE.COM", "BENNYB@EXAMPLE.COM", "AQAAAAEAACcQAAAAEF7dPZ090zchHaxKmZJ0KCKgHt3+f2PLNAOYYF763evn9k9QnR25SfXnf8917rvtbQ==", "2345678901", false, "50467", "33553a76-87eb-40f0-9c9a-f5529c49947f", false, "bennyb@example.com" }
+                    { "14a18be9-1761-4036-8eda-2e716de92bba", 0, "Göteborgsvägen 50", "Alingsås", "c3d8a796-b98a-434a-b94c-864e2d674a99", "annaa@example.com", false, "Anna", "Andersson", false, null, "ANNAA@EXAMPLE.COM", "ANNAA@EXAMPLE.COM", "AQAAAAEAACcQAAAAEIufpnxYmQru6ZNs45e4MmXMs/ZoESO7BMvTtgiUH4WKJHL5RrWjrl7ei6w54zPDbQ==", "1234567890", false, "44143", "4bfbd4c0-127f-4fd6-a32a-5f21a0aed4d6", false, "annaa@example.com" },
+                    { "6996e217-3b23-4951-8f7d-d9dcb002aefc", 0, "Boråsvägen 100", "Göteborg", "80d7393e-e1ac-447e-ba1a-4ad51b3a98a9", "gunnarg@example.com", false, "Gunnar", "Gunnarsson", false, null, "GUNNARG@EXAMPLE.COM", "GUNNARG@EXAMPLE.COM", "AQAAAAEAACcQAAAAEIYUjM3BKpPu8S4uEKEsCkMmHraPwOTb9XDy2Y3m3s4bP0y0YBg8RMc+xnBx20nN+Q==", "3456789012", false, "41276", "cff85004-1385-4ea0-af5f-bb4e068b8ff4", false, "gunnarg@example.com" },
+                    { "941150db-63ee-4f38-9b0a-ccc032935c6c", 0, "Alingsåsvägen 10", "Borås", "afe8a24c-c40e-40ed-bce5-067b3cfeb863", "bennyb@example.com", false, "Benny", "Bengtsson", false, null, "BENNYB@EXAMPLE.COM", "BENNYB@EXAMPLE.COM", "AQAAAAEAACcQAAAAEISvIAoYZ8bwkgUa3eNN+3t+uOV8OgLe9ILHPJnq4ZT7a2Yi0BgkWj7MsksX/otOuw==", "2345678901", false, "50467", "ae938cb7-bb31-40f1-9e31-34b1bd76da22", false, "bennyb@example.com" },
+                    { "b030e5de-36af-437a-9d28-c618533f3c2c", 0, "Gatan 1", "Köping", "603d1535-35fd-4d88-a567-39aad111fbab", "admin@example.com", false, "Admin", "Adminsson", false, null, "ADMIN@EXAMPLE.COM", "ADMIN@EXAMPLE.COM", "AQAAAAEAACcQAAAAEIskK59PKNjvjlSP0VQ/3aqoogJg4cMGAZHy8Z1Cmkt4o2QlLV6B6Kj4pJXFIAUvUw==", "9999999999", false, "11122", "da692aa9-e181-475d-bcd5-29d37780f7c8", false, "admin@example.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -314,10 +319,10 @@ namespace Backend.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "af53c463-b5c8-4357-bdd2-7685705c0bb3", "335187b8-8860-4083-b2fa-4680f8e55be0" },
-                    { "af53c463-b5c8-4357-bdd2-7685705c0bb3", "49f10d61-846d-4529-ba03-f70973ea5909" },
-                    { "649225db-9022-4734-aece-9b2b0431fdf2", "4a1fe60e-0187-4bbe-800d-fedb1c5e5453" },
-                    { "af53c463-b5c8-4357-bdd2-7685705c0bb3", "b3422e03-52ba-42ec-8720-67198b71e7c7" }
+                    { "31a066ae-bda5-4882-9e85-8d48074bbda8", "14a18be9-1761-4036-8eda-2e716de92bba" },
+                    { "31a066ae-bda5-4882-9e85-8d48074bbda8", "6996e217-3b23-4951-8f7d-d9dcb002aefc" },
+                    { "31a066ae-bda5-4882-9e85-8d48074bbda8", "941150db-63ee-4f38-9b0a-ccc032935c6c" },
+                    { "db2240f4-2b0f-499a-bba4-8bb56b195a7d", "b030e5de-36af-437a-9d28-c618533f3c2c" }
                 });
 
             migrationBuilder.InsertData(
@@ -347,9 +352,9 @@ namespace Backend.Migrations
                 columns: new[] { "Id", "ApplicationUserId", "Comments", "Date", "DeliveryDate", "OrderAmount", "ShippedDate", "Status" },
                 values: new object[,]
                 {
-                    { 1, "335187b8-8860-4083-b2fa-4680f8e55be0", "Deliver asap", new DateTime(2022, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 23435.0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delivered" },
-                    { 2, "b3422e03-52ba-42ec-8720-67198b71e7c7", "", new DateTime(2022, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 11500.0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Shipped" },
-                    { 3, "49f10d61-846d-4529-ba03-f70973ea5909", "Deliver after October 30 2022", new DateTime(2022, 10, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 11498.0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pending" }
+                    { 1, "14a18be9-1761-4036-8eda-2e716de92bba", "Deliver asap", new DateTime(2022, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 23435.0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delivered" },
+                    { 2, "941150db-63ee-4f38-9b0a-ccc032935c6c", "", new DateTime(2022, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 11500.0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Shipped" },
+                    { 3, "6996e217-3b23-4951-8f7d-d9dcb002aefc", "Deliver after October 30 2022", new DateTime(2022, 10, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 11498.0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pending" }
                 });
 
             migrationBuilder.InsertData(
@@ -463,6 +468,9 @@ namespace Backend.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropSequence(
+                name: "OrderNrSequence");
         }
     }
 }

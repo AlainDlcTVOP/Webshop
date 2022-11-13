@@ -430,9 +430,10 @@ namespace Backend.Data
             });
 
 
-
-
             //Orders
+
+            modelBuilder.HasSequence("OrderNrSequence", x => x.StartsAt(2022001).IncrementsBy(1));
+            modelBuilder.Entity<Order>().Property(o => o.OrderNr).HasDefaultValueSql("NEXT VALUE FOR OrderNrSequence");
 
             modelBuilder.Entity<Order>().HasData(new Order
             {

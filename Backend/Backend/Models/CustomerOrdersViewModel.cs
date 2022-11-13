@@ -2,9 +2,9 @@
 
 namespace Backend.Models
 {
-    public class OrderViewModel
+    public class CustomerOrdersViewModel
     {
-        public Order Order { get; set; }
+        public List<Order> Orders { get; set; }
         public ApplicationUser Customer { get; set; }
     }
 }
