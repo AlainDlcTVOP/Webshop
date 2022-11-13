@@ -291,6 +291,27 @@ namespace Backend.Data
             });
 
 
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 16,
+                Name = "Patagonia Womens Jacket",
+                Description = "Patagonia W Powerslayer Smolder Blue",
+                Price = 8099,
+                InStock = 3
+            });
+
+
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 17,
+                Name = "Norröna M Lofoten Jacket",
+                Description = "Norröna M Lofoten Gore-Tex Jacket Hawaiian Blue",
+                Price = 9999,
+                InStock = 5
+            });
+
+
+
             // Images
 
             modelBuilder.Entity<Image>().HasData(new Image
@@ -426,6 +447,26 @@ namespace Backend.Data
                 ProductID = 15,
                 Name = "Black Diamond Deploy",
                 Src = "images/BlackDiamondDeploy.png",
+                Alt = ""
+            });
+
+
+
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 16,
+                ProductID = 16,
+                Name = "",
+                Src = "images/PatagoniaWPowSlayerJacketSmolderBlue.png",
+                Alt = ""
+            });
+
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 17,
+                ProductID = 17,
+                Name = "",
+                Src = "images/NorrönaMLofotenProJacket.png",
                 Alt = ""
             });
 
