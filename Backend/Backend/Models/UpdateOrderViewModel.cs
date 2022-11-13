@@ -10,10 +10,6 @@ namespace Backend.Models
         [Required]
         public int Id { get; set; }
 
-        [HiddenInput]
-        [Required]
-        public string UserId { get; set; }
-
         [Required]
         public string Date { get; set; }
 
@@ -28,8 +24,6 @@ namespace Backend.Models
         public class Item
         {
             public int ProductID { get; set; }
-
-            public string Name { get; set; }
 
             public double Price { get; set; }
 

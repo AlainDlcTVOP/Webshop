@@ -1,31 +1,37 @@
-﻿@model OrderViewModel
+﻿@model CustomerOrderViewModel
 
 @{
     Layout = null; // Prevent layout from being rendered twice
 }
 
-<h2>Order @Model.Order.Id - Detaljer</h2>
+<h2>Order @Model.Order.OrderNr - Detaljer</h2>
 
 <div class="page order">
     <div>
-        <p><b>OrderId</b>: @Model.Order.Id</p>
-        <p><b>UserId</b>: @Model.Order.ApplicationUserId</p>
-        <p><b>Customer</b>: @Model.Customer.FirstName @Model.Customer.LastName</p>
+        <p><b>OrderNr</b>: @Model.Order.OrderNr</p>
+
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+        {            
+            <p><b>Customer</b>: @Model.Customer.FirstName @Model.Customer.LastName</p>
+        }
+
         <p><b>Date</b>: @Model.Order.Date</p>
         <p><b>Shipped Date</b>: @Model.Order.ShippedDate</p>
         <p><b>Delivery Date</b>: @Model.Order.DeliveryDate</p>
         <p><b>Status</b>: @Model.Order.Status</p>
         <p><b>Comments</b>: @Model.Order.Comments</p>
+
         @if (Model.Order.Items.Any())
-            {
-            <p><b>Items</b>:</p>
-                <ul>
-                @foreach (var item in Model.Order.Items)
-                    {
-                        <li>ProductID: @item.ProductID, Name: @item.Name, Price: @item.Price, Quantity: @item.Quantity, RowAmount: @item.RowAmount</li>
-                    }
-                </ul>
-            }
+        {
+        <p><b>Items</b>:</p>
+            <ul>
+            @foreach (var item in Model.Order.Items)
+                {
+                    <li>ProductID: @item.ProductID, Name: @item.Name, Price: @item.Price, Quantity: @item.Quantity, RowAmount: @item.RowAmount</li>
+                }
+            </ul>
+        }
+
         <p><b>Order Total</b>: @Model.Order.OrderAmount</p>
     </div>
     <div class="order-actions">

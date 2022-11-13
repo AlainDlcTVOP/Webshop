@@ -26,10 +26,22 @@ namespace Backend.Controllers
         [HttpGet] // api/orders
         public IActionResult GetAllOrders()
         {
-            OrdersViewModel viewModel = new()
+            List<Order> allOrders = _context.Orders.Include(o => o.Items).ToList();
+
+            AllOrdersViewModel viewModel = new();
+
+            foreach (Order order in allOrders)
             {
-                Orders = _context.Orders.Include(o => o.Items).ToList()
-            };
+                ApplicationUser customer = _userManager.Users.First(u => u.Id == order.ApplicationUserId);
+
+                CustomerOrderViewModel customerOrder = new()
+                {
+                    Order = order,
+                    Customer = customer,
+                };
+
+                viewModel.CustomerOrders.Add(customerOrder);
+            }
 
             return PartialView("_OrdersList", viewModel);
 
@@ -70,7 +82,7 @@ namespace Backend.Controllers
             }
             else
             {
-                OrderViewModel viewModel = new()
+                CustomerOrderViewModel viewModel = new()
                 {
                     Order = order,
                     Customer = _userManager.Users.First(u => u.Id == order.ApplicationUserId)
@@ -118,7 +130,7 @@ namespace Backend.Controllers
             ApplicationUser currentUser = await _userManager.GetUserAsync(User);
             List<Order> orders = _context.Orders.Include(o => o.Items).Where(o => o.ApplicationUserId == currentUser.Id).ToList();
 
-            OrdersViewModel viewModel = new()
+            CustomerOrdersViewModel viewModel = new()
             {
                 Orders = orders,
                 Customer = currentUser
@@ -192,13 +204,12 @@ namespace Backend.Controllers
                 UpdateOrderViewModel viewModel = new()
                 {
                     Id= order.Id,
-                    UserId = order.ApplicationUserId,
                     Date = order.Date.ToString(),
                     ShippedDate = order.ShippedDate.ToString(),
                     DeliveryDate= order.DeliveryDate.ToString(),
                     Status = order.Status,
                     Comments = order.Comments,
-                    Items = order.Items.Select(i => new UpdateOrderViewModel.Item { ProductID = i.ProductID, Name = i.Name, Price = i.Price, Quantity = i.Quantity, RowAmount = i.RowAmount}).ToList()
+                    Items = order.Items.Select(i => new UpdateOrderViewModel.Item { ProductID = i.ProductID, Price = i.Price, Quantity = i.Quantity, RowAmount = i.RowAmount}).ToList()
                 };
 
                 return PartialView("_UpdateOrder", viewModel);

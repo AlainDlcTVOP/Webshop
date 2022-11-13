@@ -1,4 +1,4 @@
-﻿@model OrdersViewModel
+﻿@model AllOrdersViewModel
 
 @{
     Layout = null; // Prevent layout from being rendered twice
@@ -6,12 +6,12 @@
 
 <h2>Ordrar</h2>
 
-@if (Model.Orders.Any())
+@if (Model.CustomerOrders.Any())
 {
 <div class="list orders">
-    @foreach (Order order in Model.Orders)
+    @foreach (CustomerOrderViewModel customerOrder in Model.CustomerOrders)
     {
-        <partial name="~/Views/Shared/_OrderItem.cshtml" model="order" />
+        <partial name="~/Views/Shared/_OrderItem.cshtml" model="customerOrder" />
     }
 </div>
 }

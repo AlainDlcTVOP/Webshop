@@ -2,8 +2,8 @@
 
 function AddToCart(productID) {
 
-    console.log("AddToCart");
-    console.log(productID);
+    //console.log("AddToCart");
+    //console.log(productID);
 
     $.ajax({
         type: 'GET',
