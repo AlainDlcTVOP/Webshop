@@ -12,10 +12,6 @@ var builder = WebApplication.CreateBuilder(args);
 void ConfigureServices(IServiceCollection services)
 {
     services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
-
-
-
 }
 
 // Add services to the container.
