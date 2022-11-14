@@ -1,0 +1,29 @@
+﻿@model Product
+
+@{
+    Layout = null; // Prevent layout from being rendered twice
+    string name = (Model.Name == null) ? "" : Model.Name;
+    string description = (Model.Description == null) ? "" : Model.Description;
+    var image = Model.Images.FirstOrDefault();
+    string src = (image == null) ? "" : image.Src;
+}
+
+
+    <div class="card product-card m-2">
+        <h6 class='card-title p-2'>@name</h6>
+        <img onclick="ViewProduct(@Model.Id)" class="card-img-top" src="@src" alt=@description />
+        <div class="card-footer">
+            
+                <p>@Model.Description</p>
+                <p>@Model.Price kr</p>
+                <div class="add-to-cart">
+                    <button type="button" id="add-to-cart" class="add-to-cart-button" onclick="AddToCart(@Model.Id)">
+                        Add to Cart
+                    </button>
+                </div>
+           
+        </div>
+        
+    <partial name="~/Views/Shared/_UpdateProductLink.cshtml" model="@Model" />
+    <partial name="~/Views/Shared/_DeleteProductLink.cshtml" model="@Model" />
+    </div>

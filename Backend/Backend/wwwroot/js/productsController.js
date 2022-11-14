@@ -2,6 +2,8 @@
 
 function ViewAllProducts() {
 
+    console.log("ViewAllProducts");
+
     $.ajax({
         type: 'GET',
         url: "/Products/GetAllProducts",

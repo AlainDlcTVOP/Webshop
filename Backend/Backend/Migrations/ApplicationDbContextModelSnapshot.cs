@@ -81,15 +81,15 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "46f084f4-3047-41a0-96a8-a6979f233a5c",
-                            ConcurrencyStamp = "06470034-88c3-419b-95b0-895779e3f560",
+                            Id = "e5e03676-1178-4bdb-befc-b1df99b4d305",
+                            ConcurrencyStamp = "43257e96-eb50-4156-814a-154eaee6095e",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "55fed77f-dc02-4ee4-98a9-dadc056a2048",
-                            ConcurrencyStamp = "12b02540-cd1f-4735-9be6-0ec9b23f5ab6",
+                            Id = "08d502ec-38ec-4a21-bea8-93c0858d6298",
+                            ConcurrencyStamp = "8002f336-405a-4840-9aa6-6a1ed591ae21",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -186,23 +186,23 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "d08b9541-cec9-4f20-8f81-0f4b2109082d",
-                            RoleId = "46f084f4-3047-41a0-96a8-a6979f233a5c"
+                            UserId = "95a466e2-663c-453d-9b3a-d2c312832f0a",
+                            RoleId = "e5e03676-1178-4bdb-befc-b1df99b4d305"
                         },
                         new
                         {
-                            UserId = "6e2eb36e-5acd-478f-9f02-3ef1b8c4584f",
-                            RoleId = "55fed77f-dc02-4ee4-98a9-dadc056a2048"
+                            UserId = "6638885c-4dfe-42c9-be7c-5e7be2b9a14d",
+                            RoleId = "08d502ec-38ec-4a21-bea8-93c0858d6298"
                         },
                         new
                         {
-                            UserId = "96e67302-3318-4c1a-a47d-267aed955f17",
-                            RoleId = "55fed77f-dc02-4ee4-98a9-dadc056a2048"
+                            UserId = "7753ea16-760b-435c-bb52-59d78bcb0ff5",
+                            RoleId = "08d502ec-38ec-4a21-bea8-93c0858d6298"
                         },
                         new
                         {
-                            UserId = "9dfc64cb-fe50-40c8-b55a-d89f5a9ac313",
-                            RoleId = "55fed77f-dc02-4ee4-98a9-dadc056a2048"
+                            UserId = "789e8807-28fc-482c-8232-b4bc840e747d",
+                            RoleId = "08d502ec-38ec-4a21-bea8-93c0858d6298"
                         });
                 });
 
@@ -314,11 +314,11 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d08b9541-cec9-4f20-8f81-0f4b2109082d",
+                            Id = "95a466e2-663c-453d-9b3a-d2c312832f0a",
                             AccessFailedCount = 0,
                             Address = "Gatan 1",
                             City = "Köping",
-                            ConcurrencyStamp = "5187d7ce-433a-4842-9e47-f6dacb681be9",
+                            ConcurrencyStamp = "db42b155-7c83-4a47-a0ef-d6cf2c78551c",
                             Email = "admin@example.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -326,21 +326,21 @@ namespace Backend.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAqXWkZ17n8ljy8NNyC3aIiAgXddox313lYFI2fdxvo3rvA6AtzMBadgpJGR9Vf6EA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKkr+oB4xyMQRy6EWzCElZmQQK+Ie3Ibz7iKbYWKFfMQiRkHkA4AG18Z6lfOWuqiMQ==",
                             PhoneNumber = "9999999999",
                             PhoneNumberConfirmed = false,
                             PostalCode = "11122",
-                            SecurityStamp = "ac11eb08-682e-485d-9cb4-2545cd28d8a3",
+                            SecurityStamp = "fa9a4732-0423-4c74-9c97-b5fd8e8a9c27",
                             TwoFactorEnabled = false,
                             UserName = "admin@example.com"
                         },
                         new
                         {
-                            Id = "6e2eb36e-5acd-478f-9f02-3ef1b8c4584f",
+                            Id = "6638885c-4dfe-42c9-be7c-5e7be2b9a14d",
                             AccessFailedCount = 0,
                             Address = "Göteborgsvägen 50",
                             City = "Alingsås",
-                            ConcurrencyStamp = "30987296-7564-4c41-b689-a163b7b9f5ae",
+                            ConcurrencyStamp = "71dc6f51-587c-4867-a688-c39fe911d0b5",
                             Email = "annaa@example.com",
                             EmailConfirmed = false,
                             FirstName = "Anna",
@@ -348,21 +348,21 @@ namespace Backend.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ANNAA@EXAMPLE.COM",
                             NormalizedUserName = "ANNAA@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJccG28WqkA33Nr7UlFatsKUiAPRYWMd9ua8wJVzU2cc2U6lYAFv6wcOZWede0u8NQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGmvIaJsfYs/xUIKW1Ot2GObeC6E6l7DH6R3I916qz7YoI/L30jYydWH0ZSQtq/fKA==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
                             PostalCode = "44143",
-                            SecurityStamp = "abc03a02-25e8-4c57-9a1a-c369165330d5",
+                            SecurityStamp = "6accc9f9-178d-4cc9-8953-780ab43a51fe",
                             TwoFactorEnabled = false,
                             UserName = "annaa@example.com"
                         },
                         new
                         {
-                            Id = "96e67302-3318-4c1a-a47d-267aed955f17",
+                            Id = "7753ea16-760b-435c-bb52-59d78bcb0ff5",
                             AccessFailedCount = 0,
                             Address = "Alingsåsvägen 10",
                             City = "Borås",
-                            ConcurrencyStamp = "d3b31dbc-06ec-40e6-8821-285eb0b93b6b",
+                            ConcurrencyStamp = "1856f579-b697-4bbc-9393-48b15eb5db38",
                             Email = "bennyb@example.com",
                             EmailConfirmed = false,
                             FirstName = "Benny",
@@ -370,21 +370,21 @@ namespace Backend.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BENNYB@EXAMPLE.COM",
                             NormalizedUserName = "BENNYB@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDDm915eWuHIGLYSrvCujOebL5VbbzxWKDhGzQ6w8teRhWgiXTJCxK1v1KGmTuX9/Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEu8cykow8YFRmyrxdPK1S14XYOJ2FiIQ2Dbolwkf+B005LHlc+HiuT9L9GbptnS7w==",
                             PhoneNumber = "2345678901",
                             PhoneNumberConfirmed = false,
                             PostalCode = "50467",
-                            SecurityStamp = "c3122fba-5950-4f10-bd8d-e67f208715a8",
+                            SecurityStamp = "f3b67561-5ad7-4b92-b65a-5a889457bd61",
                             TwoFactorEnabled = false,
                             UserName = "bennyb@example.com"
                         },
                         new
                         {
-                            Id = "9dfc64cb-fe50-40c8-b55a-d89f5a9ac313",
+                            Id = "789e8807-28fc-482c-8232-b4bc840e747d",
                             AccessFailedCount = 0,
                             Address = "Boråsvägen 100",
                             City = "Göteborg",
-                            ConcurrencyStamp = "425e420a-bcae-41d0-933a-b32cb1825523",
+                            ConcurrencyStamp = "024f8461-e257-4505-8829-9ffe05ec4503",
                             Email = "gunnarg@example.com",
                             EmailConfirmed = false,
                             FirstName = "Gunnar",
@@ -392,11 +392,11 @@ namespace Backend.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "GUNNARG@EXAMPLE.COM",
                             NormalizedUserName = "GUNNARG@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEK7B1B7v6jYRRH7cKkx8trDIoAVP29dq/ur4h2ZLSPm7qaDlgSR2Mo+uew69cesAag==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMt9S0eUSP0mlcaU/shnaQ6ItMYw6Ap+xI5Cctjjpo5iD+eDZ62bwEYGilOoavrh8Q==",
                             PhoneNumber = "3456789012",
                             PhoneNumberConfirmed = false,
                             PostalCode = "41276",
-                            SecurityStamp = "442fc48d-8e3b-4da4-bbd3-97a9d3d18216",
+                            SecurityStamp = "f2329f3d-9c49-4615-848e-54901112a2ea",
                             TwoFactorEnabled = false,
                             UserName = "gunnarg@example.com"
                         });
@@ -462,7 +462,7 @@ namespace Backend.Migrations
                             Alt = "",
                             Name = "Black Crows",
                             ProductID = 4,
-                            Src = "images/BLACKCrowsNocta22-23page3.png"
+                            Src = "images/BLACKCrowsNocta22-23.png"
                         },
                         new
                         {
@@ -567,6 +567,22 @@ namespace Backend.Migrations
                             Name = "",
                             ProductID = 17,
                             Src = "images/NorrönaMLofotenProJacket.png"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Alt = "",
+                            Name = "",
+                            ProductID = 18,
+                            Src = "images/MarkerKing113.png"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Alt = "",
+                            Name = "",
+                            ProductID = 19,
+                            Src = "images/MarkerDuke.png"
                         });
                 });
 
@@ -617,11 +633,11 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 1,
-                            ApplicationUserId = "6e2eb36e-5acd-478f-9f02-3ef1b8c4584f",
+                            ApplicationUserId = "6638885c-4dfe-42c9-be7c-5e7be2b9a14d",
                             Comments = "Deliver asap",
                             Date = new DateTime(2022, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeliveryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OrderAmount = 23435.0,
+                            OrderAmount = 28694.0,
                             OrderNr = 0,
                             ShippedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Delivered"
@@ -629,7 +645,7 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 2,
-                            ApplicationUserId = "96e67302-3318-4c1a-a47d-267aed955f17",
+                            ApplicationUserId = "7753ea16-760b-435c-bb52-59d78bcb0ff5",
                             Comments = "",
                             Date = new DateTime(2022, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeliveryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -641,7 +657,7 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 3,
-                            ApplicationUserId = "9dfc64cb-fe50-40c8-b55a-d89f5a9ac313",
+                            ApplicationUserId = "789e8807-28fc-482c-8232-b4bc840e747d",
                             Comments = "Deliver after October 30 2022",
                             Date = new DateTime(2022, 10, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeliveryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -699,6 +715,16 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 2,
+                            Name = "Marker King Pin 13",
+                            OrderID = 1,
+                            Price = 5199.0,
+                            ProductID = 18,
+                            Quantity = 1,
+                            RowAmount = 10990.0
+                        },
+                        new
+                        {
+                            Id = 3,
                             Name = "SCARPA Alien 1.1 mens boot",
                             OrderID = 1,
                             Price = 10495.0,
@@ -708,7 +734,7 @@ namespace Backend.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 4,
                             Name = "Black Crows Duo Firebird poles",
                             OrderID = 1,
                             Price = 1400.0,
@@ -718,7 +744,7 @@ namespace Backend.Migrations
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 5,
                             Name = "Peak Performance Mason Hat Black",
                             OrderID = 1,
                             Price = 550.0,
@@ -728,7 +754,7 @@ namespace Backend.Migrations
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 6,
                             Name = "Peak Performance M Alpine Red",
                             OrderID = 2,
                             Price = 6500.0,
@@ -738,7 +764,7 @@ namespace Backend.Migrations
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 7,
                             Name = "Houdini M Purpose Pants Bucket Blue",
                             OrderID = 2,
                             Price = 5000.0,
@@ -748,7 +774,7 @@ namespace Backend.Migrations
                         },
                         new
                         {
-                            Id = 7,
+                            Id = 8,
                             Name = "Black Crows W Ora Body Map Jacket Dark Blue",
                             OrderID = 3,
                             Price = 5749.0,
@@ -920,6 +946,22 @@ namespace Backend.Migrations
                             InStock = 5,
                             Name = "Norröna M Lofoten Jacket",
                             Price = 9999.0
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Description = "Marker King Pin 13 binding",
+                            InStock = 5,
+                            Name = "Marker King Pin 13",
+                            Price = 5199.0
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Description = "King Ping Pt 16",
+                            InStock = 5,
+                            Name = "King Ping Pt 16",
+                            Price = 6199.0
                         });
                 });
 

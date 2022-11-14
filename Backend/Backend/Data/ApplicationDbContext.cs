@@ -311,6 +311,27 @@ namespace Backend.Data
             });
 
 
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 18,
+                Name = "Marker King Pin 13",
+                Description = "Marker King Pin 13 binding",
+                Price = 5199,
+                InStock = 5
+            });
+
+
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 19,
+                Name = "King Ping Pt 16",
+                Description = "King Ping Pt 16",
+                Price = 6199,
+                InStock = 5
+            });
+
+
+
 
             // Images
 
@@ -470,6 +491,26 @@ namespace Backend.Data
                 Alt = ""
             });
 
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 18,
+                ProductID = 18,
+                Name = "",
+                Src = "images/MarkerKing113.png",
+                Alt = ""
+            });
+
+            modelBuilder.Entity<Image>().HasData(new Image
+            {
+                Id = 19,
+                ProductID = 19,
+                Name = "",
+                Src = "images/MarkerDuke.png",
+                Alt = ""
+            });
+
+
+
 
             //Orders
 
@@ -481,7 +522,7 @@ namespace Backend.Data
                 Id = 1,
                 ApplicationUserId = userID1,
                 Date = new DateTime(2022, 10, 26),
-                OrderAmount = 23435,
+                OrderAmount = 28694,
                 Status = "Delivered",
                 Comments = "Deliver asap",
             });
@@ -524,6 +565,17 @@ namespace Backend.Data
             {
                 Id = 2,
                 OrderID = 1,
+                ProductID = 18, // Bindningar
+                Name = "Marker King Pin 13",
+                Price = 5199,
+                Quantity = 1,
+                RowAmount = 10990
+            });
+
+            modelBuilder.Entity<OrderItem>().HasData(new OrderItem
+            {
+                Id = 3,
+                OrderID = 1,
                 ProductID = 5,
                 Name = "SCARPA Alien 1.1 mens boot",
                 Price = 10495,
@@ -533,7 +585,7 @@ namespace Backend.Data
 
             modelBuilder.Entity<OrderItem>().HasData(new OrderItem
             {
-                Id = 3,
+                Id = 4,
                 OrderID = 1,
                 ProductID = 6,
                 Name = "Black Crows Duo Firebird poles",
@@ -544,7 +596,7 @@ namespace Backend.Data
 
             modelBuilder.Entity<OrderItem>().HasData(new OrderItem
             {
-                Id = 4,
+                Id = 5,
                 OrderID = 1,
                 ProductID = 13, // Mössa
                 Name = "Peak Performance Mason Hat Black",
@@ -556,7 +608,7 @@ namespace Backend.Data
 
             modelBuilder.Entity<OrderItem>().HasData(new OrderItem
             {
-                Id = 5,
+                Id = 6,
                 OrderID = 2,
                 ProductID = 7, // Jacka, herr
                 Name = "Peak Performance M Alpine Red",
@@ -567,7 +619,7 @@ namespace Backend.Data
 
             modelBuilder.Entity<OrderItem>().HasData(new OrderItem
             {
-                Id = 6,
+                Id = 7,
                 OrderID = 2,
                 ProductID = 11, // Byxor, herr
                 Name = "Houdini M Purpose Pants Bucket Blue",
@@ -578,7 +630,7 @@ namespace Backend.Data
 
             modelBuilder.Entity<OrderItem>().HasData(new OrderItem
             {
-                Id = 7,
+                Id = 8,
                 OrderID = 3,
                 ProductID = 11, // Jacka, Dam
                 Name = "Black Crows W Ora Body Map Jacket Dark Blue",

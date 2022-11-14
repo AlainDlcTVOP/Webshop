@@ -102,6 +102,12 @@ namespace Backend.Areas.Identity.Pages.Account
             public string FirstName { get; set; }
 
             public string LastName { get; set; }
+
+            public string Address { get; set; }
+
+            public string PostalCode { get; set; }
+
+            public string City { get; set; }
         }
 
 
@@ -121,6 +127,9 @@ namespace Backend.Areas.Identity.Pages.Account
                 var user = new ApplicationUser();
                 user.FirstName = Input.FirstName;
                 user.LastName = Input.LastName;
+                user.Address = Input.Address;
+                user.PostalCode = Input.PostalCode;
+                user.City = Input.City;
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);

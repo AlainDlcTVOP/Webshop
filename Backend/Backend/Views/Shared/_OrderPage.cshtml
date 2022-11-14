@@ -7,6 +7,21 @@
 <h2>Order @Model.Order.OrderNr - Detaljer</h2>
 
 <div class="page order">
+
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {        
+        <div class="product-page-top">
+            <button class="btn-sm btn-close-white " onclick="ViewAllOrders()">Back to all orders</button>
+        </div>
+    }
+
+    @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
+    {
+        <div class="product-page-top">
+            <button class="btn-sm btn-close-white " onclick="ViewCurrentUserOrders()">Back to all orders</button>
+        </div>
+    }
+
     <div>
         <p><b>OrderNr</b>: @Model.Order.OrderNr</p>
 

@@ -26,16 +26,16 @@
             <div class="product-info-text">
                 <h3>Pris: @Model.Product.Price SEK</h3>
                 <div class="add-to-cart page-button">
-                    <button type="button" id="add-to-cart" class="add-to-cart-button btn-lg">
+                    <button type="button" id="add-to-cart" class="add-to-cart-button btn-lg" onclick="AddToCart(@Model.Product.Id)">
                         Add to Cart
                     </button>
                 </div>
             </div>
-                <h5>I lager: @Model.Product.InStock</h5>
+            <h5>I lager: @Model.Product.InStock</h5>
 
         </div>
-    
-</div>
 
-<partial name="~/Views/Shared/_UpdateProductLink.cshtml" model="@Model.Product" />
-<partial name="~/Views/Shared/_DeleteProductLink.cshtml" model="@Model.Product" />
+    </div>
+
+    <partial name="~/Views/Shared/_UpdateProductLink.cshtml" model="@Model.Product" />
+    <partial name="~/Views/Shared/_DeleteProductLink.cshtml" model="@Model.Product" />

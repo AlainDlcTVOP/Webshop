@@ -1,0 +1,47 @@
+﻿@page
+@*@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div>
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <p>Hello, admin.</p>
+    }
+    else if (User.Identity.IsAuthenticated && User.IsInRole("User"))
+    {
+        <p>Hello, regular user.</p>
+    }
+    else
+    {
+        <p>Hello, guest.</p>
+    }
+</div>*@
+
+@{
+    ViewData["Title"] = "SkiShop";
+}
+
+
+<header class="skishop-header">
+    @*<h1>SkiShop</h1>*@
+@*    <partial name="~/Views/Shared/_UserNavigation.cshtml" />
+    <partial name="~/Views/Shared/_AdminNavigation.cshtml" />*@
+    <div class="banner">
+        <img src="images/BannerVerbier.jpg">
+    </div>
+</header>
+
+<div id="result"></div>
+
+<script>
+    window.onload = function() {
+  ViewAllProducts();
+};
+</script>
